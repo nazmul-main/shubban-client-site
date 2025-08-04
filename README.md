@@ -1,3 +1,11 @@
+color code ' #FFFFFF , #E91E63, #0D47A1, #994E3B' 
+
+**Color System:**
+- Background Color: #FFFFFF
+- Secondary Color: #E91E63  
+- Primary Color: #0D47A1
+- Accent Color: #994E3B
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
