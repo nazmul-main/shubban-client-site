@@ -1,5 +1,4 @@
 import Button from '../ui/Button';
-import Typography from '../ui/Typography';
 
 const CTASection = () => {
   return (

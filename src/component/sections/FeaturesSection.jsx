@@ -90,9 +90,9 @@ const FeaturesSection = () => {
               {/* Feature details */}
               <div className="space-y-1.5 sm:space-y-2">
                 {feature.details.map((detail, detailIndex) => (
-                  <div key={detailIndex} className="flex items-center space-x-2 sm:space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                    <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 bg-${feature.color} rounded-full`}></div>
-                    <span className="text-xs sm:text-sm text-gray-600 font-medium">{detail}</span>
+                  <div key={detailIndex} className="flex items-center space-x-2 sm:space-x-3 opacity-100 transition-all duration-300 delay-100 group-hover:scale-105 group-hover:translate-x-1">
+                    <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 bg-${feature.color} rounded-full group-hover:scale-125 transition-transform duration-300`}></div>
+                    <span className="text-xs sm:text-sm text-gray-600 font-medium group-hover:text-primary-color transition-colors duration-300">{detail}</span>
                   </div>
                 ))}
               </div>
@@ -106,14 +106,7 @@ const FeaturesSection = () => {
           ))}
         </div>
 
-        {/* Bottom decorative element */}
-        <div className="text-center mt-12 sm:mt-16">
-          <div className="inline-flex items-center space-x-2 px-6 py-3 bg-white/20 backdrop-blur-xl rounded-full border border-white/30 shadow-xl">
-            <div className="w-2 h-2 bg-gradient-to-r from-primary-color to-secondary-color rounded-full animate-pulse"></div>
-            <span className="text-sm font-semibold text-gray-700">আমাদের অঙ্গীকার</span>
-            <div className="w-2 h-2 bg-gradient-to-r from-secondary-color to-accent-color rounded-full animate-pulse delay-500"></div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

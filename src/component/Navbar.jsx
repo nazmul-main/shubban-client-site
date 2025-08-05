@@ -3,8 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useContext, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { ColorContext } from "../context/ColorContext";
+import { useAppSelector } from "../store/hooks";
 import Button from "./ui/Button";
+import LoginModal from "./LoginModal";
+import UserDropdown from "./UserDropdown";
 import { FiMenu, FiX, FiHome, FiInfo, FiFileText, FiTarget, FiImage, FiEdit, FiPhone, FiHeart } from "react-icons/fi";
 
 const navItems = [
@@ -59,8 +63,10 @@ const OrganizationName = ({ size = "md", className = "" }) => {
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   
   const colorContext = useContext(ColorContext);
   const colors = colorContext || {
@@ -69,6 +75,8 @@ export default function Navbar() {
     primaryColor: '#0D47A1',
     accentColor: '#994E3B'
   };
+
+  const { isAuthenticated, user } = useAppSelector((state) => state.auth);
 
   // Handle scroll effect
   useEffect(() => {
@@ -89,6 +97,11 @@ export default function Navbar() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [open]);
+
+  const handleLoginSuccess = (user) => {
+    // Role-based redirect logic is now handled in LoginModal
+    console.log('Login successful:', user);
+  };
 
   return (
     <header className={`w-full sticky top-0 z-50 transition-all duration-700 ${
@@ -126,15 +139,14 @@ export default function Navbar() {
           </div>
           
           {/* Action Button */}
-          <Button 
-            variant="primary" 
-            size="sm"
-            className="group relative overflow-hidden bg-gradient-to-r from-primary-color to-secondary-color hover:from-secondary-color hover:to-primary-color transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
-          >
-            <FiHeart className="mr-2" />
-            <span className="relative z-10">দান করুন</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-          </Button>
+                     <Button 
+             variant="primary" 
+             size="sm"
+             className="group relative overflow-hidden bg-gradient-to-r from-blue-400 to-pink-300 hover:from-pink-300 hover:to-blue-400 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
+           >
+             <span className="relative z-10">দান করুন</span>
+             <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+           </Button>
         </div>
         
         {/* Mobile Navigation Menu */}
@@ -151,11 +163,11 @@ export default function Navbar() {
                      <Link 
                        href={item.href}
                        onClick={() => setOpen(false)}
-                       className={`flex items-center justify-center px-5 py-3 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
-                         pathname === item.href 
-                           ? 'bg-gradient-to-r from-secondary-color to-accent-color text-white shadow-xl' 
-                           : 'text-gray-700 hover:bg-gradient-to-r hover:from-primary-color to-secondary-color hover:text-white'
-                       }`}
+                                               className={`flex items-center justify-center px-5 py-3 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
+                          pathname === item.href 
+                            ? 'bg-gradient-to-r from-blue-400 to-pink-300 text-white shadow-xl' 
+                            : 'text-gray-700 bg-gray-100/50 hover:bg-gradient-to-r hover:from-blue-400 hover:to-pink-300 hover:text-white'
+                        }`}
                        style={{ animationDelay: `${index * 100}ms` }}
                      >
                        <span>{item.label}</span>
@@ -167,24 +179,33 @@ export default function Navbar() {
               {/* Mobile CTA Section */}
               <div className="mt-8 pt-6 border-t border-gray-200">
                 <div className="space-y-4">
-                  <Link 
-                    href="/contact"
-                    className="flex items-center justify-center space-x-3 px-6 py-4 bg-gradient-to-r from-accent-color to-secondary-color text-white rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-                    onClick={() => setOpen(false)}
-                  >
-                    <FiPhone className="text-xl" />
-                    <span>যোগাযোগ করুন</span>
-                  </Link>
+                                     <Link 
+                     href="/contact"
+                     className="flex items-center justify-center space-x-3 px-6 py-4 bg-gradient-to-r from-green-400 to-teal-400 text-white rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+                     onClick={() => setOpen(false)}
+                   >
+                     <FiPhone className="text-xl" />
+                     <span>যোগাযোগ করুন</span>
+                   </Link>
                   
-                  <Button 
-                    variant="outline" 
-                    size="md"
-                    className="w-full group relative overflow-hidden border-2 border-primary-color text-primary-color hover:border-secondary-color hover:text-secondary-color bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300 transform hover:scale-105"
-                    onClick={() => setOpen(false)}
-                  >
-                    <span className="relative z-10">আমার একাউন্ট</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary-color/10 to-secondary-color/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                  </Button>
+                                     {isAuthenticated ? (
+                   <div className="w-full">
+                     <UserDropdown />
+                   </div>
+                 ) : (
+                   <Button 
+                     variant="outline" 
+                     size="md"
+                     className="w-full group relative overflow-hidden border-2 border-purple-400 text-purple-600 hover:border-indigo-400 hover:text-indigo-600 bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300 transform hover:scale-105"
+                     onClick={() => {
+                       setShowLoginModal(true);
+                       setOpen(false);
+                     }}
+                   >
+                     <span className="relative z-10">আমার একাউন্ট</span>
+                     <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-indigo-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                   </Button>
+                 )}
                 </div>
               </div>
             </nav>
@@ -223,24 +244,28 @@ export default function Navbar() {
                  </span>
                </Link>
                
-               <Button 
-                 variant="outline" 
-                 size="sm"
-                 className="group relative overflow-hidden border-2 border-primary-color text-primary-color hover:border-secondary-color hover:text-secondary-color bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-               >
-                 <span className="relative z-10">আমার একাউন্ট</span>
-                 <div className="absolute inset-0 bg-gradient-to-r from-primary-color/10 to-secondary-color/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-               </Button>
+                               {isAuthenticated ? (
+                  <UserDropdown />
+                ) : (
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="group relative overflow-hidden border-2 border-purple-400 text-purple-600 hover:border-indigo-400 hover:text-indigo-600 bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    onClick={() => setShowLoginModal(true)}
+                  >
+                    <span className="relative z-10">আমার একাউন্ট</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-indigo-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  </Button>
+                )}
                
-               <Button 
-                 variant="primary" 
-                 size="sm"
-                 className="group relative overflow-hidden bg-gradient-to-r from-primary-color to-secondary-color hover:from-secondary-color hover:to-primary-color transition-all duration-500 transform hover:scale-105 hover:shadow-2xl"
-               >
-                 <FiHeart className="mr-2 text-lg" />
-                 <span className="relative z-10">দান করুন</span>
-                 <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-               </Button>
+                               <Button 
+                  variant="primary" 
+                  size="sm"
+                  className="group relative overflow-hidden bg-gradient-to-r from-blue-400 to-pink-300 hover:from-pink-300 hover:to-blue-400 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl"
+                >
+                  <span className="relative z-10">দান করুন</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                </Button>
              </div>
            </div>
          </div>
@@ -267,11 +292,11 @@ export default function Navbar() {
                    <li key={item.href}>
                      <Link 
                        href={item.href}
-                       className={`flex items-center justify-center px-5 py-2 font-medium text-sm transition-all duration-300 rounded-lg group relative overflow-hidden ${
-                         pathname === item.href 
-                           ? 'bg-gradient-to-r from-secondary-color to-accent-color text-white shadow-lg' 
-                           : 'hover:bg-gradient-to-r hover:from-primary-color to-secondary-color hover:text-white'
-                       }`}
+                                               className={`flex items-center justify-center px-5 py-2 font-medium text-sm transition-all duration-300 rounded-lg group relative overflow-hidden ${
+                          pathname === item.href 
+                            ? 'bg-gradient-to-r from-blue-400 to-pink-300 text-white shadow-lg' 
+                            : 'text-gray-700 bg-gray-100/50 hover:bg-gradient-to-r hover:from-blue-400 hover:to-pink-300 hover:text-white'
+                        }`}
                      >
                        <span className="group-hover:scale-105 transition-transform duration-300">{item.label}</span>
                        <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
@@ -286,6 +311,13 @@ export default function Navbar() {
            </div>
          </nav>
        </div>
+
+      {/* Login Modal */}
+      <LoginModal 
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+        onSuccess={handleLoginSuccess}
+      />
     </header>
   );
 }
