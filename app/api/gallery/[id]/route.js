@@ -11,7 +11,7 @@ let galleryItems = [
     imageUrl: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop',
     isPublic: true,
     featured: true,
-    uploader: 'Admin',
+    uploader: 'System',
     createdAt: new Date('2024-01-10').toISOString(),
     updatedAt: new Date('2024-01-10').toISOString()
   },
@@ -24,7 +24,7 @@ let galleryItems = [
     imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=300&fit=crop',
     isPublic: true,
     featured: false,
-    uploader: 'Admin',
+    uploader: 'System',
     createdAt: new Date('2024-01-15').toISOString(),
     updatedAt: new Date('2024-01-15').toISOString()
   },
@@ -37,7 +37,7 @@ let galleryItems = [
     imageUrl: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
     isPublic: true,
     featured: true,
-    uploader: 'Admin',
+    uploader: 'System',
     createdAt: new Date('2024-01-20').toISOString(),
     updatedAt: new Date('2024-01-20').toISOString()
   }

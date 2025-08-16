@@ -1,9 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ColorProvider } from "../src/context/ColorContext";
-import ReduxProvider from "../src/providers/ReduxProvider";
-import NotificationSystem from "../src/component/NotificationSystem";
-import AuthInitializer from "../src/component/AuthInitializer";
 import RouteAwareLayout from "../src/component/RouteAwareLayout";
 
 const geistSans = Geist({
@@ -116,15 +113,11 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
       </head>
       <body className={`${geistSans.className} flex flex-col min-h-screen bg-background-color antialiased`}>
-        <ReduxProvider>
-          <ColorProvider>
-            <AuthInitializer />
-            <NotificationSystem />
-            <RouteAwareLayout>
-              {children}
-            </RouteAwareLayout>
-          </ColorProvider>
-        </ReduxProvider>
+        <ColorProvider>
+          <RouteAwareLayout>
+            {children}
+          </RouteAwareLayout>
+        </ColorProvider>
       </body>
     </html>
   );
