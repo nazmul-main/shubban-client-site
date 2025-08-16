@@ -2,12 +2,14 @@
 
 import { createContext, useContext, ReactNode } from 'react';
 
-// Color constants
+// Color constants - Beautiful Emerald-Teal-Cyan Theme
 export const COLORS = {
   BACKGROUND_COLOR: '#FFFFFF',
-  SECONDARY_COLOR: '#E91E63',
-  PRIMARY_COLOR: '#0D47A1',
-  ACCENT_COLOR: '#994E3B'
+  SECONDARY_COLOR: '#10B981', // Emerald-500
+  PRIMARY_COLOR: '#0D9488',   // Teal-600
+  ACCENT_COLOR: '#0891B2',    // Cyan-600
+  DARK_COLOR: '#0F172A',      // Slate-900
+  LIGHT_COLOR: '#F1F5F9'      // Slate-100
 };
 
 // Color context
@@ -21,13 +23,15 @@ export function ColorProvider({ children }) {
     secondaryColor: COLORS.SECONDARY_COLOR,
     primaryColor: COLORS.PRIMARY_COLOR,
     accentColor: COLORS.ACCENT_COLOR,
+    darkColor: COLORS.DARK_COLOR,
+    lightColor: COLORS.LIGHT_COLOR,
     
     // Semantic color mappings
     primary: COLORS.PRIMARY_COLOR,
     secondary: COLORS.SECONDARY_COLOR,
     accent: COLORS.ACCENT_COLOR,
     background: COLORS.BACKGROUND_COLOR,
-    text: COLORS.ACCENT_COLOR,
+    text: COLORS.DARK_COLOR,
     
     // Utility functions
     getColor: (colorName) => {
@@ -35,7 +39,9 @@ export function ColorProvider({ children }) {
         'background': COLORS.BACKGROUND_COLOR,
         'secondary': COLORS.SECONDARY_COLOR,
         'primary': COLORS.PRIMARY_COLOR,
-        'accent': COLORS.ACCENT_COLOR
+        'accent': COLORS.ACCENT_COLOR,
+        'dark': COLORS.DARK_COLOR,
+        'light': COLORS.LIGHT_COLOR
       };
       return colorMap[colorName] || COLORS.PRIMARY_COLOR;
     },
@@ -51,19 +57,25 @@ export function ColorProvider({ children }) {
         background: 'text-background-color',
         secondary: 'text-secondary-color',
         primary: 'text-primary-color',
-        accent: 'text-accent-color'
+        accent: 'text-accent-color',
+        dark: 'text-dark-color',
+        light: 'text-light-color'
       },
       background: {
         background: 'bg-background-color',
         secondary: 'bg-secondary-color',
         primary: 'bg-primary-color',
-        accent: 'bg-accent-color'
+        accent: 'bg-accent-color',
+        dark: 'bg-dark-color',
+        light: 'bg-light-color'
       },
       border: {
         background: 'border-background-color',
         secondary: 'border-secondary-color',
         primary: 'border-primary-color',
-        accent: 'border-accent-color'
+        accent: 'border-accent-color',
+        dark: 'border-dark-color',
+        light: 'border-light-color'
       }
     }
   };
@@ -85,17 +97,21 @@ export function useColors() {
       secondaryColor: COLORS.SECONDARY_COLOR,
       primaryColor: COLORS.PRIMARY_COLOR,
       accentColor: COLORS.ACCENT_COLOR,
+      darkColor: COLORS.DARK_COLOR,
+      lightColor: COLORS.LIGHT_COLOR,
       primary: COLORS.PRIMARY_COLOR,
       secondary: COLORS.SECONDARY_COLOR,
       accent: COLORS.ACCENT_COLOR,
       background: COLORS.BACKGROUND_COLOR,
-      text: COLORS.ACCENT_COLOR,
+      text: COLORS.DARK_COLOR,
       getColor: (colorName) => {
         const colorMap = {
           'background': COLORS.BACKGROUND_COLOR,
           'secondary': COLORS.SECONDARY_COLOR,
           'primary': COLORS.PRIMARY_COLOR,
-          'accent': COLORS.ACCENT_COLOR
+          'accent': COLORS.ACCENT_COLOR,
+          'dark': COLORS.DARK_COLOR,
+          'light': COLORS.LIGHT_COLOR
         };
         return colorMap[colorName] || COLORS.PRIMARY_COLOR;
       },
@@ -107,19 +123,25 @@ export function useColors() {
           background: 'text-background-color',
           secondary: 'text-secondary-color',
           primary: 'text-primary-color',
-          accent: 'text-accent-color'
+          accent: 'text-accent-color',
+          dark: 'text-dark-color',
+          light: 'text-light-color'
         },
         background: {
           background: 'bg-background-color',
           secondary: 'bg-secondary-color',
           primary: 'bg-primary-color',
-          accent: 'bg-accent-color'
+          accent: 'bg-accent-color',
+          dark: 'bg-dark-color',
+          light: 'bg-light-color'
         },
         border: {
           background: 'border-background-color',
           secondary: 'border-secondary-color',
           primary: 'border-primary-color',
-          accent: 'border-accent-color'
+          accent: 'border-accent-color',
+          dark: 'border-dark-color',
+          light: 'border-light-color'
         }
       }
     };

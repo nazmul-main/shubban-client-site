@@ -8,6 +8,7 @@ import { useContext } from "react";
 import Button from "./ui/Button";
 
 import { FiMenu, FiHome, FiInfo, FiFileText, FiTarget, FiImage, FiEdit, FiHeart } from "react-icons/fi";
+import MyAccountButton from "./MyAccountButton";
 
 const navItems = [
   { href: "/", label: "হোম", icon: FiHome },
@@ -34,7 +35,7 @@ const Logo = ({ size = "md", className = "" }) => {
         fill 
         className="object-contain rounded-2xl transition-all duration-700 group-hover:scale-110 relative z-10 shadow-lg"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-pink-300/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
     </Link>
   );
 };
@@ -46,9 +47,11 @@ export default function Navbar() {
   const colorContext = useContext(ColorContext);
   const colors = colorContext || {
     backgroundColor: '#FFFFFF',
-    secondaryColor: '#E91E63',
-    primaryColor: '#0D47A1',
-    accentColor: '#994E3B'
+    secondaryColor: '#10B981',
+    primaryColor: '#0D9488',
+    accentColor: '#0891B2',
+    darkColor: '#0F172A',
+    lightColor: '#F1F5F9'
   };
 
   // Close mobile menu when clicking outside
@@ -63,7 +66,10 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200">
+    <header className="w-full sticky top-0 z-50 bg-gradient-to-br from-gray-900/95 via-slate-800/95 to-zinc-900/95 backdrop-blur-xl shadow-lg border-b border-emerald-500/30">
+      {/* Top accent line like Footer */}
+      <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"></div>
+      
       {/* Mobile Header */}
       <div className="lg:hidden mobile-menu">
         <div className="flex items-center justify-between px-4 py-3">
@@ -73,7 +79,7 @@ export default function Navbar() {
           {/* Hamburger Menu */}
           <button 
             onClick={() => setOpen(!open)}
-            className="relative p-2 text-gray-700 hover:text-primary-color transition-all duration-300 group rounded-lg hover:bg-gray-100"
+            className="relative p-2 text-gray-200 hover:text-emerald-400 transition-all duration-300 group rounded-lg hover:bg-emerald-500/20"
             aria-label="Menu"
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center">
@@ -90,7 +96,7 @@ export default function Navbar() {
             ? 'max-h-[400px] opacity-100' 
             : 'max-h-0 opacity-0'
         } overflow-hidden`}>
-          <div className="bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-lg">
+          <div className="bg-gradient-to-br from-gray-800/95 via-slate-700/95 to-zinc-800/95 backdrop-blur-xl border-t border-emerald-500/30 shadow-lg">
             <nav className="px-4 py-4">
               <ul className="space-y-2">
                 {navItems.map((item, index) => {
@@ -102,8 +108,8 @@ export default function Navbar() {
                         onClick={() => setOpen(false)}
                         className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                           pathname === item.href 
-                            ? 'bg-gradient-to-r from-blue-400 to-pink-300 text-white shadow-lg' 
-                            : 'text-gray-700 bg-gray-100/50 hover:bg-gradient-to-r hover:from-blue-400 hover:to-pink-300 hover:text-white'
+                            ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg' 
+                            : 'text-gray-200 bg-gray-700/50 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white'
                         }`}
                         style={{ animationDelay: `${index * 50}ms` }}
                       >
@@ -115,12 +121,15 @@ export default function Navbar() {
                 })}
               </ul>
               
-              {/* Mobile Donation Button */}
-              <div className="mt-4 pt-4 border-t border-gray-200">
+              {/* Mobile My Account and Donation Button */}
+              <div className="mt-4 pt-4 border-t border-emerald-500/30 space-y-3">
+                <div className="flex justify-center">
+                  <MyAccountButton />
+                </div>
                 <Button 
                   variant="primary" 
                   size="md"
-                  className="w-full group relative overflow-hidden bg-gradient-to-r from-blue-400 to-pink-300 hover:from-pink-300 hover:to-blue-400 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="w-full group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   <FiHeart className="mr-2" />
                   <span className="relative z-10">দান করুন</span>
@@ -152,8 +161,8 @@ export default function Navbar() {
                         href={item.href}
                         className={`flex items-center space-x-2 px-4 py-2 font-medium text-sm transition-all duration-300 rounded-lg group relative overflow-hidden ${
                           pathname === item.href 
-                            ? 'bg-gradient-to-r from-blue-400 to-pink-300 text-white shadow-lg' 
-                            : 'text-gray-700 bg-gray-100/50 hover:bg-gradient-to-r hover:from-blue-400 hover:to-pink-300 hover:text-white'
+                            ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg' 
+                            : 'text-gray-200 bg-gray-700/50 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white'
                         }`}
                       >
                         <IconComponent className="text-base" />
@@ -166,12 +175,13 @@ export default function Navbar() {
               </ul>
             </nav>
             
-            {/* Donation Button */}
-            <div className="flex items-center">
+            {/* Donation Button and My Account */}
+            <div className="flex items-center space-x-3">
+              <MyAccountButton />
               <Button 
                 variant="primary" 
                 size="sm"
-                className="group relative overflow-hidden bg-gradient-to-r from-blue-400 to-pink-300 hover:from-pink-300 hover:to-blue-400 transition-all duration-500 transform hover:scale-105 hover:shadow-xl"
+                className="group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 hover:shadow-xl"
               >
                 <FiHeart className="mr-2" />
                 <span className="relative z-10">দান করুন</span>

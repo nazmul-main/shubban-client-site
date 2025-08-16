@@ -145,20 +145,27 @@ export default function About() {
   const currentContent = contentData[activeTab];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-900 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"></div>
+        <div className="absolute top-20 left-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
+      <div className="container mx-auto px-4 py-6 relative z-10">
 
         {/* Mobile Tabs Navigation */}
         <div className="lg:hidden mb-6">
-          <div className="bg-background-color rounded-lg shadow-sm border border-gray-200 p-2">
+          <div className="bg-white/10 backdrop-blur-xl rounded-lg shadow-lg border border-white/20 p-2">
             <div className="flex overflow-x-auto space-x-1 pb-2">
               {sidebarItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
                   className={`flex-shrink-0 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 whitespace-nowrap ${activeTab === item.id
-                    ? 'bg-primary-color text-background-color shadow-sm'
-                    : 'text-gray-600 hover:text-primary-color hover:bg-gray-100'
+                    ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg'
+                    : 'text-gray-300 hover:text-emerald-400 hover:bg-white/10'
                     }`}
                 >
                   {item.label}
@@ -172,8 +179,8 @@ export default function About() {
 
           {/* Desktop Sidebar - Hidden on Mobile */}
           <div className="hidden lg:block lg:w-1/4">
-            <div className="bg-background-color border border-gray-200 rounded-lg p-4 sticky top-4">
-              <h3 className="text-lg font-semibold text-primary-color mb-4 border-b border-gray-200 pb-2">
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-4 sticky top-4 shadow-lg">
+              <h3 className="text-lg font-semibold text-emerald-400 mb-4 border-b border-white/20 pb-2">
                 আমাদের সম্পর্কে
               </h3>
               <nav className="space-y-2">
@@ -182,8 +189,8 @@ export default function About() {
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
                     className={`w-full text-left px-3 py-2 rounded-md transition-colors duration-200 animate-fade-in-left ${activeTab === item.id
-                      ? 'bg-primary-color text-background-color font-semibold'
-                      : 'text-accent-color hover:bg-gray-100 hover:text-primary-color'
+                      ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold shadow-lg'
+                      : 'text-gray-300 hover:bg-white/10 hover:text-emerald-400'
                       }`}
                     style={{ animationDelay: `${0.1 + idx * 0.07}s` }}
                   >
@@ -198,14 +205,14 @@ export default function About() {
           <div className="lg:w-3/4">
             <div
               key={activeTab}
-              className="bg-background-color border border-gray-200 rounded-lg p-6 shadow-sm"
+              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-6 shadow-lg"
             >
-              <h1 className="text-2xl font-bold text-primary-color mb-6 animate-fade-in-up">
+              <h1 className="text-2xl font-bold text-emerald-400 mb-6 animate-fade-in-up">
                 {currentContent.title}
               </h1>
 
               <div className="prose prose-lg max-w-none">
-                <div className="text-gray-700 leading-relaxed whitespace-pre-line animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+                <div className="text-gray-200 leading-relaxed whitespace-pre-line animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
                   {currentContent.content}
                 </div>
               </div>

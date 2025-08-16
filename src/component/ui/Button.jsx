@@ -13,11 +13,11 @@ const Button = ({
   const baseClasses = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variants = {
-    primary: 'bg-primary-color text-white hover:bg-blue-700 shadow-lg hover:shadow-xl focus:ring-primary-color',
-    secondary: 'bg-secondary-color text-white hover:bg-pink-600 shadow-lg hover:shadow-xl focus:ring-secondary-color',
-    outline: 'border-2 border-primary-color text-primary-color hover:bg-primary-color hover:text-white focus:ring-primary-color',
-    white: 'bg-white text-primary-color hover:bg-gray-100 shadow-lg focus:ring-primary-color',
-    ghost: 'text-gray-700 hover:text-primary-color hover:bg-gray-50 focus:ring-primary-color'
+    primary: 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white hover:from-teal-500 hover:to-emerald-500 shadow-lg hover:shadow-xl focus:ring-emerald-500',
+    secondary: 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white hover:from-cyan-500 hover:to-teal-500 shadow-lg hover:shadow-xl focus:ring-teal-500',
+    outline: 'border-2 border-emerald-500 text-emerald-600 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white focus:ring-emerald-500',
+    white: 'bg-white text-emerald-600 hover:bg-emerald-50 shadow-lg focus:ring-emerald-500',
+    ghost: 'text-slate-700 hover:text-emerald-600 hover:bg-emerald-50 focus:ring-emerald-500'
   };
   
   const sizes = {

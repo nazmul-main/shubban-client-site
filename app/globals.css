@@ -1,18 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  /* Your 4-color system */
+  /* Beautiful Emerald-Teal-Cyan Color System */
   --background-color: #FFFFFF;
-  --secondary-color: #E91E63;
-  --primary-color: #0D47A1;
-  --accent-color: #994E3B;
+  --secondary-color: #10B981; /* Emerald-500 */
+  --primary-color: #0D9488;   /* Teal-600 */
+  --accent-color: #0891B2;    /* Cyan-600 */
+  --dark-color: #0F172A;      /* Slate-900 */
+  --light-color: #F1F5F9;     /* Slate-100 */
   
   /* Default theme colors */
   --background: var(--background-color);
-  --foreground: var(--accent-color);
+  --foreground: var(--dark-color);
   --primary: var(--primary-color);
   --secondary: var(--secondary-color);
   --accent: var(--accent-color);
+  --dark: var(--dark-color);
+  --light: var(--light-color);
 }
 
 @theme inline {
@@ -21,6 +25,8 @@
   --color-secondary-color: var(--secondary-color);
   --color-primary-color: var(--primary-color);
   --color-accent-color: var(--accent-color);
+  --color-dark-color: var(--dark-color);
+  --color-light-color: var(--light-color);
   
   /* Theme colors */
   --color-background: var(--background);
@@ -28,6 +34,8 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-dark: var(--dark);
+  --color-light: var(--light);
   
   /* Font configuration */
   --font-sans: var(--font-geist-sans);
@@ -42,7 +50,7 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
@@ -187,6 +195,22 @@ footer {
 
 .animate-fade-in-up {
   animation: fade-in-up 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Modal animations */
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-modal-fade-in {
+  animation: modalFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 @keyframes fade-in-left {
