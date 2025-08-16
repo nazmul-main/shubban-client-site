@@ -1,15 +1,22 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useAppSelector } from '../store/hooks';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { logoutUser } from '../store/slices/authSlice';
+import { addNotification } from '../store/slices/uiSlice';
 import { FiHome, FiLogOut, FiUser } from 'react-icons/fi';
 
 export default function AdminHeader() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.auth);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    dispatch(logoutUser());
+    dispatch(addNotification({
+      type: 'success',
+      message: 'সফলভাবে লগআউট হয়েছে',
+    }));
     router.push('/');
   };
 

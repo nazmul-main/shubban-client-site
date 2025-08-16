@@ -55,6 +55,109 @@ footer {
   margin-top: auto;
 }
 
+/* Modal-specific styles for perfect centering */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  /* Perfect centering using flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  /* Ensure modal is above everything */
+  isolation: isolate;
+}
+
+.modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  /* Ensure smooth animations */
+  will-change: transform, opacity;
+  /* Perfect centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  position: relative;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: modalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Ensure content doesn't overflow */
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  /* Perfect centering */
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .modal-container {
+    max-width: calc(100vw - 1rem);
+  }
+  
+  .modal-content {
+    max-height: calc(100vh - 1rem);
+  }
+}
+
+@media (max-height: 600px) {
+  .modal-content {
+    max-height: calc(100vh - 2rem);
+  }
+}
+
+@keyframes modalSlideIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalSlideOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9) translateY(0);
+  }
+}
+
+/* Additional modal animations for perfect centering */
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content {
+  animation: modalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Utility classes for your color system */
 .text-background-color { color: var(--background-color); }
 .text-secondary-color { color: var(--secondary-color); }

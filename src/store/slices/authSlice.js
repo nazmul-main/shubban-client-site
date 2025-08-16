@@ -19,8 +19,32 @@ export const loginUser = createAsyncThunk(
       localStorage.setItem('token', token);
       return { user, token };
     } catch (error) {
-      console.error('Login error:', error.response?.data || error.message);
-      return rejectWithValue(error.response?.data?.message || 'Login failed');
+      console.error('Login error details:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        config: {
+          url: error.config?.url,
+          method: error.config?.method,
+          data: error.config?.data
+        }
+      });
+      
+      // Provide more specific error messages
+      if (error.response?.status === 400) {
+        return rejectWithValue(error.response?.data?.message || 'Invalid email or password');
+      } else if (error.response?.status === 401) {
+        return rejectWithValue('Authentication failed');
+      } else if (error.response?.status === 500) {
+        return rejectWithValue('Server error. Please try again later.');
+      } else if (error.code === 'ECONNREFUSED') {
+        return rejectWithValue('Cannot connect to server. Please check if the server is running.');
+      } else if (error.code === 'NETWORK_ERROR') {
+        return rejectWithValue('Network error. Please check your internet connection.');
+      } else {
+        return rejectWithValue(error.response?.data?.message || error.message || 'Login failed. Please try again.');
+      }
     }
   }
 );

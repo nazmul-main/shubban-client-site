@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { ColorContext } from "../context/ColorContext";
 import { useAppSelector } from "../store/hooks";
 import Button from "./ui/Button";
-import LoginModal from "./LoginModal";
 import UserDropdown from "./UserDropdown";
 import { FiMenu, FiX, FiHome, FiInfo, FiFileText, FiTarget, FiImage, FiEdit, FiPhone, FiHeart } from "react-icons/fi";
 
@@ -66,7 +65,6 @@ export default function Navbar() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
   
   const colorContext = useContext(ColorContext);
   const colors = colorContext || {
@@ -98,9 +96,8 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [open]);
 
-  const handleLoginSuccess = (user) => {
-    // Role-based redirect logic is now handled in LoginModal
-    console.log('Login successful:', user);
+  const handleLoginClick = () => {
+    router.push('/login');
   };
 
   return (
@@ -198,7 +195,7 @@ export default function Navbar() {
                      size="md"
                      className="w-full group relative overflow-hidden border-2 border-purple-400 text-purple-600 hover:border-indigo-400 hover:text-indigo-600 bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300 transform hover:scale-105"
                      onClick={() => {
-                       setShowLoginModal(true);
+                       handleLoginClick();
                        setOpen(false);
                      }}
                    >
@@ -251,7 +248,7 @@ export default function Navbar() {
                     variant="outline" 
                     size="sm"
                     className="group relative overflow-hidden border-2 border-purple-400 text-purple-600 hover:border-indigo-400 hover:text-indigo-600 bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                    onClick={() => setShowLoginModal(true)}
+                    onClick={handleLoginClick}
                   >
                     <span className="relative z-10">আমার একাউন্ট</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-indigo-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
@@ -312,12 +309,7 @@ export default function Navbar() {
          </nav>
        </div>
 
-      {/* Login Modal */}
-      <LoginModal 
-        isOpen={showLoginModal}
-        onClose={() => setShowLoginModal(false)}
-        onSuccess={handleLoginSuccess}
-      />
+
     </header>
   );
 }
