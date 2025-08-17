@@ -356,3 +356,42 @@ footer {
 .backdrop-blur-3xl {
   backdrop-filter: blur(64px);
 }
+
+/* Line clamp utilities for text truncation */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Admin route specific styles */
+.admin-route {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.admin-route * {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Ensure admin dashboard takes full height */
+.admin-dashboard {
+  min-height: 100vh;
+  height: 100vh;
+}

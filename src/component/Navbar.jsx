@@ -54,6 +54,11 @@ export default function Navbar() {
     lightColor: '#F1F5F9'
   };
 
+  // Hide navbar on admin routes
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
+
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
