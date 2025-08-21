@@ -44,9 +44,9 @@ const AdminSidebar = ({ activeSection, setActiveSection, sidebarOpen, setSidebar
   return (
     <>
       {/* Desktop Sidebar */}
-      <div className={`hidden lg:flex lg:flex-shrink-0`}>
+      <div className="hidden lg:flex lg:flex-shrink-0">
         <div className="flex flex-col w-64">
-          <div className="flex flex-col h-0 flex-1 bg-white border-r border-gray-200">
+          <div className="flex flex-col h-screen bg-white border-r border-gray-200">
             {/* Logo */}
             <div className="flex items-center h-16 flex-shrink-0 px-6 bg-gradient-to-r from-emerald-500 to-teal-500">
               <div className="flex items-center">

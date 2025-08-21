@@ -78,9 +78,9 @@ const BlogManagement = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="w-full space-y-16 py-12">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Blog Management</h1>
           <p className="text-gray-600 mt-1">Create, edit, and manage blog posts</p>
@@ -97,7 +97,7 @@ const BlogManagement = () => {
       </div>
 
       {/* Filters and Search */}
-      <div className="bg-white rounded-xl p-6 shadow-lg">
+      <div className="bg-white rounded-xl p-6 shadow-lg mb-8">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-2">Search Blogs</label>
@@ -131,7 +131,7 @@ const BlogManagement = () => {
       </div>
 
       {/* Blogs Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {filteredBlogs.map((blog) => (
           <div key={blog.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
             <div className="p-6">
