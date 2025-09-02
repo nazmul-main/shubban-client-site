@@ -4,7 +4,7 @@ import Typography from '../ui/Typography';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-900 p-4 sm:p-6 lg:p-8">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-900 p-2 sm:p-4 lg:p-6">
       {/* Advanced background with multiple layers */}
       <div className="absolute inset-0">
         {/* Primary gradient layer */}
@@ -45,11 +45,11 @@ const HeroSection = () => {
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"></div>
 
       {/* Main content container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center">
           
           {/* Hero Content - Left Side */}
-          <div className="space-y-6 sm:space-y-8 lg:space-y-10 text-center lg:text-left order-2 lg:order-1">
+          <div className="space-y-4 sm:space-y-6 lg:space-y-8 text-center lg:text-left order-2 lg:order-1">
             
             {/* Modern status badge with advanced glassmorphism */}
             <div className="inline-flex items-center px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 hover:bg-white/15">

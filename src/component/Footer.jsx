@@ -2,16 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import { FiMail, FiPhone, FiMapPin, FiFacebook, FiYoutube, FiInstagram, FiTwitter } from 'react-icons/fi';
 
 export default function Footer() {
-  const pathname = usePathname();
-  
-  // Hide footer on admin routes
-  if (pathname?.startsWith('/admin')) {
-    return null;
-  }
 
   const quickLinks = [
     { href: "/", label: "হোম" },
@@ -19,6 +12,7 @@ export default function Footer() {
     { href: "/projects", label: "আমাদের কার্যক্রম" },
     { href: "/gallery", label: "গ্যালারী" },
     { href: "/blog", label: "ব্লগ" },
+    { href: "/donation", label: "দান" },
     { href: "/contact", label: "যোগাযোগ" },
   ];
 

@@ -98,9 +98,9 @@ export default function Contact() {
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto px-2 py-4 relative z-10">
         <h1 className="text-3xl md:text-4xl font-bold text-emerald-400 text-center mb-10 animate-fade-in-up">যোগাযোগ করুন</h1>
-        <div className="grid md:grid-cols-2 gap-8 mb-12 animate-fade-in-up">
+        <div className="grid md:grid-cols-2 gap-4 mb-8 animate-fade-in-up">
           {/* Contact Form */}
           <form onSubmit={handleSubmit} className="bg-white/10 backdrop-blur-xl rounded-lg shadow-lg p-6 space-y-4 border border-white/20">
             <h2 className="text-xl font-semibold text-emerald-400 mb-2">যোগাযোগ ফর্ম</h2>

@@ -15,7 +15,7 @@ export default function Home() {
       </Container>
       
       {/* Stats Section - Dark theme */}
-      <div className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-zinc-900 via-slate-800 to-gray-900 relative overflow-hidden">
+      <div className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-zinc-900 via-slate-800 to-gray-900 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"></div>
@@ -28,7 +28,7 @@ export default function Home() {
       </div>
       
       {/* Features Section - Dark theme */}
-      <div className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-900 via-zinc-800 to-slate-900 relative overflow-hidden">
+      <div className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-gray-900 via-zinc-800 to-slate-900 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500"></div>
@@ -41,7 +41,7 @@ export default function Home() {
       </div>
       
       {/* Category Section - Dark theme */}
-      <div className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-slate-900 via-gray-800 to-zinc-900 relative overflow-hidden">
+      <div className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-slate-900 via-gray-800 to-zinc-900 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-emerald-500 to-teal-500"></div>

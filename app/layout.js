@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ColorProvider } from "../src/context/ColorContext";
 import RouteAwareLayout from "../src/component/RouteAwareLayout";
+import BrowserExtensionHandler from "../src/component/BrowserExtensionHandler";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -111,8 +112,34 @@ export default function RootLayout({ children }) {
         
         {/* Viewport optimization */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        
+        {/* Suppress hydration warnings for browser extensions */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Suppress hydration warnings for known browser extension attributes
+              if (typeof window !== 'undefined') {
+                const originalConsoleError = console.error;
+                console.error = function(...args) {
+                  const message = args[0];
+                  if (typeof message === 'string' && 
+                      (message.includes('cz-shortcut-listen') || 
+                       message.includes('browser extension') ||
+                       message.includes('hydration'))) {
+                    return;
+                  }
+                  originalConsoleError.apply(console, args);
+                };
+              }
+            `,
+          }}
+        />
       </head>
-      <body className={`${geistSans.className} flex flex-col min-h-screen bg-background-color antialiased`}>
+      <body 
+        className={`${geistSans.className} flex flex-col min-h-screen bg-background-color antialiased`}
+        suppressHydrationWarning={true}
+      >
+        <BrowserExtensionHandler />
         <ColorProvider>
           <RouteAwareLayout>
             {children}

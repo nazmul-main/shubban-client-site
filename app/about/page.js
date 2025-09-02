@@ -153,7 +153,7 @@ export default function About() {
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-4 py-6 relative z-10">
+      <div className="container mx-auto px-2 py-4 relative z-10">
 
         {/* Mobile Tabs Navigation */}
         <div className="lg:hidden mb-6">
@@ -175,7 +175,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-4">
 
           {/* Desktop Sidebar - Hidden on Mobile */}
           <div className="hidden lg:block lg:w-1/4">
@@ -205,7 +205,7 @@ export default function About() {
           <div className="lg:w-3/4">
             <div
               key={activeTab}
-              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-6 shadow-lg"
+              className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-4 shadow-lg"
             >
               <h1 className="text-2xl font-bold text-emerald-400 mb-6 animate-fade-in-up">
                 {currentContent.title}

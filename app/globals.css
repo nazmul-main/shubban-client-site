@@ -58,9 +58,47 @@ body {
   flex-direction: column;
 }
 
+
+
 /* Ensure footer stays at bottom */
 footer {
   margin-top: auto;
+}
+
+/* Global spacing optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Reduce default margins and padding for tighter layout */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* Reduce default spacing in containers */
+.container {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 /* Modal-specific styles for perfect centering */
@@ -377,21 +415,4 @@ footer {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-}
-
-/* Admin route specific styles */
-.admin-route {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-.admin-route * {
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-/* Ensure admin dashboard takes full height */
-.admin-dashboard {
-  min-height: 100vh;
-  height: 100vh;
 }

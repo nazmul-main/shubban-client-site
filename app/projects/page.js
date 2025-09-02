@@ -57,7 +57,7 @@ export default function Projects() {
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-4 py-6 relative z-10">
+      <div className="container mx-auto px-2 py-4 relative z-10">
         {/* Mobile Tabs Navigation */}
         <div className="lg:hidden mb-6">
           <div className="bg-white/10 backdrop-blur-xl rounded-lg shadow-lg border border-white/20 p-2">

@@ -9,6 +9,7 @@ import Button from "./ui/Button";
 
 import { FiMenu, FiHome, FiInfo, FiFileText, FiTarget, FiImage, FiEdit, FiHeart } from "react-icons/fi";
 import MyAccountButton from "./MyAccountButton";
+import DonationPopup from "./DonationPopup";
 
 const navItems = [
   { href: "/", label: "হোম", icon: FiHome },
@@ -17,6 +18,8 @@ const navItems = [
   { href: "/projects", label: "আমাদের কার্যক্রম", icon: FiTarget },
   { href: "/gallery", label: "গ্যালারী", icon: FiImage },
   { href: "/blog", label: "ব্লগ", icon: FiEdit },
+  { href: "/donation", label: "দান", icon: FiHeart },
+  { href: "/contact", label: "যোগাযোগ", icon: FiEdit },
 ];
 
 const Logo = ({ size = "md", className = "" }) => {
@@ -43,6 +46,7 @@ const Logo = ({ size = "md", className = "" }) => {
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [donationPopupOpen, setDonationPopupOpen] = useState(false);
   
   const colorContext = useContext(ColorContext);
   const colors = colorContext || {
@@ -54,10 +58,7 @@ export default function Navbar() {
     lightColor: '#F1F5F9'
   };
 
-  // Hide navbar on admin routes
-  if (pathname?.startsWith('/admin')) {
-    return null;
-  }
+
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -111,7 +112,7 @@ export default function Navbar() {
                       <Link 
                         href={item.href}
                         onClick={() => setOpen(false)}
-                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
+                        className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                           pathname === item.href 
                             ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg' 
                             : 'text-gray-200 bg-gray-700/50 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white'
@@ -134,6 +135,7 @@ export default function Navbar() {
                 <Button 
                   variant="primary" 
                   size="md"
+                  onClick={() => setDonationPopupOpen(true)}
                   className="w-full group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   <FiHeart className="mr-2" />
@@ -157,14 +159,14 @@ export default function Navbar() {
             
             {/* Navigation Menu */}
             <nav className="flex-1 flex justify-center">
-              <ul className="flex space-x-2">
+              <ul className="flex space-x-1">
                 {navItems.map((item, index) => {
                   const IconComponent = item.icon;
                   return (
                     <li key={item.href}>
                       <Link 
                         href={item.href}
-                        className={`flex items-center space-x-2 px-4 py-2 font-medium text-sm transition-all duration-300 rounded-lg group relative overflow-hidden ${
+                        className={`flex items-center space-x-1 px-3 py-1.5 font-medium text-sm transition-all duration-300 rounded-lg group relative overflow-hidden ${
                           pathname === item.href 
                             ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg' 
                             : 'text-gray-200 bg-gray-700/50 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white'
@@ -181,11 +183,12 @@ export default function Navbar() {
             </nav>
             
             {/* Donation Button and My Account */}
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2">
               <MyAccountButton />
               <Button 
                 variant="primary" 
                 size="sm"
+                onClick={() => setDonationPopupOpen(true)}
                 className="group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 hover:shadow-xl"
               >
                 <FiHeart className="mr-2" />
@@ -196,6 +199,12 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      
+      {/* Donation Popup */}
+      <DonationPopup 
+        isOpen={donationPopupOpen} 
+        onClose={() => setDonationPopupOpen(false)} 
+      />
     </header>
   );
 }

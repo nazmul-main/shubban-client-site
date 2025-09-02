@@ -19,13 +19,15 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for existing token in localStorage
-    const savedToken = localStorage.getItem('authToken');
-    if (savedToken) {
-      setToken(savedToken);
-      // Set default authorization header for all axios requests
-      axios.defaults.headers.common['Authorization'] = `Bearer ${savedToken}`;
-      // You could also verify the token here
+    // Check for existing token in localStorage (only on client side)
+    if (typeof window !== 'undefined') {
+      const savedToken = localStorage.getItem('authToken');
+      if (savedToken) {
+        setToken(savedToken);
+        // Set default authorization header for all axios requests
+        axios.defaults.headers.common['Authorization'] = `Bearer ${savedToken}`;
+        // You could also verify the token here
+      }
     }
     setLoading(false);
   }, []);
@@ -38,7 +40,9 @@ export const AuthProvider = ({ children }) => {
         const { token: newToken, user: userData } = response.data.data;
         setToken(newToken);
         setUser(userData);
-        localStorage.setItem('authToken', newToken);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('authToken', newToken);
+        }
         axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
         return { success: true };
       } else {
@@ -56,16 +60,14 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setToken(null);
     setUser(null);
-    localStorage.removeItem('authToken');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('authToken');
+    }
     delete axios.defaults.headers.common['Authorization'];
   };
 
   const isAuthenticated = () => {
     return !!token;
-  };
-
-  const isAdmin = () => {
-    return user?.role === 'admin';
   };
 
   const value = {
@@ -75,7 +77,6 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     isAuthenticated,
-    isAdmin,
   };
 
   return (
