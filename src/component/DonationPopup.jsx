@@ -8,25 +8,25 @@ const DonationPopup = ({ isOpen, onClose }) => {
 
   const bankDetails = {
     bankName: "Islami Bank Limited",
-    accountNumber: "1234567890123456",
-    accountName: "শুব্বান দাওয়াতি কাফেলা",
-    branch: "ধানমন্ডি শাখা, ঢাকা"
+    accountNumber: "20507770225100418",
+    accountName: "মো: নাজমুল হুদা (সাময়িক) , শুব্বান দাওয়াতি কাফেলা",
+    branch: "112/01 , সারিয়াকান্দি বাজার , বগুড়া "
   };
 
   const mobileBanking = [
     {
       name: "Bkash",
-      number: "01712345678",
+      number: "01785588839",
       type: "Personal"
     },
     {
       name: "Nagad",
-      number: "01712345679",
+      number: "01785588839",
       type: "Personal"
     },
     {
       name: "Rocket",
-      number: "01712345680",
+      number: "01785588839",
       type: "Personal"
     }
   ];

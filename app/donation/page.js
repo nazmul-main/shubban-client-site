@@ -8,25 +8,25 @@ export default function DonationPage() {
 
   const bankDetails = {
     bankName: "Islami Bank Limited",
-    accountNumber: "1234567890123456",
-    accountName: "শুব্বান দাওয়াতি কাফেলা",
-    branch: "ধানমন্ডি শাখা, ঢাকা"
+    accountNumber: "20507770225100418",
+    accountName: "মো: নাজমুল হুদা (সাময়িক) , শুব্বান দাওয়াতি কাফেলা",
+    branch: "112/01 , সারিয়াকান্দি বাজার , বগুড়া "
   };
 
   const mobileBanking = [
     {
       name: "Bkash",
-      number: "01712345678",
+      number: "01785588839",
       type: "Personal"
     },
     {
       name: "Nagad",
-      number: "01712345679",
+      number: "01785588839",
       type: "Personal"
     },
     {
       name: "Rocket",
-      number: "01712345680",
+      number: "01785588839",
       type: "Personal"
     }
   ];
@@ -205,7 +205,7 @@ export default function DonationPage() {
         {/* Contact Information */}
         <div className="mt-8 text-center">
           <p className="text-gray-400 mb-2">দান সম্পর্কে আরও তথ্যের জন্য যোগাযোগ করুন:</p>
-          <p className="text-emerald-400 font-medium">ফোন: ০১৭১২৩৪৫৬৭৮ | ইমেইল: info@shubbandawatikafela.org</p>
+          <p className="text-emerald-400 font-medium">ফোন: ০১৭০০৯৯৬৩৮৭ | ইমেইল: shubbandawatikafela@gmail.com</p>
         </div>
       </div>
     </div>
