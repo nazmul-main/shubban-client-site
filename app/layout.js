@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ColorProvider } from "../src/context/ColorContext";
+// Removed AuthProvider import
 import RouteAwareLayout from "../src/component/RouteAwareLayout";
 import BrowserExtensionHandler from "../src/component/BrowserExtensionHandler";
 
@@ -140,11 +141,11 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}
       >
         <BrowserExtensionHandler />
-        <ColorProvider>
-          <RouteAwareLayout>
-            {children}
-          </RouteAwareLayout>
-        </ColorProvider>
+                    <ColorProvider>
+              <RouteAwareLayout>
+                {children}
+              </RouteAwareLayout>
+            </ColorProvider>
       </body>
     </html>
   );
