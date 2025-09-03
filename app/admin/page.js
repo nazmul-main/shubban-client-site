@@ -1,233 +1,247 @@
 'use client';
 
 import { useState } from 'react';
-import AdminSidebar from '../../src/component/admin/AdminSidebar';
+import { 
+  FiHome, 
+  FiSettings, 
+  FiMenu, 
+  FiEdit3, 
+  FiImage, 
+  FiFileText, 
+  FiUsers, 
+  FiMail, 
+  FiPlus,
+  FiTrash2,
+  FiSave,
+  FiUpload,
+  FiEye,
+  FiX,
+  FiChevronLeft,
+  FiChevronRight,
+  FiGrid,
+  FiList,
+  FiSearch,
+  FiFilter,
+  FiDownload,
+  FiRefreshCw
+} from 'react-icons/fi';
 
-export default function AdminDashboard() {
+// Import components
+import SectionsManagement from './components/SectionsManagement';
+import NavbarManagement from './components/NavbarManagement';
+import BlogManagement from './components/BlogManagement';
+import GalleryManagement from './components/GalleryManagement';
+import LogoManagement from './components/LogoManagement';
+import ContactPageEditor from './components/ContactPageEditor';
+import RouteManagement from './components/RouteManagement';
+
+// Dashboard Layout Component
+const DashboardLayout = ({ children, activeTab, setActiveTab }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('Overview');
 
-  const tabs = [
-    { id: 'Overview', label: 'Overview' },
-    { id: 'Categories', label: 'Categories' },
-    { id: 'Content Sections', label: 'Content Sections' },
-    { id: 'Content Editor', label: 'Content Editor' },
-    { id: 'Live Preview', label: 'Live Preview' }
-  ];
-
-  const quickActions = [
-    { name: 'Edit Hero Section', icon: '✏️' },
-    { name: 'Upload Images', icon: '⬆️' },
-    { name: 'Preview Homepage', icon: '👁️' },
-    { name: 'Manage Bullet Points', icon: '📋' },
-    { name: 'Edit Text Content', icon: '📝' },
-    { name: 'Change Images', icon: '🖼️' }
+  const menuItems = [
+    { id: 'overview', label: 'ড্যাশবোর্ড', icon: FiHome },
+    { id: 'sections', label: 'সেকশন ম্যানেজমেন্ট', icon: FiGrid },
+    { id: 'navbar', label: 'নেভিগেশন মেনু', icon: FiMenu },
+    { id: 'logo', label: 'লোগো ম্যানেজমেন্ট', icon: FiImage },
+    { id: 'routes', label: 'রুট ম্যানেজমেন্ট', icon: FiSettings },
+    { id: 'contact', label: 'যোগাযোগ পেজ', icon: FiMail },
+    { id: 'blogs', label: 'ব্লগ পোস্ট', icon: FiFileText },
+    { id: 'gallery', label: 'গ্যালারি', icon: FiImage },
+    { id: 'users', label: 'ইউজার ম্যানেজমেন্ট', icon: FiUsers },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Mobile menu button */}
-      <div className="lg:hidden fixed top-4 left-4 z-50">
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="p-2 bg-white rounded-md shadow-md text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-        >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
       {/* Sidebar */}
-      <AdminSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <div className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <div className="flex items-center justify-between h-16 px-6 bg-gradient-to-r from-emerald-500 to-teal-500">
+          <h1 className="text-xl font-bold text-white">এডমিন ড্যাশবোর্ড</h1>
+          <button
+            onClick={() => setSidebarOpen(false)}
+            className="lg:hidden text-white hover:text-gray-200"
+          >
+            <FiX className="w-6 h-6" />
+          </button>
+        </div>
+        
+        <nav className="mt-6">
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  setSidebarOpen(false);
+                }}
+                className={`w-full flex items-center px-6 py-3 text-left transition-colors duration-200 ${
+                  activeTab === item.id
+                    ? 'bg-emerald-50 text-emerald-700 border-r-4 border-emerald-500'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                }`}
+              >
+                <Icon className="w-5 h-5 mr-3" />
+                <span className="font-medium">{item.label}</span>
+              </button>
+            );
+          })}
+        </nav>
+      </div>
 
-      {/* Main content */}
+      {/* Main Content */}
       <div className="lg:ml-64">
-        {/* Top header */}
-        <div className="bg-white border-b border-gray-200 px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-              <div className="flex items-center space-x-2 text-gray-500">
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <span className="text-sm">Homepage</span>
+        {/* Top Bar */}
+        <header className="bg-white shadow-sm border-b border-gray-200">
+          <div className="flex items-center justify-between h-16 px-6">
+            <div className="flex items-center">
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="lg:hidden text-gray-500 hover:text-gray-700 mr-4"
+              >
+                <FiMenu className="w-6 h-6" />
+              </button>
+              <h2 className="text-2xl font-bold text-gray-900">
+                {menuItems.find(item => item.id === activeTab)?.label || 'ড্যাশবোর্ড'}
+              </h2>
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <button className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg">
+                <FiRefreshCw className="w-5 h-5" />
+              </button>
+              <button className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors">
+                <FiSave className="w-4 h-4 mr-2 inline" />
+                সেভ করুন
+              </button>
+            </div>
+          </div>
+        </header>
+
+        {/* Content Area */}
+        <main className="p-6">
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+};
+
+// Overview Component
+const OverviewTab = () => {
+  const stats = [
+    { label: 'মোট ব্লগ পোস্ট', value: '24', icon: FiFileText, color: 'blue' },
+    { label: 'গ্যালারি ইমেজ', value: '156', icon: FiImage, color: 'green' },
+    { label: 'সক্রিয় সেকশন', value: '8', icon: FiGrid, color: 'purple' },
+    { label: 'মোট ইউজার', value: '1,234', icon: FiUsers, color: 'orange' },
+  ];
+
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {stats.map((stat, index) => {
+          const Icon = stat.icon;
+          return (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600">{stat.label}</p>
+                  <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
+                </div>
+                <div className={`p-3 rounded-full bg-${stat.color}-100`}>
+                  <Icon className={`w-6 h-6 text-${stat.color}-600`} />
+                </div>
               </div>
             </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-                <span className="text-sm font-medium text-gray-600">AD</span>
+          );
+        })}
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">সাম্প্রতিক কার্যক্রম</h3>
+          <div className="space-y-3">
+            {[
+              { action: 'নতুন ব্লগ পোস্ট যোগ করা হয়েছে', time: '২ ঘন্টা আগে' },
+              { action: 'গ্যালারিতে ৫টি নতুন ছবি যোগ করা হয়েছে', time: '১ দিন আগে' },
+              { action: 'হোমপেজ সেকশন আপডেট করা হয়েছে', time: '২ দিন আগে' },
+              { action: 'নেভিগেশন মেনু পরিবর্তন করা হয়েছে', time: '৩ দিন আগে' },
+            ].map((item, index) => (
+              <div key={index} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0">
+                <p className="text-sm text-gray-700">{item.action}</p>
+                <span className="text-xs text-gray-500">{item.time}</span>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Main content area */}
-        <div className="p-6">
-          {/* Page title and action button */}
-          <div className="flex items-center justify-between mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Home Page Content Management</h1>
-            <button className="bg-black text-white px-4 py-2 rounded-md flex items-center space-x-2 hover:bg-gray-800 transition-colors">
-              <span className="text-white">+</span>
-              <span>Add New Section</span>
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">দ্রুত অ্যাকশন</h3>
+          <div className="space-y-3">
+            <button className="w-full flex items-center justify-center px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors">
+              <FiPlus className="w-4 h-4 mr-2" />
+              নতুন ব্লগ পোস্ট
+            </button>
+            <button className="w-full flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+              <FiUpload className="w-4 h-4 mr-2" />
+              গ্যালারিতে ছবি আপলোড
+            </button>
+            <button className="w-full flex items-center justify-center px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
+              <FiEdit3 className="w-4 h-4 mr-2" />
+              হোমপেজ সম্পাদনা
             </button>
           </div>
-
-          {/* Navigation tabs */}
-          <div className="border-b border-gray-200 mb-8">
-            <nav className="-mb-px flex space-x-8">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`py-2 px-1 border-b-2 font-medium text-sm transition-colors ${
-                    activeTab === tab.id
-                      ? 'border-gray-300 text-gray-900 bg-gray-50'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </nav>
-          </div>
-
-          {/* Overview content */}
-          {activeTab === 'Overview' && (
-            <div className="space-y-8">
-              {/* Statistics cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                  <h3 className="text-sm font-medium text-gray-500 mb-2">Active Sections</h3>
-                  <p className="text-3xl font-bold text-gray-900 mb-1">3</p>
-                  <p className="text-sm text-gray-500">Published sections</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                  <h3 className="text-sm font-medium text-gray-500 mb-2">Total Categories</h3>
-                  <p className="text-3xl font-bold text-gray-900 mb-1">5</p>
-                  <p className="text-sm text-gray-500">Content categories</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                  <h3 className="text-sm font-medium text-gray-500 mb-2">Last Updated</h3>
-                  <p className="text-3xl font-bold text-gray-900 mb-1">Today</p>
-                  <p className="text-sm text-gray-500">Most recent update</p>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                  <h3 className="text-sm font-medium text-gray-500 mb-2">Page Status</h3>
-                  <p className="text-3xl font-bold text-green-600 mb-1">Live</p>
-                  <p className="text-sm text-gray-500">Homepage published</p>
-                </div>
-              </div>
-
-              {/* Quick Actions */}
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                <div className="mb-4">
-                  <h2 className="text-xl font-semibold text-gray-900">Quick Actions</h2>
-                  <p className="text-sm text-gray-500">Common tasks for homepage management.</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {quickActions.map((action, index) => (
-                    <button
-                      key={index}
-                      className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <span className="text-2xl">{action.icon}</span>
-                        <span className="text-sm font-medium text-gray-900">{action.name}</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Recent Activity */}
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                <div className="mb-4">
-                  <h2 className="text-xl font-semibold text-gray-900">Recent Activity</h2>
-                  <p className="text-sm text-gray-500">Latest changes to your homepage content.</p>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900">Hero section updated</p>
-                      <p className="text-xs text-gray-500">2 hours ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900">New image uploaded</p>
-                      <p className="text-xs text-gray-500">5 hours ago</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-gray-900">Content section published</p>
-                      <p className="text-xs text-gray-500">1 day ago</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Content Overview */}
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-                <div className="mb-4">
-                  <h2 className="text-xl font-semibold text-gray-900">Content Overview</h2>
-                  <p className="text-sm text-gray-500">Manage your homepage sections and content.</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-3">
-                    <h3 className="font-medium text-gray-900">Published Sections</h3>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between p-2 bg-green-50 rounded">
-                        <span className="text-sm text-gray-700">Hero Section</span>
-                        <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">Live</span>
-                      </div>
-                      <div className="flex items-center justify-between p-2 bg-green-50 rounded">
-                        <span className="text-sm text-gray-700">About Section</span>
-                        <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">Live</span>
-                      </div>
-                      <div className="flex items-center justify-between p-2 bg-green-50 rounded">
-                        <span className="text-sm text-gray-700">Contact Section</span>
-                        <span className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">Live</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <h3 className="font-medium text-gray-900">Draft Sections</h3>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between p-2 bg-yellow-50 rounded">
-                        <span className="text-sm text-gray-700">News Section</span>
-                        <span className="text-xs text-yellow-600 bg-yellow-100 px-2 py-1 rounded">Draft</span>
-                      </div>
-                      <div className="flex items-center justify-between p-2 bg-yellow-50 rounded">
-                        <span className="text-sm text-gray-700">Gallery Section</span>
-                        <span className="text-xs text-yellow-600 bg-yellow-100 px-2 py-1 rounded">Draft</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Other tabs content */}
-          {activeTab !== 'Overview' && (
-            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200 text-center">
-              <div className="text-gray-500">
-                <svg className="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">{activeTab} Content</h3>
-                <p className="text-gray-500">This section is under development. Content will be available soon.</p>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
+  );
+};
+
+// Main Dashboard Component
+export default function AdminDashboard() {
+  const [activeTab, setActiveTab] = useState('overview');
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'overview':
+        return <OverviewTab />;
+      case 'sections':
+        return <SectionsManagement />;
+      case 'navbar':
+        return <NavbarManagement />;
+      case 'logo':
+        return <LogoManagement />;
+      case 'routes':
+        return <RouteManagement />;
+      case 'contact':
+        return <ContactPageEditor />;
+      case 'blogs':
+        return <BlogManagement />;
+      case 'gallery':
+        return <GalleryManagement />;
+      case 'users':
+        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">ইউজার ম্যানেজমেন্ট</h3>
+          <p className="text-gray-600">ইউজার ম্যানেজমেন্ট পেজ এখানে আসবে...</p>
+        </div>;
+      default:
+        return <OverviewTab />;
+    }
+  };
+
+  return (
+    <DashboardLayout activeTab={activeTab} setActiveTab={setActiveTab}>
+      {renderTabContent()}
+    </DashboardLayout>
   );
 }

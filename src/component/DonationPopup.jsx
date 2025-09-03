@@ -17,17 +17,20 @@ const DonationPopup = ({ isOpen, onClose }) => {
     {
       name: "Bkash",
       number: "01785588839",
-      type: "Personal"
+      type: "Personal",
+      logo: "/logo/bkash_logo.png"
     },
     {
       name: "Nagad",
       number: "01785588839",
-      type: "Personal"
+      type: "Personal",
+      logo: "/logo/nagad_logo.png"
     },
     {
       name: "Rocket",
       number: "01785588839",
-      type: "Personal"
+      type: "Personal",
+      logo: "/logo/roket_logo.png"
     }
   ];
 
@@ -80,9 +83,19 @@ const DonationPopup = ({ isOpen, onClose }) => {
             </div>
             
             <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-gray-300">ব্যাংকের নাম:</span>
-                <span className="text-white font-medium">{bankDetails.bankName}</span>
+                              <div className="flex justify-between items-center">
+                  <span className="text-gray-300">ব্যাংকের নাম:</span>
+                  <div className="flex items-center"> 
+                    <div className="bg-white p-2 rounded-lg mr-3">
+                      <img 
+                        src="/logo/islami_bank_logo.png" 
+                        alt="Islami Bank Logo" 
+                        className="w-6 h-6"
+                      />
+                    </div>
+                    <span className="text-white font-medium">{bankDetails.bankName}</span>
+                  </div>
+               
               </div>
               
               <div className="flex justify-between items-center">
@@ -122,7 +135,16 @@ const DonationPopup = ({ isOpen, onClose }) => {
               {mobileBanking.map((service, index) => (
                 <div key={index} className="bg-white/5 rounded-lg p-3 border border-white/10">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-emerald-400 font-semibold">{service.name}</span>
+                    <div className="flex items-center">
+                      <div className="bg-white p-1.5 rounded-lg mr-2">
+                        <img 
+                          src={service.logo} 
+                          alt={`${service.name} Logo`} 
+                          className="w-5 h-5"
+                        />
+                      </div>
+                      <span className="text-emerald-400 font-semibold">{service.name}</span>
+                    </div>
                     <span className="text-gray-400 text-sm">{service.type}</span>
                   </div>
                   
