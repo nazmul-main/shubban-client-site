@@ -9,8 +9,9 @@ export default function RouteAwareLayout({ children }) {
   const pathname = usePathname();
   const [is404Page, setIs404Page] = useState(false);
   
-  // Check if current route is admin route
+  // Check if current route is admin route or constitution route
   const isAdminRoute = pathname.startsWith('/admin');
+  const isConstitutionRoute = pathname.startsWith('/constitution');
   
   useEffect(() => {
     // Check if body has page-404 class
@@ -31,8 +32,8 @@ export default function RouteAwareLayout({ children }) {
     return () => observer.disconnect();
   }, []);
   
-  if (isAdminRoute || is404Page) {
-    // For admin routes and 404 page, don't show navbar and footer
+  if (isAdminRoute || isConstitutionRoute || is404Page) {
+    // For admin routes, constitution route, and 404 page, don't show navbar and footer
     return (
       <main className="w-full relative z-10 flex-1">
         {children}
