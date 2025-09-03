@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FiCopy, FiCheck, FiHeart, FiCreditCard, FiSmartphone, FiShield, FiUsers, FiTarget } from 'react-icons/fi';
+import Image from 'next/image';
 
 export default function DonationPage() {
   const [copiedItem, setCopiedItem] = useState(null);
@@ -105,14 +106,27 @@ export default function DonationPage() {
           {/* Bank Account Details */}
           <div className="bg-white/10 backdrop-blur-xl rounded-lg p-6 border border-white/20">
             <div className="flex items-center mb-6">
-              <FiCreditCard className="w-6 h-6 text-emerald-400 mr-3" />
+              <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                <FiCreditCard className="w-6 h-6 text-emerald-400" />
+              </div>
               <h2 className="text-xl font-semibold text-emerald-400">ব্যাংক একাউন্ট</h2>
             </div>
             
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-gray-300">ব্যাংকের নাম:</span>
-                <span className="text-white font-medium">{bankDetails.bankName}</span>
+                <div className="flex items-center">
+                  <div className="w-8 h-8 mr-3 flex-shrink-0 bg-white rounded-lg p-1.5 flex items-center justify-center">
+                    <Image 
+                      src="/logo/islami_bank_logo.png" 
+                      alt="Islami Bank Logo" 
+                      width={24} 
+                      height={24} 
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span className="text-white font-medium">{bankDetails.bankName}</span>
+                </div>
               </div>
               
               <div className="flex justify-between items-center">
@@ -144,33 +158,60 @@ export default function DonationPage() {
           {/* Mobile Banking */}
           <div className="bg-white/10 backdrop-blur-xl rounded-lg p-6 border border-white/20">
             <div className="flex items-center mb-6">
-              <FiSmartphone className="w-6 h-6 text-emerald-400 mr-3" />
+              <div className="w-6 h-6 mr-3 flex items-center justify-center">
+                <FiSmartphone className="w-6 h-6 text-emerald-400" />
+              </div>
               <h2 className="text-xl font-semibold text-emerald-400">মোবাইল ব্যাংকিং</h2>
             </div>
             
             <div className="space-y-4">
-              {mobileBanking.map((service, index) => (
-                <div key={index} className="bg-white/5 rounded-lg p-4 border border-white/10">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-emerald-400 font-semibold">{service.name}</span>
-                    <span className="text-gray-400 text-sm">{service.type}</span>
-                  </div>
+              {mobileBanking.map((service, index) => {
+                const logoMap = {
+                  'Bkash': '/logo/bkash_logo.png',
+                  'Nagad': '/logo/nagad_logo.png',
+                  'Rocket': '/logo/roket_logo.png'
+                };
+                
+                const logoBgColors = {
+                  'Bkash': 'bg-pink-100',
+                  'Nagad': 'bg-red-100',
+                  'Rocket': 'bg-blue-100'
+                };
+                
+                return (
+                  <div key={index} className="bg-white/5 rounded-lg p-4 border border-white/10">
+                    <div className="flex justify-between items-center mb-2">
+                      <div className="flex items-center">
+                        <div className={`w-8 h-8 mr-3 flex-shrink-0 ${logoBgColors[service.name]} rounded-lg p-1.5 flex items-center justify-center`}>
+                          <Image 
+                            src={logoMap[service.name]} 
+                            alt={`${service.name} Logo`} 
+                            width={24} 
+                            height={24} 
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                        <span className="text-emerald-400 font-semibold">{service.name}</span>
+                      </div>
+                      <span className="text-gray-400 text-sm">{service.type}</span>
+                    </div>
                   
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">নম্বর:</span>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-white font-mono font-medium">{service.number}</span>
-                      <button
-                        onClick={() => copyToClipboard(service.number, service.name)}
-                        className="p-1 text-gray-400 hover:text-emerald-400 transition-colors duration-200"
-                        title="কপি করুন"
-                      >
-                        {copiedItem === service.name ? <FiCheck className="w-4 h-4 text-green-400" /> : <FiCopy className="w-4 h-4" />}
-                      </button>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-300">নম্বর:</span>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-white font-mono font-medium">{service.number}</span>
+                        <button
+                          onClick={() => copyToClipboard(service.number, service.name)}
+                          className="p-1 text-gray-400 hover:text-emerald-400 transition-colors duration-200"
+                          title="কপি করুন"
+                        >
+                          {copiedItem === service.name ? <FiCheck className="w-4 h-4 text-green-400" /> : <FiCopy className="w-4 h-4" />}
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
