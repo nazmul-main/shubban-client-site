@@ -25,169 +25,247 @@ import {
 } from 'react-icons/fi';
 
 const GalleryManagement = () => {
-  const [galleryItems, setGalleryItems] = useState([
-    {
-      id: 1,
-      title: 'দাওয়াতি কার্যক্রম',
-      description: 'আমাদের দাওয়াতি কার্যক্রমের ছবি',
-      imageUrl: '/logo/logo_1.jpg',
-      category: 'দাওয়াত',
-      tags: ['দাওয়াত', 'কার্যক্রম', 'ইসলাম'],
-      isFeatured: true,
-      isActive: true,
-      uploadedAt: '2024-01-15',
-      size: '2.5 MB',
-      dimensions: '1920x1080',
-      views: 1250,
-      likes: 45
-    },
-    {
-      id: 2,
-      title: 'যুব সম্মেলন',
-      description: 'যুব সম্মেলনের স্মরণীয় মুহূর্ত',
-      imageUrl: '/logo/logo_1.jpg',
-      category: 'যুব',
-      tags: ['যুব', 'সম্মেলন', 'সমাবেশ'],
-      isFeatured: false,
-      isActive: true,
-      uploadedAt: '2024-01-12',
-      size: '3.2 MB',
-      dimensions: '1920x1080',
-      views: 980,
-      likes: 32
-    },
-    {
-      id: 3,
-      title: 'শিক্ষামূলক সেমিনার',
-      description: 'ইসলামিক শিক্ষামূলক সেমিনার',
-      imageUrl: '/logo/logo_1.jpg',
-      category: 'শিক্ষা',
-      tags: ['শিক্ষা', 'সেমিনার', 'ইসলাম'],
-      isFeatured: true,
-      isActive: true,
-      uploadedAt: '2024-01-10',
-      size: '1.8 MB',
-      dimensions: '1920x1080',
-      views: 750,
-      likes: 28
-    },
-    {
-      id: 4,
-      title: 'সামাজিক কার্যক্রম',
-      description: 'সামাজিক উন্নয়ন কার্যক্রম',
-      imageUrl: '/logo/logo_1.jpg',
-      category: 'সমাজ',
-      tags: ['সমাজ', 'উন্নয়ন', 'কার্যক্রম'],
-      isFeatured: false,
-      isActive: false,
-      uploadedAt: '2024-01-08',
-      size: '2.1 MB',
-      dimensions: '1920x1080',
-      views: 450,
-      likes: 15
-    }
-  ]);
+  const [galleryData, setGalleryData] = useState({
+    "types": ["ছবি", "ভিডিও"],
+    "years": [2025, 2024, 2023, 2022],
+    "categories": [
+      {
+        "id": 1,
+        "name": "ইফতার বিতরণ",
+        "items": {
+          "2025": [
+            {
+              "type": "ছবি",
+              "url": "/images/iftar-2025-1.jpg",
+              "title": "ইফতার বিতরণ - ঢাকা",
+              "description": "২০২৫ সালে ঢাকায় ইফতার বিতরণের মুহূর্ত।"
+            },
+            {
+              "type": "ভিডিও",
+              "url": "/videos/iftar-2025-1.mp4",
+              "title": "ইফতার বিতরণ ভিডিও",
+              "description": "ঢাকায় ইফতার আয়োজনের ভিডিও ক্লিপ।"
+            }
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "name": "ঈদিয়া",
+        "items": {
+          "2025": [
+            {
+              "type": "ছবি",
+              "url": "/images/eid-2025-1.jpg",
+              "title": "ঈদ উপহার বিতরণ",
+              "description": "২০২৫ সালে শিশুদের মাঝে ঈদ উপহার বিতরণ।"
+            }
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "name": "কুরবানী",
+        "items": {
+          "2024": [
+            {
+              "type": "ছবি",
+              "url": "/images/qurbani-2024-1.jpg",
+              "title": "কুরবানীর ছবি",
+              "description": "২০২৪ সালের কুরবানী কার্যক্রমের ছবি।"
+            },
+            {
+              "type": "ভিডিও",
+              "url": "/videos/qurbani-2024-1.mp4",
+              "title": "কুরবানী ভিডিও",
+              "description": "গরু কুরবানীর ভিডিও।"
+            }
+          ]
+        }
+      },
+      {
+        "id": 4,
+        "name": "শীতবস্ত্র",
+        "items": {
+          "2023": [
+            {
+              "type": "ছবি",
+              "url": "/images/winter-2023-1.jpg",
+              "title": "শীতবস্ত্র বিতরণ",
+              "description": "২০২৩ সালে গরিব মানুষের মাঝে শীতবস্ত্র বিতরণ।"
+            }
+          ]
+        }
+      },
+      {
+        "id": 5,
+        "name": "বৃক্ষরোপণ",
+        "items": {
+          "2022": [
+            {
+              "type": "ছবি",
+              "url": "/images/tree-2022-1.jpg",
+              "title": "বৃক্ষরোপণ কর্মসূচি",
+              "description": "২০২২ সালে বৃক্ষরোপণ কর্মসূচির ছবি।"
+            }
+          ]
+        }
+      }
+    ]
+  });
 
   const [editingItem, setEditingItem] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
   const [viewMode, setViewMode] = useState('grid'); // grid or list
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('all');
-  const [filterStatus, setFilterStatus] = useState('all');
+  const [filterYear, setFilterYear] = useState('all');
+  const [filterType, setFilterType] = useState('all');
+  const [showNewCategoryForm, setShowNewCategoryForm] = useState(false);
+  const [newCategoryName, setNewCategoryName] = useState('');
   const [newItem, setNewItem] = useState({
+    type: 'ছবি',
+    year: new Date().getFullYear().toString(),
+    category: '',
     title: '',
     description: '',
-    imageUrl: '',
-    category: '',
-    tags: [],
-    isFeatured: false,
-    isActive: true
+    url: ''
   });
 
-  const categories = ['দাওয়াত', 'যুব', 'শিক্ষা', 'সমাজ', 'সংস্কৃতি', 'ইতিহাস', 'সামাজিক কার্যক্রম'];
+  const categories = galleryData.categories.map(cat => cat.name);
   const statuses = [
     { value: 'active', label: 'সক্রিয়', color: 'green' },
     { value: 'inactive', label: 'নিষ্ক্রিয়', color: 'gray' }
   ];
 
-  const handleEdit = (item) => {
-    setEditingItem(item);
+  const handleEdit = (item, categoryId, year) => {
+    setEditingItem({...item, categoryId, year});
   };
 
   const handleSave = () => {
     if (editingItem) {
-      setGalleryItems(galleryItems.map(item => 
-        item.id === editingItem.id ? editingItem : item
-      ));
+      const updatedData = {...galleryData};
+      const category = updatedData.categories.find(cat => cat.id === editingItem.categoryId);
+      if (category && category.items[editingItem.year]) {
+        const itemIndex = category.items[editingItem.year].findIndex(item => 
+          item.title === editingItem.originalTitle && item.url === editingItem.originalUrl
+        );
+        if (itemIndex !== -1) {
+          category.items[editingItem.year][itemIndex] = {
+            type: editingItem.type,
+            url: editingItem.url,
+            title: editingItem.title,
+            description: editingItem.description
+          };
+        }
+      }
+      setGalleryData(updatedData);
       setEditingItem(null);
     }
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (item, categoryId, year) => {
     if (confirm('আপনি কি এই গ্যালারি আইটেমটি মুছে ফেলতে চান?')) {
-      setGalleryItems(galleryItems.filter(item => item.id !== id));
+      const updatedData = {...galleryData};
+      const category = updatedData.categories.find(cat => cat.id === categoryId);
+      if (category && category.items[year]) {
+        category.items[year] = category.items[year].filter(catItem => 
+          !(catItem.title === item.title && catItem.url === item.url)
+        );
+      }
+      setGalleryData(updatedData);
     }
   };
 
+  const handleAddNewCategory = () => {
+    if (!newCategoryName.trim()) {
+      alert('দয়া করে ক্যাটাগরি নাম লিখুন');
+      return;
+    }
+
+    // Check if category already exists
+    if (galleryData.categories.some(cat => cat.name === newCategoryName.trim())) {
+      alert('এই ক্যাটাগরি ইতিমধ্যে বিদ্যমান');
+      return;
+    }
+
+    const updatedData = {...galleryData};
+    const newCategoryId = Math.max(...updatedData.categories.map(cat => cat.id)) + 1;
+    
+    updatedData.categories.push({
+      id: newCategoryId,
+      name: newCategoryName.trim(),
+      items: {}
+    });
+    
+    setGalleryData(updatedData);
+    setNewCategoryName('');
+    setShowNewCategoryForm(false);
+    
+    // Auto-select the new category
+    setNewItem({...newItem, category: newCategoryName.trim()});
+  };
+
   const handleAddItem = () => {
-    const newId = Math.max(...galleryItems.map(item => item.id)) + 1;
-    const newItemWithId = {
-      ...newItem,
-      id: newId,
-      uploadedAt: new Date().toISOString().split('T')[0],
-      size: '2.0 MB',
-      dimensions: '1920x1080',
-      views: 0,
-      likes: 0
-    };
-    setGalleryItems([...galleryItems, newItemWithId]);
+    if (!newItem.category || !newItem.title || !newItem.url) {
+      alert('দয়া করে সব প্রয়োজনীয় ফিল্ড পূরণ করুন');
+      return;
+    }
+
+    const updatedData = {...galleryData};
+    const category = updatedData.categories.find(cat => cat.name === newItem.category);
+    
+    if (category) {
+      if (!category.items[newItem.year]) {
+        category.items[newItem.year] = [];
+      }
+      
+      category.items[newItem.year].push({
+        type: newItem.type,
+        url: newItem.url,
+        title: newItem.title,
+        description: newItem.description
+      });
+    }
+    
+    setGalleryData(updatedData);
     setNewItem({
+      type: 'ছবি',
+      year: new Date().getFullYear().toString(),
+      category: '',
       title: '',
       description: '',
-      imageUrl: '',
-      category: '',
-      tags: [],
-      isFeatured: false,
-      isActive: true
+      url: ''
     });
     setShowAddForm(false);
   };
 
-  const handleToggleFeatured = (id) => {
-    setGalleryItems(galleryItems.map(item => 
-      item.id === id ? { ...item, isFeatured: !item.isFeatured } : item
-    ));
+  // Get all items from all categories and years for filtering
+  const getAllItems = () => {
+    const allItems = [];
+    galleryData.categories.forEach(category => {
+      Object.keys(category.items).forEach(year => {
+        category.items[year].forEach(item => {
+          allItems.push({
+            ...item,
+            categoryId: category.id,
+            categoryName: category.name,
+            year: year
+          });
+        });
+      });
+    });
+    return allItems;
   };
 
-  const handleToggleActive = (id) => {
-    setGalleryItems(galleryItems.map(item => 
-      item.id === id ? { ...item, isActive: !item.isActive } : item
-    ));
-  };
-
-  const handleDuplicate = (item) => {
-    const newId = Math.max(...galleryItems.map(item => item.id)) + 1;
-    const duplicatedItem = {
-      ...item,
-      id: newId,
-      title: `${item.title} (কপি)`,
-      uploadedAt: new Date().toISOString().split('T')[0],
-      views: 0,
-      likes: 0
-    };
-    setGalleryItems([...galleryItems, duplicatedItem]);
-  };
-
-  const filteredItems = galleryItems.filter(item => {
+  const filteredItems = getAllItems().filter(item => {
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesCategory = filterCategory === 'all' || item.category === filterCategory;
-    const matchesStatus = filterStatus === 'all' || 
-                         (filterStatus === 'active' && item.isActive) ||
-                         (filterStatus === 'inactive' && !item.isActive);
+                         item.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = filterCategory === 'all' || item.categoryName === filterCategory;
+    const matchesYear = filterYear === 'all' || item.year === filterYear;
+    const matchesType = filterType === 'all' || item.type === filterType;
     
-    return matchesSearch && matchesCategory && matchesStatus;
+    return matchesSearch && matchesCategory && matchesYear && matchesType;
   });
 
   const handleFileUpload = (event) => {
@@ -195,8 +273,8 @@ const GalleryManagement = () => {
     if (file) {
       // In a real application, you would upload the file to a server
       // For now, we'll just create a local URL
-      const imageUrl = URL.createObjectURL(file);
-      setNewItem({...newItem, imageUrl});
+      const fileUrl = URL.createObjectURL(file);
+      setNewItem({...newItem, url: fileUrl});
     }
   };
 
@@ -244,13 +322,24 @@ const GalleryManagement = () => {
             </select>
             
             <select
-              value={filterStatus}
-              onChange={(e) => setFilterStatus(e.target.value)}
+              value={filterYear}
+              onChange={(e) => setFilterYear(e.target.value)}
               className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
             >
-              <option value="all">সব স্ট্যাটাস</option>
-              {statuses.map(status => (
-                <option key={status.value} value={status.value}>{status.label}</option>
+              <option value="all">সব বছর</option>
+              {galleryData.years.map(year => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+
+            <select
+              value={filterType}
+              onChange={(e) => setFilterType(e.target.value)}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            >
+              <option value="all">সব ধরন</option>
+              {galleryData.types.map(type => (
+                <option key={type} value={type}>{type}</option>
               ))}
             </select>
           </div>
@@ -300,13 +389,93 @@ const GalleryManagement = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">ধরন</label>
+                <select
+                  value={newItem.type}
+                  onChange={(e) => setNewItem({...newItem, type: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                >
+                  {galleryData.types.map(type => (
+                    <option key={type} value={type}>{type}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">বছর</label>
+                <select
+                  value={newItem.year}
+                  onChange={(e) => setNewItem({...newItem, year: e.target.value})}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                >
+                  {galleryData.years.map(year => (
+                    <option key={year} value={year}>{year}</option>
+                  ))}
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">ক্যাটাগরি</label>
+                <div className="flex gap-2">
+                  <select
+                    value={newItem.category}
+                    onChange={(e) => {
+                      if (e.target.value === 'add_new') {
+                        setShowNewCategoryForm(true);
+                      } else {
+                        setNewItem({...newItem, category: e.target.value});
+                      }
+                    }}
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  >
+                    <option value="">ক্যাটাগরি নির্বাচন করুন</option>
+                    {categories.map(category => (
+                      <option key={category} value={category}>{category}</option>
+                    ))}
+                    <option value="add_new" className="text-emerald-600 font-medium">+ নতুন ক্যাটাগরি যোগ করুন</option>
+                  </select>
+                </div>
+                
+                {/* New Category Form */}
+                {showNewCategoryForm && (
+                  <div className="mt-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={newCategoryName}
+                        onChange={(e) => setNewCategoryName(e.target.value)}
+                        placeholder="নতুন ক্যাটাগরি নাম লিখুন"
+                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                        onKeyPress={(e) => e.key === 'Enter' && handleAddNewCategory()}
+                      />
+                      <button
+                        onClick={handleAddNewCategory}
+                        className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                      >
+                        যোগ করুন
+                      </button>
+                      <button
+                        onClick={() => {
+                          setShowNewCategoryForm(false);
+                          setNewCategoryName('');
+                        }}
+                        className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                      >
+                        বাতিল
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">শিরোনাম</label>
                 <input
                   type="text"
                   value={newItem.title}
                   onChange={(e) => setNewItem({...newItem, title: e.target.value})}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  placeholder="ছবির শিরোনাম"
+                  placeholder="ছবি/ভিডিওর শিরোনাম"
                 />
               </div>
               
@@ -317,98 +486,69 @@ const GalleryManagement = () => {
                   onChange={(e) => setNewItem({...newItem, description: e.target.value})}
                   rows={3}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  placeholder="ছবির বিবরণ"
+                  placeholder="ছবি/ভিডিওর বিবরণ"
                 />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">ক্যাটাগরি</label>
-                <select
-                  value={newItem.category}
-                  onChange={(e) => setNewItem({...newItem, category: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                >
-                  <option value="">ক্যাটাগরি নির্বাচন করুন</option>
-                  {categories.map(category => (
-                    <option key={category} value={category}>{category}</option>
-                  ))}
-                </select>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">ট্যাগ (কমা দিয়ে আলাদা করুন)</label>
-                <input
-                  type="text"
-                  value={newItem.tags.join(', ')}
-                  onChange={(e) => setNewItem({...newItem, tags: e.target.value.split(',').map(tag => tag.trim()).filter(tag => tag)})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  placeholder="ট্যাগ লিখুন"
-                />
-              </div>
-              
-              <div className="flex items-center space-x-4">
-                <label className="flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={newItem.isFeatured}
-                    onChange={(e) => setNewItem({...newItem, isFeatured: e.target.checked})}
-                    className="mr-2"
-                  />
-                  <span className="text-sm font-medium text-gray-700">ফিচার্ড</span>
-                </label>
-                
-                <label className="flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={newItem.isActive}
-                    onChange={(e) => setNewItem({...newItem, isActive: e.target.checked})}
-                    className="mr-2"
-                  />
-                  <span className="text-sm font-medium text-gray-700">সক্রিয়</span>
-                </label>
               </div>
             </div>
             
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">ছবি আপলোড</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {newItem.type === 'ছবি' ? 'ছবি আপলোড' : 'ভিডিও আপলোড'}
+                </label>
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
                   <input
                     type="file"
-                    accept="image/*"
+                    accept={newItem.type === 'ছবি' ? "image/*" : "video/*"}
                     onChange={handleFileUpload}
                     className="hidden"
-                    id="image-upload"
+                    id="media-upload"
                   />
-                  <label htmlFor="image-upload" className="cursor-pointer">
+                  <label htmlFor="media-upload" className="cursor-pointer">
                     <FiUpload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-sm text-gray-600">ছবি আপলোড করুন</p>
-                    <p className="text-xs text-gray-500">PNG, JPG, GIF (সর্বোচ্চ 10MB)</p>
+                    <p className="text-sm text-gray-600">
+                      {newItem.type === 'ছবি' ? 'ছবি আপলোড করুন' : 'ভিডিও আপলোড করুন'}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {newItem.type === 'ছবি' ? 'PNG, JPG, GIF (সর্বোচ্চ 10MB)' : 'MP4, AVI, MOV (সর্বোচ্চ 100MB)'}
+                    </p>
                   </label>
                 </div>
               </div>
               
-              {newItem.imageUrl && (
+              {newItem.url && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">ছবির প্রিভিউ</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {newItem.type === 'ছবি' ? 'ছবির প্রিভিউ' : 'ভিডিও প্রিভিউ'}
+                  </label>
                   <div className="relative">
-                    <img
-                      src={newItem.imageUrl}
-                      alt="Preview"
-                      className="w-full h-48 object-cover rounded-lg border border-gray-200"
-                    />
+                    {newItem.type === 'ছবি' ? (
+                      <img
+                        src={newItem.url}
+                        alt="Preview"
+                        className="w-full h-48 object-cover rounded-lg border border-gray-200"
+                      />
+                    ) : (
+                      <video
+                        src={newItem.url}
+                        controls
+                        className="w-full h-48 object-cover rounded-lg border border-gray-200"
+                      />
+                    )}
                   </div>
                 </div>
               )}
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">ছবির URL</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {newItem.type === 'ছবি' ? 'ছবির URL' : 'ভিডিওর URL'}
+                </label>
                 <input
                   type="text"
-                  value={newItem.imageUrl}
-                  onChange={(e) => setNewItem({...newItem, imageUrl: e.target.value})}
+                  value={newItem.url}
+                  onChange={(e) => setNewItem({...newItem, url: e.target.value})}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  placeholder="ছবির URL লিখুন"
+                  placeholder={newItem.type === 'ছবি' ? 'ছবির URL লিখুন' : 'ভিডিওর URL লিখুন'}
                 />
               </div>
             </div>
@@ -432,149 +572,6 @@ const GalleryManagement = () => {
         </div>
       )}
 
-      {/* Edit Item Modal */}
-      {editingItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">গ্যালারি আইটেম সম্পাদনা</h3>
-              <button
-                onClick={() => setEditingItem(null)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <FiX className="w-5 h-5" />
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">শিরোনাম</label>
-                  <input
-                    type="text"
-                    value={editingItem.title}
-                    onChange={(e) => setEditingItem({...editingItem, title: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">বিবরণ</label>
-                  <textarea
-                    value={editingItem.description}
-                    onChange={(e) => setEditingItem({...editingItem, description: e.target.value})}
-                    rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">ক্যাটাগরি</label>
-                  <select
-                    value={editingItem.category}
-                    onChange={(e) => setEditingItem({...editingItem, category: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  >
-                    {categories.map(category => (
-                      <option key={category} value={category}>{category}</option>
-                    ))}
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">ট্যাগ</label>
-                  <input
-                    type="text"
-                    value={editingItem.tags.join(', ')}
-                    onChange={(e) => setEditingItem({...editingItem, tags: e.target.value.split(',').map(tag => tag.trim()).filter(tag => tag)})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  />
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={editingItem.isFeatured}
-                      onChange={(e) => setEditingItem({...editingItem, isFeatured: e.target.checked})}
-                      className="mr-2"
-                    />
-                    <span className="text-sm font-medium text-gray-700">ফিচার্ড</span>
-                  </label>
-                  
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={editingItem.isActive}
-                      onChange={(e) => setEditingItem({...editingItem, isActive: e.target.checked})}
-                      className="mr-2"
-                    />
-                    <span className="text-sm font-medium text-gray-700">সক্রিয়</span>
-                  </label>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">ছবির URL</label>
-                  <input
-                    type="text"
-                    value={editingItem.imageUrl}
-                    onChange={(e) => setEditingItem({...editingItem, imageUrl: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                  />
-                </div>
-                
-                {editingItem.imageUrl && (
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">ছবির প্রিভিউ</label>
-                    <img
-                      src={editingItem.imageUrl}
-                      alt="Preview"
-                      className="w-full h-48 object-cover rounded-lg border border-gray-200"
-                    />
-                  </div>
-                )}
-                
-                <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
-                  <div>
-                    <span className="font-medium">আপলোড তারিখ:</span>
-                    <p>{editingItem.uploadedAt}</p>
-                  </div>
-                  <div>
-                    <span className="font-medium">ফাইল সাইজ:</span>
-                    <p>{editingItem.size}</p>
-                  </div>
-                  <div>
-                    <span className="font-medium">মাত্রা:</span>
-                    <p>{editingItem.dimensions}</p>
-                  </div>
-                  <div>
-                    <span className="font-medium">দেখা:</span>
-                    <p>{editingItem.views}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex justify-end space-x-3 mt-6">
-              <button
-                onClick={() => setEditingItem(null)}
-                className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                বাতিল
-              </button>
-              <button
-                onClick={handleSave}
-                className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
-              >
-                <FiSave className="w-4 h-4 mr-2 inline" />
-                সেভ করুন
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Gallery Items */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200">
@@ -585,25 +582,30 @@ const GalleryManagement = () => {
         {viewMode === 'grid' ? (
           <div className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredItems.map((item) => (
-                <div key={item.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+              {filteredItems.map((item, index) => (
+                <div key={`${item.categoryId}-${item.year}-${index}`} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="relative">
-                    <img
-                      src={item.imageUrl}
-                      alt={item.title}
-                      className="w-full h-48 object-cover"
-                    />
+                    {item.type === 'ছবি' ? (
+                      <img
+                        src={item.url}
+                        alt={item.title}
+                        className="w-full h-48 object-cover"
+                      />
+                    ) : (
+                      <video
+                        src={item.url}
+                        className="w-full h-48 object-cover"
+                        controls
+                      />
+                    )}
                     <div className="absolute top-2 right-2 flex space-x-1">
-                      {item.isFeatured && (
-                        <span className="bg-yellow-500 text-white p-1 rounded-full">
-                          <FiStar className="w-3 h-3" />
-                        </span>
-                      )}
-                      {!item.isActive && (
-                        <span className="bg-red-500 text-white p-1 rounded-full">
-                          <FiX className="w-3 h-3" />
-                        </span>
-                      )}
+                      <span className={`px-2 py-1 text-xs rounded-full ${
+                        item.type === 'ছবি' 
+                          ? 'bg-blue-500 text-white' 
+                          : 'bg-purple-500 text-white'
+                      }`}>
+                        {item.type}
+                      </span>
                     </div>
                   </div>
                   
@@ -612,30 +614,20 @@ const GalleryManagement = () => {
                     <p className="text-sm text-gray-600 mb-2 line-clamp-2">{item.description}</p>
                     
                     <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
-                      <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">{item.category}</span>
-                      <span>{item.views} দেখা</span>
+                      <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">{item.categoryName}</span>
+                      <span>{item.year}</span>
                     </div>
                     
                     <div className="flex items-center justify-between">
                       <div className="flex space-x-1">
                         <button
-                          onClick={() => handleEdit(item)}
+                          onClick={() => handleEdit(item, item.categoryId, item.year)}
                           className="p-1 text-emerald-600 hover:bg-emerald-50 rounded"
                         >
                           <FiEdit3 className="w-4 h-4" />
                         </button>
                         <button
-                          onClick={() => handleToggleFeatured(item.id)}
-                          className={`p-1 rounded ${
-                            item.isFeatured 
-                              ? 'text-yellow-600 hover:bg-yellow-50' 
-                              : 'text-gray-400 hover:bg-gray-50'
-                          }`}
-                        >
-                          <FiStar className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => handleDelete(item.id)}
+                          onClick={() => handleDelete(item, item.categoryId, item.year)}
                           className="p-1 text-red-600 hover:bg-red-50 rounded"
                         >
                           <FiTrash2 className="w-4 h-4" />
@@ -649,32 +641,38 @@ const GalleryManagement = () => {
           </div>
         ) : (
           <div className="divide-y divide-gray-200">
-            {filteredItems.map((item) => (
-              <div key={item.id} className="p-6 hover:bg-gray-50 transition-colors">
+            {filteredItems.map((item, index) => (
+              <div key={`${item.categoryId}-${item.year}-${index}`} className="p-6 hover:bg-gray-50 transition-colors">
                 <div className="flex items-center space-x-4">
-                  <img
-                    src={item.imageUrl}
-                    alt={item.title}
-                    className="w-16 h-16 object-cover rounded-lg"
-                  />
+                  {item.type === 'ছবি' ? (
+                    <img
+                      src={item.url}
+                      alt={item.title}
+                      className="w-16 h-16 object-cover rounded-lg"
+                    />
+                  ) : (
+                    <video
+                      src={item.url}
+                      className="w-16 h-16 object-cover rounded-lg"
+                      controls
+                    />
+                  )}
                   
                   <div className="flex-1">
                     <div className="flex items-center space-x-3 mb-1">
                       <h4 className="text-lg font-medium text-gray-900">{item.title}</h4>
-                      {item.isFeatured && (
-                        <span className="bg-yellow-100 text-yellow-800 px-2 py-1 text-xs font-medium rounded-full">
-                          ফিচার্ড
-                        </span>
-                      )}
                       <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                        item.isActive 
-                          ? 'bg-green-100 text-green-800' 
-                          : 'bg-gray-100 text-gray-800'
+                        item.type === 'ছবি' 
+                          ? 'bg-blue-100 text-blue-800' 
+                          : 'bg-purple-100 text-purple-800'
                       }`}>
-                        {item.isActive ? 'সক্রিয়' : 'নিষ্ক্রিয়'}
+                        {item.type}
                       </span>
-                      <span className="bg-blue-100 text-blue-800 px-2 py-1 text-xs font-medium rounded-full">
-                        {item.category}
+                      <span className="bg-green-100 text-green-800 px-2 py-1 text-xs font-medium rounded-full">
+                        {item.categoryName}
+                      </span>
+                      <span className="bg-gray-100 text-gray-800 px-2 py-1 text-xs font-medium rounded-full">
+                        {item.year}
                       </span>
                     </div>
                     
@@ -683,51 +681,25 @@ const GalleryManagement = () => {
                     <div className="flex items-center space-x-4 text-xs text-gray-500">
                       <div className="flex items-center">
                         <FiCalendar className="w-3 h-3 mr-1" />
-                        {item.uploadedAt}
-                      </div>
-                      <div className="flex items-center">
-                        <FiEye className="w-3 h-3 mr-1" />
-                        {item.views} দেখা
-                      </div>
-                      <div className="flex items-center">
-                        <FiHeart className="w-3 h-3 mr-1" />
-                        {item.likes} পছন্দ
+                        {item.year}
                       </div>
                       <div className="flex items-center">
                         <FiTag className="w-3 h-3 mr-1" />
-                        {item.tags.join(', ')}
+                        {item.type}
                       </div>
                     </div>
                   </div>
                   
                   <div className="flex items-center space-x-2">
                     <button
-                      onClick={() => handleEdit(item)}
+                      onClick={() => handleEdit(item, item.categoryId, item.year)}
                       className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
                     >
                       <FiEdit3 className="w-4 h-4" />
                     </button>
                     
                     <button
-                      onClick={() => handleToggleFeatured(item.id)}
-                      className={`p-2 rounded-lg transition-colors ${
-                        item.isFeatured 
-                          ? 'text-yellow-600 hover:bg-yellow-50' 
-                          : 'text-gray-400 hover:bg-gray-50'
-                      }`}
-                    >
-                      <FiStar className="w-4 h-4" />
-                    </button>
-                    
-                    <button
-                      onClick={() => handleDuplicate(item)}
-                      className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                    >
-                      <FiCopy className="w-4 h-4" />
-                    </button>
-                    
-                    <button
-                      onClick={() => handleDelete(item.id)}
+                      onClick={() => handleDelete(item, item.categoryId, item.year)}
                       className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                     >
                       <FiTrash2 className="w-4 h-4" />
