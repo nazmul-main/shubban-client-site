@@ -56,6 +56,86 @@ const RouteManagement = () => {
     },
     {
       id: 3,
+      path: '/constitution',
+      name: 'গঠনতন্ত্র',
+      component: 'ConstitutionPage',
+      isActive: true,
+      isPublic: true,
+      description: 'সংগঠনের গঠনতন্ত্র ও নিয়মাবলী',
+      meta: {
+        title: 'গঠনতন্ত্র - শুব্বান দাওয়াতি কাফেলা',
+        description: 'সংগঠনের গঠনতন্ত্র ও নিয়মাবলী দেখুন',
+        keywords: ['গঠনতন্ত্র', 'নিয়মাবলী', 'সংগঠন']
+      },
+      createdAt: '2024-01-15',
+      updatedAt: '2024-01-15'
+    },
+    {
+      id: 4,
+      path: '/projects',
+      name: 'আমাদের কার্যক্রম',
+      component: 'ProjectsPage',
+      isActive: true,
+      isPublic: true,
+      description: 'সংগঠনের বিভিন্ন কার্যক্রম ও প্রকল্প',
+      meta: {
+        title: 'আমাদের কার্যক্রম - শুব্বান দাওয়াতি কাফেলা',
+        description: 'সংগঠনের বিভিন্ন কার্যক্রম ও প্রকল্প দেখুন',
+        keywords: ['কার্যক্রম', 'প্রকল্প', 'কাজ']
+      },
+      createdAt: '2024-01-15',
+      updatedAt: '2024-01-15'
+    },
+    {
+      id: 5,
+      path: '/gallery',
+      name: 'গ্যালারি',
+      component: 'GalleryPage',
+      isActive: true,
+      isPublic: true,
+      description: 'সংগঠনের ছবি ও ভিডিও গ্যালারি',
+      meta: {
+        title: 'গ্যালারি - শুব্বান দাওয়াতি কাফেলা',
+        description: 'সংগঠনের বিভিন্ন কার্যক্রমের ছবি ও ভিডিও',
+        keywords: ['গ্যালারি', 'ছবি', 'ভিডিও', 'কার্যক্রম']
+      },
+      createdAt: '2024-01-15',
+      updatedAt: '2024-01-15'
+    },
+    {
+      id: 6,
+      path: '/donation',
+      name: 'দান',
+      component: 'DonationPage',
+      isActive: true,
+      isPublic: true,
+      description: 'দান ও সাহায্য করার পেজ',
+      meta: {
+        title: 'দান - শুব্বান দাওয়াতি কাফেলা',
+        description: 'মানবতার সেবায় আমাদের সহায়তা করুন',
+        keywords: ['দান', 'সাহায্য', 'মানবতা', 'সেবা']
+      },
+      createdAt: '2024-01-15',
+      updatedAt: '2024-01-15'
+    },
+    {
+      id: 7,
+      path: '/donor',
+      name: 'দাতা',
+      component: 'DonorPage',
+      isActive: true,
+      isPublic: true,
+      description: 'দাতাদের তথ্য ও পরিচিতি',
+      meta: {
+        title: 'দাতা - শুব্বান দাওয়াতি কাফেলা',
+        description: 'আমাদের দাতাদের পরিচিতি ও তথ্য',
+        keywords: ['দাতা', 'সহায়তা', 'ধন্যবাদ']
+      },
+      createdAt: '2024-01-15',
+      updatedAt: '2024-01-15'
+    },
+    {
+      id: 8,
       path: '/contact',
       name: 'যোগাযোগ',
       component: 'ContactPage',
@@ -71,7 +151,23 @@ const RouteManagement = () => {
       updatedAt: '2024-01-15'
     },
     {
-      id: 4,
+      id: 9,
+      path: '/privacy',
+      name: 'গোপনীয়তা নীতি',
+      component: 'PrivacyPage',
+      isActive: true,
+      isPublic: true,
+      description: 'গোপনীয়তা নীতি ও শর্তাবলী',
+      meta: {
+        title: 'গোপনীয়তা নীতি - শুব্বান দাওয়াতি কাফেলা',
+        description: 'আমাদের গোপনীয়তা নীতি ও শর্তাবলী',
+        keywords: ['গোপনীয়তা', 'নীতি', 'শর্তাবলী']
+      },
+      createdAt: '2024-01-15',
+      updatedAt: '2024-01-15'
+    },
+    {
+      id: 10,
       path: '/admin',
       name: 'এডমিন ড্যাশবোর্ড',
       component: 'AdminDashboard',
@@ -87,33 +183,33 @@ const RouteManagement = () => {
       updatedAt: '2024-01-15'
     },
     {
-      id: 5,
-      path: '/blog',
-      name: 'ব্লগ',
-      component: 'BlogPage',
-      isActive: true,
-      isPublic: true,
-      description: 'ব্লগ পোস্টসমূহ',
+      id: 11,
+      path: '/test-404',
+      name: '৪০৪ টেস্ট পেজ',
+      component: 'Test404Page',
+      isActive: false,
+      isPublic: false,
+      description: '৪০৪ এরর পেজ টেস্ট করার জন্য',
       meta: {
-        title: 'ব্লগ - শুব্বান দাওয়াতি কাফেলা',
-        description: 'ইসলামিক ব্লগ পোস্টসমূহ',
-        keywords: ['ব্লগ', 'ইসলাম', 'দাওয়াত', 'শিক্ষা']
+        title: '৪০৪ টেস্ট পেজ',
+        description: '৪০৪ এরর পেজ টেস্ট',
+        keywords: ['টেস্ট', '৪০৪', 'এরর']
       },
       createdAt: '2024-01-15',
       updatedAt: '2024-01-15'
     },
     {
-      id: 6,
-      path: '/gallery',
-      name: 'গ্যালারি',
-      component: 'GalleryPage',
-      isActive: true,
-      isPublic: true,
-      description: 'ছবির গ্যালারি',
+      id: 12,
+      path: '/test-login',
+      name: 'লগইন টেস্ট পেজ',
+      component: 'TestLoginPage',
+      isActive: false,
+      isPublic: false,
+      description: 'লগইন সিস্টেম টেস্ট করার জন্য',
       meta: {
-        title: 'গ্যালারি - শুব্বান দাওয়াতি কাফেলা',
-        description: 'আমাদের কার্যক্রমের ছবি',
-        keywords: ['গ্যালারি', 'ছবি', 'কার্যক্রম']
+        title: 'লগইন টেস্ট পেজ',
+        description: 'লগইন সিস্টেম টেস্ট',
+        keywords: ['টেস্ট', 'লগইন', 'সিস্টেম']
       },
       createdAt: '2024-01-15',
       updatedAt: '2024-01-15'

@@ -36,16 +36,6 @@ const ContactPageEditor = () => {
     address: 'ঢাকা, বাংলাদেশ',
     fullAddress: 'বাড়ি নং ১২৩, রোড নং ৪৫, ঢাকা ১০০০, বাংলাদেশ',
     
-    // Office Hours
-    officeHours: {
-      saturday: '৯:০০ AM - ৫:۰۰ PM',
-      sunday: '৯:০০ AM - ৫:۰۰ PM',
-      monday: '৯:০০ AM - ৫:۰۰ PM',
-      tuesday: '৯:০০ AM - ৫:۰۰ PM',
-      wednesday: '৯:০০ AM - ৫:۰۰ PM',
-      thursday: '৯:০০ AM - ৫:۰۰ PM',
-      friday: 'বন্ধ'
-    },
     
     // Social Media Links
     socialMedia: {
@@ -59,12 +49,59 @@ const ContactPageEditor = () => {
     // Contact Form Settings
     contactForm: {
       isEnabled: true,
-      fields: {
-        name: { required: true, label: 'নাম' },
-        email: { required: true, label: 'ইমেইল' },
-        phone: { required: false, label: 'ফোন নম্বর' },
-        subject: { required: true, label: 'বিষয়' },
-        message: { required: true, label: 'বার্তা' }
+      formTitle: 'যোগাযোগ ফর্ম',
+      formTitleEn: 'Contact Form',
+      fields: [
+        {
+          id: 'name',
+          label: 'নাম',
+          labelEn: 'Name',
+          placeholder: 'আপনার নাম লিখুন',
+          placeholderEn: 'Write your name',
+          type: 'text',
+          required: true
+        },
+        {
+          id: 'phone',
+          label: 'ফোন',
+          labelEn: 'Phone',
+          placeholder: 'আপনার ফোন নম্বর',
+          placeholderEn: 'Your phone number',
+          type: 'tel',
+          required: true
+        },
+        {
+          id: 'email',
+          label: 'ইমেইল',
+          labelEn: 'Email',
+          placeholder: 'আপনার ইমেইল',
+          placeholderEn: 'Your email',
+          type: 'email',
+          required: true
+        },
+        {
+          id: 'subject',
+          label: 'বিষয়',
+          labelEn: 'Subject',
+          placeholder: 'বিষয় লিখুন',
+          placeholderEn: 'Write subject',
+          type: 'text',
+          required: true
+        },
+        {
+          id: 'message',
+          label: 'বার্তা',
+          labelEn: 'Message',
+          placeholder: 'আপনার বার্তা লিখুন',
+          placeholderEn: 'Write your message',
+          type: 'textarea',
+          required: true
+        }
+      ],
+      submitButton: {
+        text: 'প্রেরণ করুন',
+        textEn: 'Send',
+        type: 'submit'
       },
       successMessage: 'আপনার বার্তা সফলভাবে পাঠানো হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।',
       errorMessage: 'দুঃখিত, বার্তা পাঠাতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।'
@@ -89,11 +126,13 @@ const ContactPageEditor = () => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [activeSection, setActiveSection] = useState('basic');
+  const [showPreview, setShowPreview] = useState(false);
 
   const handleSave = () => {
     // In a real application, you would save this to a database
     console.log('Contact info saved:', contactInfo);
     setIsEditing(false);
+    setShowPreview(true);
     alert('যোগাযোগের তথ্য সফলভাবে সেভ করা হয়েছে!');
   };
 
@@ -101,6 +140,7 @@ const ContactPageEditor = () => {
     if (confirm('আপনি কি নিশ্চিত যে আপনি সব পরিবর্তন বাতিল করতে চান?')) {
       // Reset to original values
       setIsEditing(false);
+      setShowPreview(false);
     }
   };
 
@@ -194,32 +234,6 @@ const ContactPageEditor = () => {
     </div>
   );
 
-  const renderOfficeHours = () => (
-    <div className="space-y-4">
-      {Object.entries(contactInfo.officeHours).map(([day, hours]) => (
-        <div key={day} className="flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-700 capitalize">
-            {day === 'saturday' ? 'শনিবার' :
-             day === 'sunday' ? 'রবিবার' :
-             day === 'monday' ? 'সোমবার' :
-             day === 'tuesday' ? 'মঙ্গলবার' :
-             day === 'wednesday' ? 'বুধবার' :
-             day === 'thursday' ? 'বৃহস্পতিবার' :
-             day === 'friday' ? 'শুক্রবার' : day}
-          </label>
-          <input
-            type="text"
-            value={hours}
-            onChange={(e) => setContactInfo({
-              ...contactInfo,
-              officeHours: {...contactInfo.officeHours, [day]: e.target.value}
-            })}
-            className="w-48 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-          />
-        </div>
-      ))}
-    </div>
-  );
 
   const renderSocialMedia = () => (
     <div className="space-y-4">
@@ -265,30 +279,259 @@ const ContactPageEditor = () => {
         <label className="text-sm font-medium text-gray-700">যোগাযোগ ফর্ম সক্রিয় করুন</label>
       </div>
       
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">ফর্ম শিরোনাম (বাংলা)</label>
+          <input
+            type="text"
+            value={contactInfo.contactForm.formTitle}
+            onChange={(e) => setContactInfo({
+              ...contactInfo,
+              contactForm: {...contactInfo.contactForm, formTitle: e.target.value}
+            })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          />
+        </div>
+        
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">ফর্ম শিরোনাম (ইংরেজি)</label>
+          <input
+            type="text"
+            value={contactInfo.contactForm.formTitleEn}
+            onChange={(e) => setContactInfo({
+              ...contactInfo,
+              contactForm: {...contactInfo.contactForm, formTitleEn: e.target.value}
+            })}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          />
+        </div>
+      </div>
+      
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">সফল বার্তা</label>
+        <div className="flex items-center justify-between mb-4">
+          <h4 className="text-lg font-semibold text-gray-900">ফর্ম ফিল্ডসমূহ</h4>
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-gray-500">মোট ফিল্ড: {contactInfo.contactForm.fields.length}</span>
+            <div className="h-2 w-2 bg-emerald-500 rounded-full"></div>
+          </div>
+        </div>
+        <div className="space-y-4">
+          {contactInfo.contactForm.fields.map((field, index) => (
+            <div key={field.id} className="bg-gradient-to-r from-gray-50 to-gray-100 p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+                    <span className="text-emerald-600 font-semibold text-sm">{index + 1}</span>
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-gray-900">{field.label}</h5>
+                    <p className="text-sm text-gray-500">{field.labelEn}</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    field.required 
+                      ? 'bg-red-100 text-red-700' 
+                      : 'bg-gray-100 text-gray-600'
+                  }`}>
+                    {field.required ? 'প্রয়োজনীয়' : 'ঐচ্ছিক'}
+                  </span>
+                  <label className="flex items-center text-sm cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={field.required}
+                      onChange={(e) => {
+                        const newFields = [...contactInfo.contactForm.fields];
+                        newFields[index].required = e.target.checked;
+                        setContactInfo({
+                          ...contactInfo,
+                          contactForm: {...contactInfo.contactForm, fields: newFields}
+                        });
+                      }}
+                      className="mr-2 w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+                    />
+                    প্রয়োজনীয়
+                  </label>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700 flex items-center">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
+                    লেবেল (বাংলা)
+                  </label>
+                  <input
+                    type="text"
+                    value={field.label}
+                    onChange={(e) => {
+                      const newFields = [...contactInfo.contactForm.fields];
+                      newFields[index].label = e.target.value;
+                      setContactInfo({
+                        ...contactInfo,
+                        contactForm: {...contactInfo.contactForm, fields: newFields}
+                      });
+                    }}
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    placeholder="বাংলা লেবেল লিখুন"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700 flex items-center">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                    লেবেল (ইংরেজি)
+                  </label>
+                  <input
+                    type="text"
+                    value={field.labelEn}
+                    onChange={(e) => {
+                      const newFields = [...contactInfo.contactForm.fields];
+                      newFields[index].labelEn = e.target.value;
+                      setContactInfo({
+                        ...contactInfo,
+                        contactForm: {...contactInfo.contactForm, fields: newFields}
+                      });
+                    }}
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    placeholder="English label"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700 flex items-center">
+                    <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                    প্লেসহোল্ডার (বাংলা)
+                  </label>
+                  <input
+                    type="text"
+                    value={field.placeholder}
+                    onChange={(e) => {
+                      const newFields = [...contactInfo.contactForm.fields];
+                      newFields[index].placeholder = e.target.value;
+                      setContactInfo({
+                        ...contactInfo,
+                        contactForm: {...contactInfo.contactForm, fields: newFields}
+                      });
+                    }}
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    placeholder="প্লেসহোল্ডার লিখুন"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700 flex items-center">
+                    <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                    ফিল্ড টাইপ
+                  </label>
+                  <select
+                    value={field.type}
+                    onChange={(e) => {
+                      const newFields = [...contactInfo.contactForm.fields];
+                      newFields[index].type = e.target.value;
+                      setContactInfo({
+                        ...contactInfo,
+                        contactForm: {...contactInfo.contactForm, fields: newFields}
+                      });
+                    }}
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                  >
+                    <option value="text">টেক্সট</option>
+                    <option value="email">ইমেইল</option>
+                    <option value="tel">ফোন</option>
+                    <option value="textarea">টেক্সট এরিয়া</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="bg-gradient-to-r from-teal-50 to-emerald-50 p-6 rounded-xl border border-teal-200">
+        <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+          <span className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mr-3">
+            <FiSend className="w-4 h-4 text-teal-600" />
+          </span>
+          সাবমিট বাটন সেটিংস
+        </h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+              <span className="w-2 h-2 bg-teal-500 rounded-full mr-2"></span>
+              সাবমিট বাটন টেক্সট (বাংলা)
+            </label>
+            <input
+              type="text"
+              value={contactInfo.contactForm.submitButton.text}
+              onChange={(e) => setContactInfo({
+                ...contactInfo,
+                contactForm: {
+                  ...contactInfo.contactForm,
+                  submitButton: {...contactInfo.contactForm.submitButton, text: e.target.value}
+                }
+              })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors"
+              placeholder="বাংলা বাটন টেক্সট"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+              <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
+              সাবমিট বাটন টেক্সট (ইংরেজি)
+            </label>
+            <input
+              type="text"
+              value={contactInfo.contactForm.submitButton.textEn}
+              onChange={(e) => setContactInfo({
+                ...contactInfo,
+                contactForm: {
+                  ...contactInfo.contactForm,
+                  submitButton: {...contactInfo.contactForm.submitButton, textEn: e.target.value}
+                }
+              })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+              placeholder="English button text"
+            />
+          </div>
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-green-50 p-4 rounded-xl border border-green-200">
+          <label className="block text-sm font-medium text-green-800 mb-2 flex items-center">
+            <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+            সফল বার্তা
+          </label>
         <textarea
           value={contactInfo.contactForm.successMessage}
           onChange={(e) => setContactInfo({
             ...contactInfo,
             contactForm: {...contactInfo.contactForm, successMessage: e.target.value}
           })}
-          rows={2}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            rows={3}
+            className="w-full px-3 py-2 border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+            placeholder="সফল বার্তা লিখুন..."
         />
       </div>
       
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">ত্রুটি বার্তা</label>
+        <div className="bg-red-50 p-4 rounded-xl border border-red-200">
+          <label className="block text-sm font-medium text-red-800 mb-2 flex items-center">
+            <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+            ত্রুটি বার্তা
+          </label>
         <textarea
           value={contactInfo.contactForm.errorMessage}
           onChange={(e) => setContactInfo({
             ...contactInfo,
             contactForm: {...contactInfo.contactForm, errorMessage: e.target.value}
           })}
-          rows={2}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            rows={3}
+            className="w-full px-3 py-2 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-colors"
+            placeholder="ত্রুটি বার্তা লিখুন..."
         />
+        </div>
       </div>
     </div>
   );
@@ -371,7 +614,6 @@ const ContactPageEditor = () => {
   const sections = [
     { id: 'basic', label: 'মূল তথ্য', icon: FiEdit3 },
     { id: 'contact', label: 'যোগাযোগের বিবরণ', icon: FiPhone },
-    { id: 'hours', label: 'অফিস সময়', icon: FiClock },
     { id: 'social', label: 'সোশ্যাল মিডিয়া', icon: FiGlobe },
     { id: 'form', label: 'যোগাযোগ ফর্ম', icon: FiMessageCircle },
     { id: 'map', label: 'মানচিত্র', icon: FiMapPin }
@@ -383,8 +625,6 @@ const ContactPageEditor = () => {
         return renderBasicInfo();
       case 'contact':
         return renderContactDetails();
-      case 'hours':
-        return renderOfficeHours();
       case 'social':
         return renderSocialMedia();
       case 'form':
@@ -424,20 +664,41 @@ const ContactPageEditor = () => {
               </button>
             </>
           ) : (
+            <>
+              <button
+                onClick={() => setShowPreview(!showPreview)}
+                className="flex items-center px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                <FiEye className="w-4 h-4 mr-2" />
+                {showPreview ? 'প্রিভিউ লুকান' : 'প্রিভিউ দেখুন'}
+              </button>
             <button
-              onClick={() => setIsEditing(true)}
+                onClick={() => {
+                  setIsEditing(true);
+                  setShowPreview(false);
+                }}
               className="flex items-center px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
             >
               <FiEdit3 className="w-4 h-4 mr-2" />
               সম্পাদনা করুন
             </button>
+            </>
           )}
         </div>
       </div>
 
       {/* Preview */}
+      {showPreview && !isEditing && (
       <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">প্রিভিউ</h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900">প্রিভিউ</h3>
+            <button
+              onClick={() => setShowPreview(false)}
+              className="text-gray-500 hover:text-gray-700 transition-colors"
+            >
+              <FiX className="w-5 h-5" />
+            </button>
+          </div>
         <div className="bg-gray-50 p-4 rounded-lg">
           <div className="text-center mb-6">
             <h1 className="text-2xl font-bold text-gray-900">{contactInfo.organizationName}</h1>
@@ -465,27 +726,40 @@ const ContactPageEditor = () => {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">অফিস সময়</h3>
-              <div className="space-y-1 text-sm">
-                {Object.entries(contactInfo.officeHours).map(([day, hours]) => (
-                  <div key={day} className="flex justify-between">
-                    <span className="capitalize">
-                      {day === 'saturday' ? 'শনিবার' :
-                       day === 'sunday' ? 'রবিবার' :
-                       day === 'monday' ? 'সোমবার' :
-                       day === 'tuesday' ? 'মঙ্গলবার' :
-                       day === 'wednesday' ? 'বুধবার' :
-                       day === 'thursday' ? 'বৃহস্পতিবার' :
-                       day === 'friday' ? 'শুক্রবার' : day}
-                    </span>
-                    <span>{hours}</span>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">যোগাযোগ ফর্ম</h3>
+                <div className="bg-white p-4 rounded-lg border border-gray-200">
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4">{contactInfo.contactForm.formTitle}</h4>
+                  <div className="space-y-3">
+                    {contactInfo.contactForm.fields.map((field) => (
+                      <div key={field.id}>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                          {field.label} {field.required && <span className="text-red-500">*</span>}
+                        </label>
+                        {field.type === 'textarea' ? (
+                          <textarea
+                            placeholder={field.placeholder}
+                            rows={3}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                          />
+                        ) : (
+                          <input
+                            type={field.type}
+                            placeholder={field.placeholder}
+                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                          />
+                        )}
+                      </div>
+                    ))}
+                    <button className="w-full bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors">
+                      {contactInfo.contactForm.submitButton.text}
+                    </button>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Sections */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200">

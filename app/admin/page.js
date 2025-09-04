@@ -26,11 +26,11 @@ import {
   FiRefreshCw,
   FiInfo,
   FiActivity,
-  FiHelpCircle
+  FiHelpCircle,
+  FiLogOut
 } from 'react-icons/fi';
 
 // Import components
-import SectionsManagement from './components/SectionsManagement';
 import NavbarManagement from './components/NavbarManagement';
 import BlogManagement from './components/BlogManagement';
 import GalleryManagement from './components/GalleryManagement';
@@ -44,10 +44,9 @@ const DashboardLayout = ({ children, activeTab, setActiveTab }) => {
 
   const menuItems = [
     { id: 'overview', label: 'ড্যাশবোর্ড', icon: FiHome },
-    { id: 'sections', label: 'সেকশন ম্যানেজমেন্ট', icon: FiGrid },
     { id: 'navbar', label: 'নেভিগেশন মেনু', icon: FiMenu },
     { id: 'logo', label: 'লোগো ম্যানেজমেন্ট', icon: FiImage },
-    { id: 'routes', label: 'রুট ম্যানেজমেন্ট', icon: FiSettings },
+    { id: 'routes', label: 'রাউট ম্যানেজমেন্ট', icon: FiSettings },
     { id: 'contact', label: 'যোগাযোগ পেজ', icon: FiMail },
     { id: 'blogs', label: 'ব্লগ পোস্ট', icon: FiFileText },
     { id: 'gallery', label: 'গ্যালারি', icon: FiImage },
@@ -81,7 +80,7 @@ const DashboardLayout = ({ children, activeTab, setActiveTab }) => {
           </button>
         </div>
         
-        <nav className="mt-6">
+        <nav className="mt-6 flex-1">
           {menuItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -103,6 +102,39 @@ const DashboardLayout = ({ children, activeTab, setActiveTab }) => {
             );
           })}
         </nav>
+
+        {/* Divider and Bottom Options */}
+        <div className="mt-auto">
+          <div className="border-t border-gray-200 my-4"></div>
+          <div className="px-6 space-y-2">
+            <button
+              onClick={() => {
+                setActiveTab('settings');
+                setSidebarOpen(false);
+              }}
+              className={`w-full flex items-center px-3 py-2 text-left transition-colors duration-200 rounded-lg ${
+                activeTab === 'settings'
+                  ? 'bg-emerald-50 text-emerald-700'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+              }`}
+            >
+              <FiSettings className="w-5 h-5 mr-3" />
+              <span className="font-medium">সেটিংস</span>
+            </button>
+            <button
+              onClick={() => {
+                if (confirm('আপনি কি লগআউট করতে চান?')) {
+                  // Handle logout logic here
+                  window.location.href = '/';
+                }
+              }}
+              className="w-full flex items-center px-3 py-2 text-left transition-colors duration-200 rounded-lg text-red-600 hover:bg-red-50 hover:text-red-700"
+            >
+              <FiLogOut className="w-5 h-5 mr-3" />
+              <span className="font-medium">লগআউট</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* Main Content */}
@@ -221,8 +253,6 @@ export default function AdminDashboard() {
     switch (activeTab) {
       case 'overview':
         return <OverviewTab />;
-      case 'sections':
-        return <SectionsManagement />;
       case 'navbar':
         return <NavbarManagement />;
       case 'logo':
@@ -254,6 +284,11 @@ export default function AdminDashboard() {
         return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">ইউজার ম্যানেজমেন্ট</h3>
           <p className="text-gray-600">ইউজার ম্যানেজমেন্ট পেজ এখানে আসবে...</p>
+        </div>;
+      case 'settings':
+        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">সেটিংস</h3>
+          <p className="text-gray-600">সেটিংস পেজ এখানে আসবে...</p>
         </div>;
       default:
         return <OverviewTab />;
