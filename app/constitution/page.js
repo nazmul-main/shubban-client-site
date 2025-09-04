@@ -269,11 +269,11 @@ export default function Constitution() {
 
   const getFontSizeClass = () => {
     switch (fontSize) {
-      case 'small': return 'text-sm';
-      case 'medium': return 'text-base';
-      case 'large': return 'text-lg';
-      case 'xlarge': return 'text-xl';
-      default: return 'text-base';
+      case 'small': return 'text-xs sm:text-sm';
+      case 'medium': return 'text-sm sm:text-base';
+      case 'large': return 'text-base sm:text-lg';
+      case 'xlarge': return 'text-lg sm:text-xl';
+      default: return 'text-sm sm:text-base';
     }
   };
 
@@ -297,11 +297,11 @@ export default function Constitution() {
   const renderSectionContent = (section) => {
     if (section.clauses) {
       return (
-        <ul className="space-y-3">
+        <ul className="space-y-2 sm:space-y-3">
           {section.clauses.map((clause, index) => (
-            <li key={index} className="flex items-start space-x-3">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></span>
-              <span className="text-gray-700 leading-relaxed">{clause}</span>
+            <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-emerald-500 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+              <span className="text-gray-700 leading-relaxed text-xs sm:text-sm">{clause}</span>
             </li>
           ))}
         </ul>
@@ -310,16 +310,16 @@ export default function Constitution() {
 
     if (section.objectives) {
       return (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {section.objectives.map((objective, index) => (
-            <div key={index} className="bg-emerald-50 rounded-xl p-6 border border-emerald-200">
-              <div className="flex items-center space-x-3 mb-3">
-                <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold text-sm">
+            <div key={index} className="bg-emerald-50 rounded-xl p-3 sm:p-6 border border-emerald-200">
+              <div className="flex items-center space-x-2 sm:space-x-3 mb-2 sm:mb-3">
+                <span className="w-6 h-6 sm:w-8 sm:h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center font-bold text-xs sm:text-sm">
                   {objective.code}
                 </span>
-                <h4 className="text-lg font-bold text-emerald-800">{objective.name}</h4>
+                <h4 className="text-sm sm:text-lg font-bold text-emerald-800">{objective.name}</h4>
               </div>
-              <p className="text-gray-700 leading-relaxed">{objective.description}</p>
+              <p className="text-gray-700 leading-relaxed text-xs sm:text-sm">{objective.description}</p>
             </div>
           ))}
         </div>
@@ -328,10 +328,10 @@ export default function Constitution() {
 
     if (section.positions) {
       return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
           {section.positions.map((position, index) => (
-            <div key={index} className="bg-teal-50 rounded-lg p-4 border border-teal-200">
-              <span className="text-teal-800 font-medium">{position}</span>
+            <div key={index} className="bg-teal-50 rounded-lg p-2 sm:p-4 border border-teal-200">
+              <span className="text-teal-800 font-medium text-xs sm:text-sm">{position}</span>
             </div>
           ))}
         </div>
@@ -340,11 +340,11 @@ export default function Constitution() {
 
     if (section.rules) {
       return (
-        <ul className="space-y-3">
+        <ul className="space-y-2 sm:space-y-3">
           {section.rules.map((rule, index) => (
-            <li key={index} className="flex items-start space-x-3">
-              <span className="w-2 h-2 bg-teal-500 rounded-full mt-2 flex-shrink-0"></span>
-              <span className="text-gray-700 leading-relaxed">{rule}</span>
+            <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-teal-500 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+              <span className="text-gray-700 leading-relaxed text-xs sm:text-sm">{rule}</span>
             </li>
           ))}
         </ul>
@@ -353,15 +353,15 @@ export default function Constitution() {
 
     if (section.roles) {
       return (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {Object.entries(section.roles).map(([role, responsibilities]) => (
-            <div key={role} className="bg-cyan-50 rounded-xl p-6 border border-cyan-200">
-              <h4 className="text-lg font-bold text-cyan-800 mb-4">{role}</h4>
-              <ul className="space-y-2">
+            <div key={role} className="bg-cyan-50 rounded-xl p-3 sm:p-6 border border-cyan-200">
+              <h4 className="text-sm sm:text-lg font-bold text-cyan-800 mb-2 sm:mb-4">{role}</h4>
+              <ul className="space-y-1 sm:space-y-2">
                 {responsibilities.map((responsibility, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <span className="w-2 h-2 bg-cyan-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span className="text-gray-700 leading-relaxed">{responsibility}</span>
+                  <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-cyan-500 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+                    <span className="text-gray-700 leading-relaxed text-xs sm:text-sm">{responsibility}</span>
                   </li>
                 ))}
               </ul>
@@ -373,11 +373,11 @@ export default function Constitution() {
 
     if (section.functions) {
       return (
-        <ul className="space-y-3">
+        <ul className="space-y-2 sm:space-y-3">
           {section.functions.map((func, index) => (
-            <li key={index} className="flex items-start space-x-3">
-              <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></span>
-              <span className="text-gray-700 leading-relaxed">{func}</span>
+            <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-500 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+              <span className="text-gray-700 leading-relaxed text-xs sm:text-sm">{func}</span>
             </li>
           ))}
         </ul>
@@ -386,10 +386,10 @@ export default function Constitution() {
 
     if (section.activities) {
       return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
           {section.activities.map((activity, index) => (
-            <div key={index} className="bg-orange-50 rounded-lg p-4 border border-orange-200">
-              <span className="text-orange-800 font-medium">{activity}</span>
+            <div key={index} className="bg-orange-50 rounded-lg p-2 sm:p-4 border border-orange-200">
+              <span className="text-orange-800 font-medium text-xs sm:text-sm">{activity}</span>
             </div>
           ))}
         </div>
@@ -398,23 +398,23 @@ export default function Constitution() {
 
     if (section.clause) {
       return (
-        <div className="bg-red-50 rounded-xl p-6 border border-red-200">
-          <p className="text-gray-700 leading-relaxed">{section.clause}</p>
+        <div className="bg-red-50 rounded-xl p-3 sm:p-6 border border-red-200">
+          <p className="text-gray-700 leading-relaxed text-xs sm:text-sm">{section.clause}</p>
         </div>
       );
     }
 
     if (section.income || section.expenditure || section.accountability) {
       return (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {section.income && (
-            <div className="bg-green-50 rounded-xl p-6 border border-green-200">
-              <h4 className="text-lg font-bold text-green-800 mb-4">আয়</h4>
-              <ul className="space-y-2">
+            <div className="bg-green-50 rounded-xl p-3 sm:p-6 border border-green-200">
+              <h4 className="text-sm sm:text-lg font-bold text-green-800 mb-2 sm:mb-4">আয়</h4>
+              <ul className="space-y-1 sm:space-y-2">
                 {section.income.map((item, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span className="text-gray-700">{item}</span>
+                  <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+                    <span className="text-gray-700 text-xs sm:text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -422,13 +422,13 @@ export default function Constitution() {
           )}
           
           {section.expenditure && (
-            <div className="bg-yellow-50 rounded-xl p-6 border border-yellow-200">
-              <h4 className="text-lg font-bold text-yellow-800 mb-4">ব্যয়</h4>
-              <ul className="space-y-2">
+            <div className="bg-yellow-50 rounded-xl p-3 sm:p-6 border border-yellow-200">
+              <h4 className="text-sm sm:text-lg font-bold text-yellow-800 mb-2 sm:mb-4">ব্যয়</h4>
+              <ul className="space-y-1 sm:space-y-2">
                 {section.expenditure.map((item, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <span className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span className="text-gray-700">{item}</span>
+                  <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-yellow-500 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+                    <span className="text-gray-700 text-xs sm:text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -436,13 +436,13 @@ export default function Constitution() {
           )}
           
           {section.accountability && (
-            <div className="bg-indigo-50 rounded-xl p-6 border border-indigo-200">
-              <h4 className="text-lg font-bold text-indigo-800 mb-4">দায়বদ্ধতা</h4>
-              <ul className="space-y-2">
+            <div className="bg-indigo-50 rounded-xl p-3 sm:p-6 border border-indigo-200">
+              <h4 className="text-sm sm:text-lg font-bold text-indigo-800 mb-2 sm:mb-4">দায়বদ্ধতা</h4>
+              <ul className="space-y-1 sm:space-y-2">
                 {section.accountability.map((item, index) => (
-                  <li key={index} className="flex items-start space-x-3">
-                    <span className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span className="text-gray-700">{item}</span>
+                  <li key={index} className="flex items-start space-x-2 sm:space-x-3">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-indigo-500 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></span>
+                    <span className="text-gray-700 text-xs sm:text-sm">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -458,47 +458,60 @@ export default function Constitution() {
   return (
     <div className={`min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 ${isFullscreen ? 'fixed inset-0 z-50' : ''}`}>
       {/* Fixed Back to Home Button */}
-      <div className="fixed top-4 left-4 z-50">
+      <div className="fixed top-2 left-2 sm:top-4 sm:left-4 z-50">
         <Button
           onClick={handleBackToHome}
           variant="outline"
-          className="flex items-center space-x-2 bg-white/90 backdrop-blur-md border-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 shadow-lg transition-all duration-200 hover:shadow-xl"
+          className="flex items-center space-x-1 sm:space-x-2 bg-white/90 backdrop-blur-md border border-emerald-200 sm:border-2 text-emerald-700 hover:bg-emerald-50 shadow-lg transition-all duration-200 hover:shadow-xl text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2"
         >
-          <FiArrowLeft className="w-4 h-4" />
-          <span>হোমে ফিরে যান</span>
+          <FiArrowLeft className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="hidden xs:inline">হোমে ফিরে যান</span>
+          <span className="xs:hidden">হোম</span>
+        </Button>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <div className="fixed top-2 right-2 sm:hidden z-50">
+        <Button
+          onClick={() => setShowTableOfContents(!showTableOfContents)}
+          variant="outline"
+          className="flex items-center space-x-1 bg-white/90 backdrop-blur-md border border-emerald-200 text-emerald-700 hover:bg-emerald-50 shadow-lg transition-all duration-200 hover:shadow-xl text-xs px-2 py-1"
+        >
+          <FiMenu className="w-3 h-3" />
+          <span>মেনু</span>
         </Button>
       </div>
 
       {/* Main Book Reader */}
-      <div className="pt-8 pb-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-[280px,1fr] gap-6">
+      <div className="pt-12 sm:pt-8 pb-8 sm:pb-12">
+        <div className="max-w-6xl mx-auto px-2 sm:px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-[280px,1fr] gap-4 sm:gap-6">
             
             {/* Enhanced Table of Contents Sidebar */}
             {showTableOfContents && (
-              <div className="lg:sticky lg:top-24 h-fit">
-                <div className="bg-white rounded-lg shadow-xl border-2 border-emerald-200 overflow-hidden">
-                  <div className="bg-gradient-to-r from-emerald-100 to-teal-100 px-4 py-3 border-b border-emerald-200">
+              <div className="lg:sticky lg:top-24 h-fit fixed inset-0 lg:relative lg:inset-auto z-40 bg-white lg:bg-transparent">
+                <div className="bg-white rounded-lg shadow-xl border border-emerald-200 sm:border-2 overflow-hidden">
+                  <div className="bg-gradient-to-r from-emerald-100 to-teal-100 px-3 py-2 sm:px-4 sm:py-3 border-b border-emerald-200">
                     <div className="flex items-center justify-between">
-                      <h2 className="font-bold text-emerald-800 flex items-center">
-                        <FiBookOpen className="w-4 h-4 mr-2" />
+                      <h2 className="font-bold text-emerald-800 flex items-center text-sm sm:text-base">
+                        <FiBookOpen className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                         সূচিপত্র
                       </h2>
                       <button
                         onClick={() => setShowTableOfContents(false)}
-                        className="lg:hidden p-1 text-emerald-600 hover:bg-emerald-200 rounded"
+                        className="p-1 text-emerald-600 hover:bg-emerald-200 rounded"
                       >
-                        <FiX className="w-4 h-4" />
+                        <FiX className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
                     </div>
                   </div>
-                  <div className="p-4 max-h-96 overflow-y-auto">
+                  <div className="p-2 sm:p-4 max-h-80 sm:max-h-96 overflow-y-auto">
                     <nav className="space-y-1">
                       {constitutionData.sections.map((section, index) => (
                         <button
                           key={section.id}
                           onClick={() => goToSection(index)}
-                          className={`w-full text-left p-3 rounded-lg text-sm transition-all duration-200 group ${
+                          className={`w-full text-left p-2 sm:p-3 rounded-lg text-xs sm:text-sm transition-all duration-200 group ${
                             currentSection === index
                               ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-md transform scale-105'
                               : 'text-emerald-700 hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 hover:shadow-sm'
@@ -509,7 +522,7 @@ export default function Constitution() {
                               {section.id}. {section.title}
                             </span>
                             {bookmark === index && (
-                              <FiBookmark className="w-3 h-3 text-emerald-400" />
+                              <FiBookmark className="w-2 h-2 sm:w-3 sm:h-3 text-emerald-400" />
                             )}
                           </div>
                           {currentSection === index && (
@@ -522,7 +535,7 @@ export default function Constitution() {
                     </nav>
                     
                     {/* Quick Stats */}
-                    <div className="mt-4 pt-0 border-t border-emerald-200">
+                    <div className="mt-3 sm:mt-4 pt-0 border-t border-emerald-200">
                       <div className="text-xs text-emerald-600 space-y-1">
                         <div className="flex justify-between">
                           <span>মোট ধারা:</span>
@@ -544,24 +557,25 @@ export default function Constitution() {
             )}
 
             {/* Book Content */}
-            <div className="space-y-8">
+            <div className="space-y-4 sm:space-y-8">
               {/* Enhanced Book Navigation - Sticky */}
-              <div className="sticky top-4 z-40 flex items-center justify-between bg-white/95 backdrop-blur-md rounded-lg shadow-lg border-2 border-emerald-200 p-4">
+              <div className="sticky top-2 sm:top-4 z-40 flex flex-row items-center justify-between bg-white/95 backdrop-blur-md rounded-lg shadow-lg border border-emerald-200 sm:border-2 p-2 sm:p-4 gap-2">
                 <Button
                   onClick={prevSection}
                   disabled={currentSection === 0}
                   variant="outline"
-                  className="flex items-center space-x-2 bg-white border-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 shadow-sm transition-all duration-200 hover:shadow-md"
+                  className="flex items-center space-x-1 sm:space-x-2 bg-white border border-emerald-200 sm:border-2 text-emerald-700 hover:bg-emerald-50 shadow-sm transition-all duration-200 hover:shadow-md text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2"
                 >
-                  <FiChevronLeft className="w-4 h-4" />
-                  <span>পূর্ববর্তী</span>
+                  <FiChevronLeft className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="hidden xs:inline">পূর্ববর্তী</span>
+                  <span className="xs:hidden">পূর্ব</span>
                 </Button>
 
-                <div className="flex items-center space-x-4">
+                <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4">
                   {/* Reading Progress */}
-                  <div className="hidden md:flex items-center space-x-2">
-                    <span className="text-emerald-600 text-sm">পড়ার অগ্রগতি:</span>
-                    <div className="w-20 h-2 bg-emerald-200 rounded-full overflow-hidden">
+                  <div className="hidden sm:flex items-center space-x-2">
+                    <span className="text-emerald-600 text-xs sm:text-sm">পড়ার অগ্রগতি:</span>
+                    <div className="w-16 sm:w-20 h-2 bg-emerald-200 rounded-full overflow-hidden">
                       <div 
                         className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-300"
                         style={{ width: `${((currentSection + 1) / constitutionData.sections.length) * 100}%` }}
@@ -573,12 +587,12 @@ export default function Constitution() {
                   </div>
 
                   {/* Quick Jump */}
-                  <div className="hidden md:flex items-center space-x-2">
-                    <span className="text-emerald-600 text-sm">দ্রুত যান:</span>
+                  <div className="hidden sm:flex items-center space-x-2">
+                    <span className="text-emerald-600 text-xs sm:text-sm">দ্রুত যান:</span>
                     <select
                       value={currentSection}
                       onChange={(e) => setCurrentSection(parseInt(e.target.value))}
-                      className="bg-white border border-emerald-200 rounded-lg px-3 py-1 text-sm text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      className="bg-white border border-emerald-200 rounded-lg px-2 py-1 text-xs sm:text-sm text-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     >
                       {constitutionData.sections.map((section, index) => (
                         <option key={section.id} value={index}>
@@ -588,7 +602,7 @@ export default function Constitution() {
                     </select>
                   </div>
 
-                  <div className="bg-gradient-to-r from-emerald-100 to-teal-100 border-2 border-emerald-200 px-2 py-1 rounded-lg shadow-sm">
+                  <div className="bg-gradient-to-r from-emerald-100 to-teal-100 border border-emerald-200 sm:border-2 px-2 py-1 rounded-lg shadow-sm">
                     <span className="text-emerald-700 font-medium text-xs">
                       {currentSection + 1} / {constitutionData.sections.length}
                     </span>
@@ -597,7 +611,7 @@ export default function Constitution() {
                   {/* Bookmark Status */}
                   {bookmark !== null && (
                     <div className="flex items-center space-x-1 text-emerald-600">
-                      <FiBookmark className="w-3 h-3" />
+                      <FiBookmark className="w-2 h-2 sm:w-3 sm:h-3" />
                       <span className="text-xs">বুকমার্ক: {bookmark + 1}</span>
                     </div>
                   )}
@@ -607,46 +621,47 @@ export default function Constitution() {
                   onClick={nextSection}
                   disabled={currentSection === constitutionData.sections.length - 1}
                   variant="outline"
-                  className="flex items-center space-x-2 bg-white border-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 shadow-sm transition-all duration-200 hover:shadow-md"
+                  className="flex items-center space-x-1 sm:space-x-2 bg-white border border-emerald-200 sm:border-2 text-emerald-700 hover:bg-emerald-50 shadow-sm transition-all duration-200 hover:shadow-md text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2"
                 >
-                  <span>পরবর্তী</span>
-                  <FiChevronRight className="w-4 h-4" />
+                  <span className="hidden xs:inline">পরবর্তী</span>
+                  <span className="xs:hidden">পরবর্তী</span>
+                  <FiChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
                 </Button>
               </div>
 
               {/* Book Page */}
-              <div className="bg-white rounded-lg shadow-2xl border-2 border-emerald-200 overflow-hidden">
+              <div className="bg-white rounded-lg shadow-2xl border border-emerald-200 sm:border-2 overflow-hidden">
                 {/* Book Page Header */}
-                <div className="bg-gradient-to-r from-emerald-100 to-teal-100 px-6 py-4 border-b border-emerald-200">
+                <div className="bg-gradient-to-r from-emerald-100 to-teal-100 px-3 py-2 sm:px-6 sm:py-4 border-b border-emerald-200">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl font-bold text-emerald-800">
+                    <h2 className="text-sm sm:text-xl font-bold text-emerald-800">
                       {constitutionData.sections[currentSection].id}. {constitutionData.sections[currentSection].title}
                     </h2>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                      <div className="w-2 h-2 bg-emerald-300 rounded-full"></div>
-                      <div className="w-2 h-2 bg-emerald-200 rounded-full"></div>
+                    <div className="flex items-center space-x-1 sm:space-x-2">
+                      <div className="w-1 h-1 sm:w-2 sm:h-2 bg-emerald-400 rounded-full"></div>
+                      <div className="w-1 h-1 sm:w-2 sm:h-2 bg-emerald-300 rounded-full"></div>
+                      <div className="w-1 h-1 sm:w-2 sm:h-2 bg-emerald-200 rounded-full"></div>
                     </div>
                   </div>
                 </div>
 
                 {/* Book Page Content */}
-                <div className={`p-8 min-h-[800px] ${getFontSizeClass()}`}>
+                <div className={`p-3 sm:p-8 min-h-[400px] sm:min-h-[800px] ${getFontSizeClass()}`}>
                   {/* Preamble for first section */}
                   {currentSection === 0 && (
-                    <div className="mb-8">
-                      <div className="text-center mb-6">
-                        <h1 className="text-4xl font-bold text-emerald-800 mb-3">গঠনতন্ত্র</h1>
-                        <h2 className="text-2xl text-emerald-600 mb-2">{constitutionData.organization.name}</h2>
-                        <p className="text-emerald-500 text-base">{constitutionData.organization.nature}</p>
-                        <div className="mt-4 flex items-center justify-center space-x-4 text-sm text-emerald-600">
+                    <div className="mb-4 sm:mb-8">
+                      <div className="text-center mb-4 sm:mb-6">
+                        <h1 className="text-2xl sm:text-4xl font-bold text-emerald-800 mb-2 sm:mb-3">গঠনতন্ত্র</h1>
+                        <h2 className="text-lg sm:text-2xl text-emerald-600 mb-1 sm:mb-2">{constitutionData.organization.name}</h2>
+                        <p className="text-emerald-500 text-sm sm:text-base">{constitutionData.organization.nature}</p>
+                        <div className="mt-3 sm:mt-4 flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-emerald-600">
                           <span>প্রতিষ্ঠিত: {constitutionData.organization.established_date}</span>
-                          <span>•</span>
+                          <span className="hidden sm:inline">•</span>
                           <span>{constitutionData.organization.affiliation}</span>
                         </div>
                       </div>
-                      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg p-6 border border-emerald-200 mb-6 shadow-sm">
-                        <p className="text-gray-700 leading-relaxed text-lg">{constitutionData.organization.preamble}</p>
+                      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg p-3 sm:p-6 border border-emerald-200 mb-4 sm:mb-6 shadow-sm">
+                        <p className="text-gray-700 leading-relaxed text-sm sm:text-lg">{constitutionData.organization.preamble}</p>
                       </div>
                     </div>
                   )}
@@ -660,8 +675,8 @@ export default function Constitution() {
                 </div>
 
                 {/* Book Page Footer */}
-                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 px-6 py-3 border-t border-emerald-200">
-                  <div className="flex items-center justify-between text-sm text-emerald-600">
+                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 px-3 py-2 sm:px-6 sm:py-3 border-t border-emerald-200">
+                  <div className="flex items-center justify-between text-xs sm:text-sm text-emerald-600">
                     <span>শুব্বান দাওয়াতী কাফেলা</span>
                     <span>পৃষ্ঠা {currentSection + 1}</span>
                   </div>
