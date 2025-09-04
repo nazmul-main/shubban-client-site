@@ -23,7 +23,10 @@ import {
   FiSearch,
   FiFilter,
   FiDownload,
-  FiRefreshCw
+  FiRefreshCw,
+  FiInfo,
+  FiActivity,
+  FiHelpCircle
 } from 'react-icons/fi';
 
 // Import components
@@ -48,6 +51,9 @@ const DashboardLayout = ({ children, activeTab, setActiveTab }) => {
     { id: 'contact', label: 'যোগাযোগ পেজ', icon: FiMail },
     { id: 'blogs', label: 'ব্লগ পোস্ট', icon: FiFileText },
     { id: 'gallery', label: 'গ্যালারি', icon: FiImage },
+    { id: 'about-us', label: 'আমাদের সম্পর্ক', icon: FiInfo },
+    { id: 'activities', label: 'আমাদের কার্যক্রম', icon: FiActivity },
+    { id: 'faq', label: 'সাধারণ প্রশ্ন', icon: FiHelpCircle },
     { id: 'users', label: 'ইউজার ম্যানেজমেন্ট', icon: FiUsers },
   ];
 
@@ -229,6 +235,21 @@ export default function AdminDashboard() {
         return <BlogManagement />;
       case 'gallery':
         return <GalleryManagement />;
+      case 'about-us':
+        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">আমাদের সম্পর্ক</h3>
+          <p className="text-gray-600">আমাদের সম্পর্ক পেজ এখানে আসবে...</p>
+        </div>;
+      case 'activities':
+        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">আমাদের কার্যক্রম</h3>
+          <p className="text-gray-600">আমাদের কার্যক্রম পেজ এখানে আসবে...</p>
+        </div>;
+      case 'faq':
+        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">সাধারণ প্রশ্ন</h3>
+          <p className="text-gray-600">সাধারণ প্রশ্ন পেজ এখানে আসবে...</p>
+        </div>;
       case 'users':
         return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">ইউজার ম্যানেজমেন্ট</h3>
