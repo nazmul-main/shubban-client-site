@@ -9,7 +9,7 @@ const DonationPopup = ({ isOpen, onClose }) => {
   const bankDetails = {
     bankName: "Islami Bank Limited",
     accountNumber: "20507770225100418",
-    accountName: "মো: নাজমুল হুদা (সাময়িক) , শুব্বান দাওয়াতি কাফেলা",
+    accountName: "মো: নাজমুল হুদা, শুব্বান দাওয়াতি কাফেলা",
     branch: "112/01 , সারিয়াকান্দি বাজার , বগুড়া "
   };
 

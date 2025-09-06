@@ -82,18 +82,33 @@ export default function Navbar() {
           {/* Logo */}
           <Logo size="md" />
           
-          {/* Hamburger Menu */}
-          <button 
-            onClick={() => setOpen(!open)}
-            className="relative p-2 text-gray-200 hover:text-emerald-400 transition-all duration-300 group rounded-lg hover:bg-emerald-500/20"
-            aria-label="Menu"
-          >
-            <div className="w-6 h-6 flex flex-col justify-center items-center">
-              <span className={`w-5 h-0.5 bg-current transform transition-all duration-300 ${open ? 'rotate-45 translate-y-1' : ''}`}></span>
-              <span className={`w-5 h-0.5 bg-current my-1 transition-all duration-300 ${open ? 'opacity-0' : ''}`}></span>
-              <span className={`w-5 h-0.5 bg-current transform transition-all duration-300 ${open ? '-rotate-45 -translate-y-1' : ''}`}></span>
-            </div>
-          </button>
+          {/* Right side buttons */}
+          <div className="flex items-center space-x-2">
+            {/* Donation Button */}
+            <Button 
+              variant="primary" 
+              size="sm"
+              onClick={() => setDonationPopupOpen(true)}
+              className="group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <FiHeart className="mr-1" />
+              <span className="relative z-10 text-xs">দান করুন</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+            </Button>
+            
+            {/* Hamburger Menu */}
+            <button 
+              onClick={() => setOpen(!open)}
+              className="relative p-2 text-gray-200 hover:text-emerald-400 transition-all duration-300 group rounded-lg hover:bg-emerald-500/20"
+              aria-label="Menu"
+            >
+              <div className="w-6 h-6 flex flex-col justify-center items-center">
+                <span className={`w-5 h-0.5 bg-current transform transition-all duration-300 ${open ? 'rotate-45 translate-y-1' : ''}`}></span>
+                <span className={`w-5 h-0.5 bg-current my-1 transition-all duration-300 ${open ? 'opacity-0' : ''}`}></span>
+                <span className={`w-5 h-0.5 bg-current transform transition-all duration-300 ${open ? '-rotate-45 -translate-y-1' : ''}`}></span>
+              </div>
+            </button>
+          </div>
         </div>
         
         {/* Mobile Navigation Menu */}
@@ -127,21 +142,11 @@ export default function Navbar() {
                 })}
               </ul>
               
-              {/* Mobile My Account and Donation Button */}
-              <div className="mt-4 pt-4 border-t border-emerald-500/30 space-y-3">
+              {/* Mobile My Account Button */}
+              <div className="mt-4 pt-4 border-t border-emerald-500/30">
                 <div className="flex justify-center">
                   <MyAccountButton />
                 </div>
-                <Button 
-                  variant="primary" 
-                  size="md"
-                  onClick={() => setDonationPopupOpen(true)}
-                  className="w-full group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                >
-                  <FiHeart className="mr-2" />
-                  <span className="relative z-10">দান করুন</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                </Button>
               </div>
             </nav>
           </div>

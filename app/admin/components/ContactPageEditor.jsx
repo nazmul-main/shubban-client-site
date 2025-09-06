@@ -33,8 +33,7 @@ const ContactPageEditor = () => {
     email: 'info@shubbandawatikafela.org',
     phone: '+880 1234 567890',
     alternatePhone: '+880 9876 543210',
-    address: 'ঢাকা, বাংলাদেশ',
-    fullAddress: 'বাড়ি নং ১২৩, রোড নং ৪৫, ঢাকা ১০০০, বাংলাদেশ',
+    address: 'সারিয়াকান্দি, বগুড়া, বাংলাদেশ',
     
     
     // Social Media Links

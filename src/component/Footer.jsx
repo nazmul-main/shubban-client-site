@@ -149,7 +149,7 @@ export default function Footer() {
                   </div>
                   <div>
                     <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">
-                      ঢাকা, বাংলাদেশ
+                      সারিয়াকান্দি, বগুড়া, বাংলাদেশ
                     </p>
                   </div>
                 </div>
@@ -159,8 +159,8 @@ export default function Footer() {
                     <FiPhone className="w-4 h-4 text-white" />
                   </div>
                   <div>
-                    <p className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300">+880170000000</p>
-                    <p className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300">+880170000000</p>
+                    <p className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300">+8801700996387</p>
+                    <p className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300">+8801700996387</p>
                   </div>
                 </div>
                 
@@ -168,9 +168,8 @@ export default function Footer() {
                   <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <FiMail className="w-4 h-4 text-white" />
                   </div>
-                  <div>
-                    <p className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300">info@subbandawati.org</p>
-                    <p className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300">support@subbandawati.org</p>
+                  <div> 
+                    <p className="text-gray-300 text-sm group-hover:text-white transition-colors duration-300">shubbandawatikafela@gmail.com</p>
                   </div>
                 </div>
               </div>

@@ -3,26 +3,20 @@ import Typography from '../ui/Typography';
 const StatsSection = () => {
   const stats = [
     { 
-      number: '৫০০+', 
+      number: '১০০+', 
       label: 'সক্রিয় সদস্য', 
       color: 'from-emerald-400 to-teal-400',
       icon: '👥',
       description: 'সক্রিয়ভাবে কাজ করছে'
     },
     { 
-      number: '১০+', 
+      number: '১৫+', 
       label: 'কার্যক্রম', 
       color: 'from-teal-400 to-cyan-400',
       icon: '🎯',
       description: 'সফলভাবে সম্পন্ন'
     },
-    { 
-      number: '৫', 
-      label: 'জেলায় কার্যক্রম', 
-      color: 'from-cyan-400 to-emerald-400',
-      icon: '🗺️',
-      description: 'বিস্তৃত এলাকায়'
-    },
+    
     { 
       number: '২০২৪', 
       label: 'প্রতিষ্ঠার বছর', 

@@ -62,8 +62,8 @@ const contactInfo = [
   {
     icon: '/phone.svg',
     label: 'ফোন',
-    value: '01700000000',
-    href: 'tel:01700000000',
+    value: '01700996387',
+    href: 'tel:01700996387',
   },
   {
     icon: '/email.svg',
