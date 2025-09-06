@@ -98,56 +98,9 @@ export default function Gallery() {
       img.catagory === selectedCategory
   );
 
-  // Responsive styles
-  const containerStyle = {
-    padding: isMobile ? 8 : 24,
-    maxWidth: 1200,
-    margin: "0 auto"
-  };
 
-  const mainFlexStyle = {
-    display: "flex",
-    flexDirection: isMobile ? "column" : "row",
-    gap: isMobile ? 16 : 32,
-    alignItems: "flex-start"
-  };
 
-  const categoryMenuStyle = {
-    minWidth: isMobile ? "100%" : 180,
-    background: "rgba(255, 255, 255, 0.1)",
-    backdropFilter: "blur(20px)",
-    borderRadius: 12,
-    padding: isMobile ? "8px 0" : "24px 0",
-    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
-    display: "flex",
-    flexDirection: isMobile ? "row" : "column",
-    overflowX: isMobile ? "auto" : "visible",
-    gap: isMobile ? 0 : 0,
-    border: "1px solid rgba(255, 255, 255, 0.2)"
-  };
 
-  const categoryItemStyle = (cat) => ({
-    padding: isMobile ? "8px 12px" : "8px 24px",
-    cursor: "pointer",
-    color: selectedCategory === cat ? "#10b981" : "#e2e8f0",
-    fontWeight: selectedCategory === cat ? "bold" : "normal",
-    borderBottom: isMobile && selectedCategory === cat ? "2px solid #10b981" : "none",
-    borderLeft: !isMobile && selectedCategory === cat ? "3px solid #10b981" : "3px solid transparent",
-    background: selectedCategory === cat ? "rgba(255, 255, 255, 0.1)" : "transparent",
-    whiteSpace: "nowrap"
-  });
-
-  const galleryGridStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: isMobile ? 12 : 24,
-    justifyContent: isMobile ? "center" : "flex-start"
-  };
-
-  const imageCardStyle = {
-    width: isMobile ? 160 : 250,
-    textAlign: "center"
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-800 to-zinc-900 relative overflow-hidden">
@@ -158,77 +111,92 @@ export default function Gallery() {
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div style={containerStyle} className="relative z-10">
-        <h2
-          className="animate-fade-in-up text-white"
-          style={{ textAlign: "center", fontSize: isMobile ? 22 : 32, margin: isMobile ? "12px 0" : "24px 0" }}
-        >
+      <div className="container mx-auto px-2 py-4 relative z-10">
+        <h2 className="animate-fade-in-up text-white text-center text-2xl lg:text-4xl my-3 lg:my-6">
           গ্যালারী
         </h2>
 
-        <div style={mainFlexStyle}>
-          {/* Category Menu */}
-          <div style={categoryMenuStyle}>
-            {categories.map((cat, idx) => (
-              <div
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className="animate-fade-in-left"
-                style={{ ...categoryItemStyle(cat), animationDelay: `${0.1 + idx * 0.07}s` }}
-              >
-                {cat}
-              </div>
-            ))}
+        {/* Mobile Category Navigation */}
+        <div className="lg:hidden mb-6">
+          <div className="bg-white/10 backdrop-blur-xl rounded-lg shadow-lg border border-white/20 p-2">
+            <div className="flex overflow-x-auto space-x-1 pb-2">
+              {categories.map((cat, idx) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`flex-shrink-0 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 whitespace-nowrap ${selectedCategory === cat
+                    ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg'
+                    : 'text-gray-300 hover:text-emerald-400 hover:bg-white/10'
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
+          {/* Desktop Category Menu - Hidden on Mobile */}
+          <div className="hidden lg:block" style={{ minWidth: 180 }}>
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-4 sticky top-4 shadow-lg">
+              <h3 className="text-lg font-semibold text-emerald-400 mb-4 border-b border-white/20 pb-2">
+                ক্যাটাগরি
+              </h3>
+              <nav className="space-y-2">
+                {categories.map((cat, idx) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`w-full text-left px-3 py-2 rounded-md transition-colors duration-200 animate-fade-in-left ${selectedCategory === cat
+                      ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold shadow-lg'
+                      : 'text-gray-300 hover:bg-white/10 hover:text-emerald-400'
+                      }`}
+                    style={{ animationDelay: `${0.1 + idx * 0.07}s` }}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </nav>
+            </div>
           </div>
 
           {/* Gallery Images */}
-          <div style={{ flex: 1 }}>
-            <div style={{ display: "flex", justifyContent: "center", gap: 12, marginBottom: 24, flexWrap: "wrap" }}>
+          <div className="flex-1">
+            <div className="flex justify-center gap-3 mb-6 flex-wrap">
               {years.map((year) => (
                 <button
                   key={year}
                   onClick={() => setSelectedYear(year)}
-                  style={{
-                    background: selectedYear === year ? "#10b981" : "rgba(255, 255, 255, 0.1)",
-                    color: selectedYear === year ? "#fff" : "#e2e8f0",
-                    border: "1px solid #10b981",
-                    borderRadius: 6,
-                    padding: isMobile ? "4px 10px" : "6px 18px",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    fontSize: isMobile ? 13 : 15,
-                    marginBottom: isMobile ? 6 : 0,
-                    backdropFilter: "blur(20px)"
-                  }}
+                  className={`px-3 py-1 lg:px-4 lg:py-2 text-xs lg:text-sm font-bold rounded-md border border-emerald-500 backdrop-blur-xl transition-colors duration-200 ${
+                    selectedYear === year
+                      ? 'bg-emerald-500 text-white'
+                      : 'bg-white/10 text-gray-300 hover:bg-emerald-500/20 hover:text-emerald-400'
+                  }`}
                 >
                   {year}
                 </button>
               ))}
             </div>
-            <div style={galleryGridStyle}>
+            <div className="flex flex-wrap gap-3 lg:gap-6 justify-center lg:justify-start">
               {filteredImages.length > 0 ? (
                 filteredImages.map((img, idx) => (
                   <div
                     key={img.id}
-                    className="animate-fade-in-up"
-                    style={{ ...imageCardStyle, animationDelay: `${0.1 + idx * 0.07}s` }}
+                    className="animate-fade-in-up w-40 lg:w-64 text-center"
+                    style={{ animationDelay: `${0.1 + idx * 0.07}s` }}
                   >
                     <img
                       src={img.imageUrl}
                       alt={img.catagory}
-                      style={{ 
-                        width: "100%", 
-                        borderRadius: 10, 
-                        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
-                        border: "1px solid rgba(255, 255, 255, 0.1)"
-                      }}
+                      className="w-full rounded-lg shadow-2xl border border-white/10"
                     />
-                    <div style={{ marginTop: 8, fontSize: isMobile ? 13 : 15, color: "#e2e8f0" }}>{img.catagory}</div>
-                    <div style={{ fontSize: 12, color: "#94a3b8" }}>{img.date}</div>
+                    <div className="mt-2 text-sm lg:text-base text-gray-300">{img.catagory}</div>
+                    <div className="text-xs text-gray-400">{img.date}</div>
                   </div>
                 ))
               ) : (
-                <div style={{ color: "#94a3b8", marginTop: 40 }}>এই ক্যাটাগরিতে কোনো ছবি নেই</div>
+                <div className="text-gray-400 mt-10 text-center">এই ক্যাটাগরিতে কোনো ছবি নেই</div>
               )}
             </div>
           </div>

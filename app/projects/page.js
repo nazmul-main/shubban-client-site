@@ -58,6 +58,10 @@ export default function Projects() {
       </div>
 
       <div className="container mx-auto px-2 py-4 relative z-10">
+        <h2 className="animate-fade-in-up text-white text-center text-2xl lg:text-4xl my-3 lg:my-6">
+          আমাদের প্রকল্পসমূহ
+        </h2>
+
         {/* Mobile Tabs Navigation */}
         <div className="lg:hidden mb-6">
           <div className="bg-white/10 backdrop-blur-xl rounded-lg shadow-lg border border-white/20 p-2">
@@ -67,8 +71,8 @@ export default function Projects() {
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
                   className={`flex-shrink-0 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 whitespace-nowrap ${activeTab === item.id
-                    ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg'
-                    : 'text-gray-300 hover:text-teal-400 hover:bg-white/10'
+                    ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg'
+                    : 'text-gray-300 hover:text-emerald-400 hover:bg-white/10'
                     }`}
                 >
                   {item.label}
@@ -82,7 +86,7 @@ export default function Projects() {
           {/* Desktop Sidebar - Hidden on Mobile */}
           <div className="hidden lg:block lg:w-1/4">
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-4 sticky top-4 shadow-lg">
-              <h3 className="text-lg font-semibold text-teal-400 mb-4 border-b border-white/20 pb-2">
+              <h3 className="text-lg font-semibold text-emerald-400 mb-4 border-b border-white/20 pb-2">
                 আমাদের প্রকল্পসমূহ
               </h3>
               <nav className="space-y-2">
@@ -91,8 +95,8 @@ export default function Projects() {
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
                     className={`w-full text-left px-3 py-2 rounded-md transition-colors duration-200 animate-fade-in-left ${activeTab === item.id
-                      ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold shadow-lg'
-                      : 'text-gray-300 hover:bg-white/10 hover:text-teal-400'
+                      ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold shadow-lg'
+                      : 'text-gray-300 hover:bg-white/10 hover:text-emerald-400'
                       }`}
                     style={{ animationDelay: `${0.1 + idx * 0.07}s` }}
                   >
@@ -109,7 +113,7 @@ export default function Projects() {
               key={activeTab}
               className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-6 shadow-lg"
             >
-              <h1 className="text-2xl font-bold text-teal-400 mb-6 animate-fade-in-up">
+              <h1 className="text-2xl font-bold text-emerald-400 mb-6 animate-fade-in-up">
                 {currentContent.title}
               </h1>
 
