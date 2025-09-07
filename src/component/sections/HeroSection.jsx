@@ -39,7 +39,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="relative h-[80vh] overflow-hidden">
+    <section className="relative lg:h-[90vh] md:h-[80vh] h-[80vh] overflow-hidden">
       {/* Swiper Container */}
       <Swiper
         spaceBetween={0}
@@ -78,7 +78,7 @@ const HeroSection = () => {
 
               {/* Content Overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+                <div className="text-center text-white px-4 py-6 sm:px-6 lg:px-8 max-w-6xl mx-auto">
                   {/* Status Badge */}
                   <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-2xl mb-8 hover:scale-105 transition-all duration-500">
                     <div className="w-3 h-3 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mr-3 animate-pulse"></div>
