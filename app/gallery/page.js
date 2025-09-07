@@ -181,6 +181,8 @@ const allYears = Array.from(
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Get years based on selected category
   const getYearsForCategory = (category) => {
@@ -206,6 +208,37 @@ export default function Gallery() {
       setSelectedYear(newYears[0]);
     }
   }, [selectedCategory]);
+  
+  // Handle image click
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
+  
+  // Handle modal close
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedImage(null), 300); // Wait for animation to complete
+  };
+  
+  // Handle keyboard navigation
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isModalOpen) {
+        handleModalClose();
+      }
+    };
+    
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
+    }
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
 
   // Responsive style helper
   const isMobile = typeof window !== "undefined" && window.innerWidth < 600;
@@ -324,7 +357,8 @@ export default function Gallery() {
                 filteredImages.map((img, idx) => (
                   <div
                     key={img.id}
-                    className="group relative bg-white/5 backdrop-blur-xl rounded-xl p-3 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                    className="group relative bg-white/5 backdrop-blur-xl rounded-xl p-3 border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer"
+                    onClick={() => handleImageClick(img)}
                   >
                     <div className="aspect-square overflow-hidden rounded-lg mb-3">
                       <img
@@ -340,6 +374,13 @@ export default function Gallery() {
                     
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                    
+                    {/* Click indicator */}
+                    <div className="absolute top-2 right-2 w-6 h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                      </svg>
+                    </div>
                   </div>
                 ))
               ) : (
@@ -351,6 +392,47 @@ export default function Gallery() {
           </div>
         </div>
       </div>
+      
+      {/* Image Modal */}
+      {isModalOpen && selectedImage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300"
+            onClick={handleModalClose}
+          ></div>
+          
+          {/* Modal Content */}
+          <div className="relative max-w-4xl max-h-[90vh] w-full bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl transform transition-all duration-300 scale-100">
+            {/* Close Button */}
+            <button
+              onClick={handleModalClose}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-200"
+            >
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {/* Image */}
+            <div className="p-6">
+              <div className="aspect-video overflow-hidden rounded-xl mb-4">
+                <img
+                  src={selectedImage.imageUrl}
+                  alt={selectedImage.catagory}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              {/* Image Info */}
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-white mb-2">{selectedImage.catagory}</h3>
+                <p className="text-gray-300">{selectedImage.date}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 } 

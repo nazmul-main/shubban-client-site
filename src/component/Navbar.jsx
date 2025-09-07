@@ -72,7 +72,7 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-gradient-to-br from-gray-900/95 via-slate-800/95 to-zinc-900/95 backdrop-blur-xl shadow-lg border-b border-emerald-500/30">
+    <header className="w-full sticky top-0  bg-gradient-to-br from-gray-900/95 via-slate-800/95 to-zinc-900/95 backdrop-blur-xl shadow-lg border-b border-emerald-500/30">
       {/* Top accent line like Footer */}
       <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500"></div>
       
