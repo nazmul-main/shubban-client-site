@@ -8,13 +8,14 @@ const MyAccountButton = () => {
 
   return (
     <>
-      {/* My Account Button */}
+      {/* My Account Button - Disabled */}
       <button
         onClick={openUserLoginPopup}
-        className="flex items-center justify-center w-10 h-10 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 text-white hover:bg-white/20 transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl"
-        aria-label="My Account"
+        className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gray-500/20 backdrop-blur-xl rounded-full border border-gray-500/30 text-gray-400 transition-all duration-300 opacity-60 cursor-not-allowed"
+        aria-label="My Account - Coming Soon"
+        disabled
       >
-        <FiUser className="w-5 h-5" />
+        <FiUser className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
     </>
   );

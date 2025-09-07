@@ -20,7 +20,7 @@ const GlobalPopups = () => {
         onClose={closeDonationPopup} 
       />
       
-      {/* User Login Popup - We'll create a separate component for this */}
+      {/* User Login Popup - Disabled */}
       {userLoginPopupOpen && (
         <div 
           className="fixed inset-0 z-[30000] flex items-center justify-center h-screen 
@@ -46,82 +46,39 @@ const GlobalPopups = () => {
 
             {/* Header */}
             <div className="text-center mb-6 pt-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-gray-500 to-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
               <h2 className="text-2xl font-bold text-white">My Account</h2>
-              <p className="text-gray-300 mt-2">Sign in to your account</p>
+              <p className="text-gray-300 mt-2">Coming Soon</p>
             </div>
 
-            {/* Form */}
-            <form className="px-6 pb-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
-                />
+            {/* Disabled Message */}
+            <div className="px-6 pb-6">
+              <div className="bg-gray-700/50 rounded-lg p-6 text-center">
+                <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-300 mb-2">Feature Coming Soon</h3>
+                <p className="text-gray-400 text-sm">
+                  User login functionality is currently under development. 
+                  Please check back later for updates.
+                </p>
               </div>
-
-              {/* Password */}
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-2">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
-                />
-              </div>
-
-              {/* Remember me */}
-              <div className="flex items-center justify-between">
-                <label className="flex items-center">
-                  <input
-                    type="checkbox"
-                    className="w-4 h-4 text-emerald-500 bg-white/10 border-white/20 rounded focus:ring-emerald-500 focus:ring-2"
-                  />
-                  <span className="ml-2 text-sm text-gray-300">Remember me</span>
-                </label>
-                <button
-                  type="button"
-                  className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors duration-200"
-                >
-                  Forgot password?
-                </button>
-              </div>
-
-              {/* Sign In Button */}
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 px-4 rounded-lg font-semibold hover:from-teal-500 hover:to-emerald-500 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                Sign In
-              </button>
-            </form>
+            </div>
 
             {/* Footer */}
             <div className="text-center px-6 pb-6 pt-2 border-t border-white/20">
-              <p className="text-gray-400 text-sm">
-                Don't have an account?{" "}
-                <button
-                  type="button"
-                  className="text-emerald-400 hover:text-emerald-300 transition-colors duration-200 font-medium"
-                >
-                  Sign up
-                </button>
-              </p>
+              <button
+                onClick={closeUserLoginPopup}
+                className="w-full bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-300 shadow-lg"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
