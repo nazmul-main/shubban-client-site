@@ -9,10 +9,8 @@ import CTASection from '../src/component/sections/CTASection';
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-zinc-900">
-      {/* Hero Section - Full width */}
-      <Container padding={false}>
-        <HeroSection />
-      </Container>
+      {/* Hero Section - Swiper with images */}
+      <HeroSection />
       
       {/* Stats Section - Dark theme */}
       <div className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-zinc-900 via-slate-800 to-gray-900 relative overflow-hidden">
