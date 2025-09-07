@@ -74,9 +74,11 @@ const HeroSection = () => {
                   priority={index === 0}
                 />
                 {/* Left side black shadow for text readability */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent"></div>
+                {/* Additional deep shadow layer */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
                 {/* Right side subtle overlay */}
-                <div className="absolute inset-0 bg-gradient-to-l from-black/20 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-l from-black/40 via-transparent to-transparent"></div>
                 {/* Modern gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 via-teal-900/10 to-cyan-900/20"></div>
               </div>
@@ -94,10 +96,7 @@ const HeroSection = () => {
 
                   {/* Main Title */}
                   <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-3 sm:mb-4 relative">
-                    <span className="block text-white mb-1 sm:mb-2 drop-shadow-2xl">{image.title}</span>
-                    {/*  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
-                      কাফেলা
-                    </span> */}
+                    <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 mb-1 sm:mb-2 drop-shadow-2xl">{image.title}</span>
                     {/* Title underline effect */}
                     <div className="absolute -bottom-1 left-0 w-16 h-0.5 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full"></div>
                   </h1>
