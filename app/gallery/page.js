@@ -15,67 +15,162 @@ const categories = [
   "বৃক্ষরোপণ",
 ];
 
-// Dummy flat data (API response এর মতো)
+// Dummy flat data (API response এর মতো) - Multiple years for different categories
 const galleryData = [
+  // ইফতার বিতরণ - 2023, 2024, 2025
   {
     id: 1,
     imageUrl: "https://picsum.photos/id/1011/400/300",
-    date: "2020-05-14",
+    date: "2023-04-15",
     catagory: "ইফতার বিতরণ"
   },
   {
     id: 2,
     imageUrl: "https://picsum.photos/id/1012/400/300",
-    date: "2021-08-21",
-    catagory: "এতিম"
+    date: "2024-03-25",
+    catagory: "ইফতার বিতরণ"
   },
   {
     id: 3,
     imageUrl: "https://picsum.photos/id/1013/400/300",
-    date: "2022-03-10",
-    catagory: "খাদ্য বিতরণ"
+    date: "2025-03-10",
+    catagory: "ইফতার বিতরণ"
   },
+  
+  // এতিম - শুধু 2024
   {
     id: 4,
     imageUrl: "https://picsum.photos/id/1014/400/300",
-    date: "2023-01-05",
-    catagory: "টিউবওয়েল"
+    date: "2024-06-15",
+    catagory: "এতিম"
   },
   {
     id: 5,
     imageUrl: "https://picsum.photos/id/1015/400/300",
-    date: "2020-11-30",
-    catagory: "ত্রাণ বিতরণ"
+    date: "2024-08-20",
+    catagory: "এতিম"
   },
+  
+  // কুরবানি - 2023, 2024, 2025
   {
     id: 6,
     imageUrl: "https://picsum.photos/id/1016/400/300",
-    date: "2021-06-18",
-    catagory: "শীতবস্ত্র"
+    date: "2023-06-30",
+    catagory: "কুরবানি"
   },
   {
     id: 7,
     imageUrl: "https://picsum.photos/id/1017/400/300",
-    date: "2022-12-03",
-    catagory: "শীতবস্ত্র"
+    date: "2024-06-17",
+    catagory: "কুরবানি"
   },
   {
     id: 8,
     imageUrl: "https://picsum.photos/id/1018/400/300",
-    date: "2024-04-26",
-    catagory: "বৃক্ষরোপণ"
+    date: "2025-06-06",
+    catagory: "কুরবানি"
   },
+  
+  // খাদ্য বিতরণ - 2023, 2024
   {
     id: 9,
     imageUrl: "https://picsum.photos/id/1019/400/300",
-    date: "2023-09-15",
-    catagory: "বৃক্ষরোপণ"
+    date: "2023-02-10",
+    catagory: "খাদ্য বিতরণ"
   },
   {
     id: 10,
     imageUrl: "https://picsum.photos/id/1020/400/300",
-    date: "2025-02-22",
-    catagory: "কুরবানি"
+    date: "2024-01-15",
+    catagory: "খাদ্য বিতরণ"
+  },
+  {
+    id: 11,
+    imageUrl: "https://picsum.photos/id/1021/400/300",
+    date: "2024-11-20",
+    catagory: "খাদ্য বিতরণ"
+  },
+  
+  // টিউবওয়েল - 2023, 2024, 2025
+  {
+    id: 12,
+    imageUrl: "https://picsum.photos/id/1022/400/300",
+    date: "2023-03-05",
+    catagory: "টিউবওয়েল"
+  },
+  {
+    id: 13,
+    imageUrl: "https://picsum.photos/id/1023/400/300",
+    date: "2024-05-12",
+    catagory: "টিউবওয়েল"
+  },
+  {
+    id: 14,
+    imageUrl: "https://picsum.photos/id/1024/400/300",
+    date: "2025-01-08",
+    catagory: "টিউবওয়েল"
+  },
+  
+  // ত্রাণ বিতরণ - 2023, 2024
+  {
+    id: 15,
+    imageUrl: "https://picsum.photos/id/1025/400/300",
+    date: "2023-07-15",
+    catagory: "ত্রাণ বিতরণ"
+  },
+  {
+    id: 16,
+    imageUrl: "https://picsum.photos/id/1026/400/300",
+    date: "2024-08-10",
+    catagory: "ত্রাণ বিতরণ"
+  },
+  
+  // ভ্যান বিতরণ - শুধু 2024
+  {
+    id: 17,
+    imageUrl: "https://picsum.photos/id/1027/400/300",
+    date: "2024-09-15",
+    catagory: "ভ্যান বিতরণ"
+  },
+  
+  // শীতবস্ত্র - 2023, 2024, 2025
+  {
+    id: 18,
+    imageUrl: "https://picsum.photos/id/1028/400/300",
+    date: "2023-12-03",
+    catagory: "শীতবস্ত্র"
+  },
+  {
+    id: 19,
+    imageUrl: "https://picsum.photos/id/1029/400/300",
+    date: "2024-11-25",
+    catagory: "শীতবস্ত্র"
+  },
+  {
+    id: 20,
+    imageUrl: "https://picsum.photos/id/1030/400/300",
+    date: "2025-12-10",
+    catagory: "শীতবস্ত্র"
+  },
+  
+  // বৃক্ষরোপণ - 2023, 2024, 2025
+  {
+    id: 21,
+    imageUrl: "https://picsum.photos/id/1031/400/300",
+    date: "2023-06-05",
+    catagory: "বৃক্ষরোপণ"
+  },
+  {
+    id: 22,
+    imageUrl: "https://picsum.photos/id/1032/400/300",
+    date: "2024-04-26",
+    catagory: "বৃক্ষরোপণ"
+  },
+  {
+    id: 23,
+    imageUrl: "https://picsum.photos/id/1033/400/300",
+    date: "2025-05-15",
+    catagory: "বৃক্ষরোপণ"
   }
 ];
 
@@ -206,14 +301,6 @@ export default function Gallery() {
             {/* Year Filter - Only show if not "সবগুলো" category */}
             {selectedCategory !== "সবগুলো" && availableYears.length > 0 && (
               <div className="flex justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 flex-wrap">
-                <div className="text-center mb-4 w-full">
-                  <h3 className="text-lg font-semibold text-emerald-400 mb-2">
-                    {selectedCategory} - বছর নির্বাচন করুন
-                  </h3>
-                  <p className="text-sm text-gray-400">
-                    এই ক্যাটাগরিতে {availableYears.length}টি বছরের ছবি আছে
-                  </p>
-                </div>
                 {availableYears.map((year) => (
                   <button
                     key={year}
