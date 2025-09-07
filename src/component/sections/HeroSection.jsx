@@ -14,7 +14,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 const HeroSection = () => {
   const heroImages = [
@@ -52,8 +52,8 @@ const HeroSection = () => {
           clickable: true,
           dynamicBullets: true,
         }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        navigation={false}
+        modules={[Autoplay, Pagination]}
         className="heroSwiper h-full"
         loop={true}
         speed={1000}
@@ -148,30 +148,6 @@ const HeroSection = () => {
           --swiper-pagination-bullet-inactive-opacity: 0.3;
         }
         
-        .heroSwiper .swiper-button-next,
-        .heroSwiper .swiper-button-prev {
-          background: rgba(16, 185, 129, 0.1);
-          backdrop-filter: blur(10px);
-          border-radius: 50%;
-          width: 60px;
-          height: 60px;
-          margin-top: -30px;
-          border: 2px solid rgba(16, 185, 129, 0.3);
-          transition: all 0.3s ease;
-        }
-        
-        .heroSwiper .swiper-button-next:hover,
-        .heroSwiper .swiper-button-prev:hover {
-          background: rgba(16, 185, 129, 0.2);
-          border-color: rgba(16, 185, 129, 0.6);
-          transform: scale(1.1);
-        }
-        
-        .heroSwiper .swiper-button-next:after,
-        .heroSwiper .swiper-button-prev:after {
-          font-size: 20px;
-          font-weight: bold;
-        }
         
         .heroSwiper .swiper-pagination {
           bottom: 30px;
