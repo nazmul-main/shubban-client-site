@@ -155,7 +155,26 @@ export default function About() {
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-2 py-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 relative z-10">
+
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
+              আমাদের সম্পর্কে
+            </span>
+          </h1>
+          <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto mb-6">
+            শুব্বান দাওয়াতি কাফেলা সম্পর্কে জানুন
+          </p>
+          
+          {/* Decorative divider */}
+          <div className="flex items-center justify-center space-x-4">
+            <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-emerald-400"></div>
+            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+            <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-emerald-400"></div>
+          </div>
+        </div>
 
         {/* Mobile Tabs Navigation */}
         <div className="lg:hidden mb-6">
