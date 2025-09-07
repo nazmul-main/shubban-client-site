@@ -456,9 +456,9 @@ export default function Constitution() {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 ${isFullscreen ? 'fixed inset-0 z-50' : ''}`}>
+    <div className={`min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 ${isFullscreen ? 'fixed inset-0' : ''}`}>
       {/* Fixed Back to Home Button */}
-      <div className="fixed top-2 left-2 sm:top-4 sm:left-4 z-50">
+      <div className="fixed top-2 left-2 sm:top-4 sm:left-4">
         <Button
           onClick={handleBackToHome}
           variant="outline"
@@ -471,7 +471,7 @@ export default function Constitution() {
       </div>
 
       {/* Mobile Menu Button */}
-      <div className="fixed top-2 right-2 sm:hidden z-50">
+      <div className="fixed top-2 right-2 sm:hidden">
         <Button
           onClick={() => setShowTableOfContents(!showTableOfContents)}
           variant="outline"
@@ -489,7 +489,7 @@ export default function Constitution() {
             
             {/* Enhanced Table of Contents Sidebar */}
             {showTableOfContents && (
-              <div className="lg:sticky lg:top-24 h-fit fixed inset-0 lg:relative lg:inset-auto z-40 bg-white lg:bg-transparent">
+              <div className="lg:sticky lg:top-24 h-fit fixed inset-0 lg:relative lg:inset-auto bg-white lg:bg-transparent">
                 <div className="bg-white rounded-lg shadow-xl border border-emerald-200 sm:border-2 overflow-hidden">
                   <div className="bg-gradient-to-r from-emerald-100 to-teal-100 px-3 py-2 sm:px-4 sm:py-3 border-b border-emerald-200">
                     <div className="flex items-center justify-between">
@@ -559,7 +559,7 @@ export default function Constitution() {
             {/* Book Content */}
             <div className="space-y-4 sm:space-y-8">
               {/* Enhanced Book Navigation - Sticky */}
-              <div className="sticky top-2 sm:top-4 z-40 flex flex-row items-center justify-between bg-white/95 backdrop-blur-md rounded-lg shadow-lg border border-emerald-200 sm:border-2 p-2 sm:p-4 gap-2">
+              <div className="sticky top-2 sm:top-4 flex flex-row items-center justify-between bg-white/95 backdrop-blur-md rounded-lg shadow-lg border border-emerald-200 sm:border-2 p-2 sm:p-4 gap-2">
                 <Button
                   onClick={prevSection}
                   disabled={currentSection === 0}

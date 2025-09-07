@@ -266,7 +266,7 @@ export default function Gallery() {
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 relative">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400">
@@ -395,19 +395,19 @@ export default function Gallery() {
       
       {/* Image Modal */}
       {isModalOpen && selectedImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 flex items-center justify-center p-4 animate-in fade-in duration-300">
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity duration-300"
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm animate-in fade-in duration-300"
             onClick={handleModalClose}
           ></div>
           
           {/* Modal Content */}
-          <div className="relative max-w-4xl max-h-[90vh] w-full bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl transform transition-all duration-300 scale-100">
+          <div className="relative max-w-4xl max-h-[90vh] w-full bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl animate-in zoom-in-95 duration-300">
             {/* Close Button */}
             <button
               onClick={handleModalClose}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-200"
+              className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors duration-200"
             >
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -420,12 +420,12 @@ export default function Gallery() {
                 <img
                   src={selectedImage.imageUrl}
                   alt={selectedImage.catagory}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover animate-in fade-in duration-500 delay-100"
                 />
               </div>
               
               {/* Image Info */}
-              <div className="text-center">
+              <div className="text-center animate-in slide-in-from-bottom-4 duration-500 delay-200">
                 <h3 className="text-xl font-bold text-white mb-2">{selectedImage.catagory}</h3>
                 <p className="text-gray-300">{selectedImage.date}</p>
               </div>

@@ -35,7 +35,7 @@ export default function RouteAwareLayout({ children }) {
   if (isAdminRoute || isConstitutionRoute || is404Page) {
     // For admin routes, constitution route, and 404 page, don't show navbar and footer
     return (
-      <main className="w-full relative z-10 flex-1">
+      <main className="w-full relative flex-1">
         {children}
       </main>
     );
@@ -44,7 +44,7 @@ export default function RouteAwareLayout({ children }) {
   return (
     <>
       <Navbar />
-      <main className="w-full relative z-10 flex-1">
+      <main className="w-full relative flex-1">
         {children}
       </main>
       <Footer />

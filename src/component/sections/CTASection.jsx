@@ -32,7 +32,7 @@ const CTASection = () => {
         }}
       ></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <div className="max-w-4xl mx-auto space-y-8">
             
@@ -70,7 +70,7 @@ const CTASection = () => {
                 size="xl"
                 className="group relative overflow-hidden bg-gradient-to-r from-primary-color to-secondary-color hover:from-secondary-color hover:to-primary-color transition-all duration-500 transform hover:scale-105 hover:shadow-xl hover:shadow-primary-color/25"
               >
-                <span className="relative z-10 font-bold text-lg text-white">যোগাযোগ করুন</span>
+                <span className="relative font-bold text-lg text-white">যোগাযোগ করুন</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-100"></div>
               </Button>
@@ -81,7 +81,7 @@ const CTASection = () => {
                 size="xl"
                 className="group relative overflow-hidden border-2 border-primary-color text-primary-color hover:border-secondary-color hover:text-secondary-color bg-white/80 backdrop-blur-xl hover:bg-white/90 transition-all duration-500 transform hover:scale-105 hover:shadow-lg"
               >
-                <span className="relative z-10 font-bold text-lg">দান করুন</span>
+                <span className="relative font-bold text-lg">দান করুন</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-color/10 to-secondary-color/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               </Button>
             </div>

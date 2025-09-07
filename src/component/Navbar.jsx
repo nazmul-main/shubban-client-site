@@ -18,7 +18,6 @@ const navItems = [
   { href: "/projects", label: "আমাদের কার্যক্রম", icon: FiTarget },
   { href: "/gallery", label: "গ্যালারী", icon: FiImage },
   { href: "/blog", label: "ব্লগ", icon: FiEdit },
-  { href: "/donation", label: "দান", icon: FiHeart },
   { href: "/contact", label: "যোগাযোগ", icon: FiEdit },
 ];
 
@@ -36,7 +35,7 @@ const Logo = ({ size = "md", className = "" }) => {
         src="/logo/logo_1.jpg" 
         alt="Logo" 
         fill 
-        className="object-contain rounded-2xl transition-all duration-700 group-hover:scale-110 relative z-10 shadow-lg"
+        className="object-contain rounded-2xl transition-all duration-700 group-hover:scale-110 relative shadow-lg"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
     </Link>
@@ -92,7 +91,7 @@ export default function Navbar() {
               className="group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <FiHeart className="mr-1" />
-              <span className="relative z-10 text-xs">দান করুন</span>
+              <span className="relative text-xs">দান করুন</span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
             </Button>
             
@@ -197,7 +196,7 @@ export default function Navbar() {
                 className="group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 hover:shadow-xl"
               >
                 <FiHeart className="mr-2" />
-                <span className="relative z-10">দান করুন</span>
+                <span className="relative">দান করুন</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
               </Button>
             </div>

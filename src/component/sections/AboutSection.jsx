@@ -32,7 +32,7 @@ const AboutSection = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-color/5 rounded-full blur-3xl animate-spin-slow"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-center text-center">
           
           {/* Main Content - Centered */}
@@ -75,7 +75,7 @@ const AboutSection = () => {
                 size="lg"
                 className="group relative overflow-hidden bg-gradient-to-r from-primary-color to-secondary-color hover:from-secondary-color hover:to-primary-color transition-all duration-500 transform hover:scale-105 hover:shadow-xl hover:shadow-primary-color/25"
               >
-                <span className="relative z-10 font-bold text-lg">আরও জানুন</span>
+                <span className="relative font-bold text-lg">আরও জানুন</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-100"></div>
               </Button>
@@ -90,7 +90,7 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary-color/20 via-secondary-color/10 to-accent-color/20 rounded-2xl"></div>
               
               {/* Content */}
-              <div className="relative z-10">
+              <div className="relative">
                 <div className="text-center mb-6 sm:mb-8">
                   <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white mb-3 sm:mb-4">
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-color to-secondary-color">

@@ -43,7 +43,7 @@ const CategorySection = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent-color/5 rounded-full blur-3xl animate-spin-slow"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-xl mb-6">
@@ -110,7 +110,7 @@ const CategorySection = () => {
                   size="md"
                   className={`group/btn relative overflow-hidden border-2 border-transparent bg-gradient-to-r ${category.gradient} text-white hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
                 >
-                  <span className="relative z-10 font-semibold text-sm">আরও দেখুন</span>
+                  <span className="relative font-semibold text-sm">আরও দেখুন</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover/btn:translate-x-0 transition-transform duration-300"></div>
                 </Button>
               </div>

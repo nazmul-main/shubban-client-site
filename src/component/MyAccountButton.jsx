@@ -37,7 +37,7 @@ const MyAccountButton = () => {
       {/* Close Button */}
       <button
         onClick={closePopup}
-        className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200 z-10"
+        className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors duration-200"
         aria-label="Close"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

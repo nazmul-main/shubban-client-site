@@ -8,7 +8,7 @@ export default function Donor() {
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="p-8 text-center relative z-10">
+      <div className="p-8 text-center relative">
         <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-8 shadow-lg max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6 text-teal-400">দাতা ও আজীবন সদস্য</h1>
           <p className="text-gray-200 text-lg">দাতা ও আজীবন সদস্য সম্পর্কিত তথ্য শীঘ্রই প্রকাশিত হবে।</p>

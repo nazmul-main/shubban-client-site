@@ -119,7 +119,7 @@ const HeroSection = () => {
                       size="sm"
                       className="group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-700 transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/30 px-6 py-3 sm:px-8 sm:py-4 rounded-full border border-emerald-400/20"
                     >
-                      <span className="relative z-10 font-bold text-sm sm:text-base drop-shadow-lg">আমাদের সম্পর্কে</span>
+                      <span className="relative font-bold text-sm sm:text-base drop-shadow-lg">আমাদের সম্পর্কে</span>
                       <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 delay-100"></div>
                     </Button>
@@ -130,7 +130,7 @@ const HeroSection = () => {
                       size="sm"
                       className="group relative overflow-hidden border-2 border-emerald-400 text-emerald-400 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white transition-all duration-700 transform hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/30 px-6 py-3 sm:px-8 sm:py-4 rounded-full backdrop-blur-sm"
                     >
-                      <span className="relative z-10 font-bold text-sm sm:text-base drop-shadow-lg">আমাদের কার্যক্রম</span>
+                      <span className="relative font-bold text-sm sm:text-base drop-shadow-lg">আমাদের কার্যক্রম</span>
                       <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
                       <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 rounded-full"></div>
                     </Button>

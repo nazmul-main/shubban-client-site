@@ -8,7 +8,7 @@ export default function PrivacyPage() {
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-2 py-4 max-w-4xl relative z-10">
+      <div className="container mx-auto px-2 py-4 max-w-4xl relative">
         <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg p-4 shadow-lg">
           <h1 className="text-3xl font-bold text-emerald-400 mb-6">গোপনীয়তা নীতি</h1>
           

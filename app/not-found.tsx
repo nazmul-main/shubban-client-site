@@ -27,7 +27,7 @@ export default function NotFound() {
       </div>
 
       {/* Main Content */}
-      <div className={`max-w-4xl mx-auto text-center relative z-10 transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className={`max-w-4xl mx-auto text-center relative transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         
         {/* Islamic Geometric Pattern */}
         <div className="mb-8">
@@ -88,7 +88,7 @@ export default function NotFound() {
             href="/"
             className="group relative px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
-            <span className="relative z-10 flex items-center space-x-2">
+            <span className="relative flex items-center space-x-2">
               <span>🏠</span>
               <span>হোমে ফিরুন</span>
             </span>
@@ -99,7 +99,7 @@ export default function NotFound() {
             onClick={() => window.history.back()}
             className="group relative px-8 py-4 bg-white text-emerald-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-emerald-200 hover:border-emerald-300"
           >
-            <span className="relative z-10 flex items-center space-x-2">
+            <span className="relative flex items-center space-x-2">
               <span>↩️</span>
               <span>পিছনে যান</span>
             </span>

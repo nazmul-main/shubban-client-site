@@ -52,7 +52,7 @@ export default function Footer() {
         }}
       ></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -66,7 +66,7 @@ export default function Footer() {
                     src="/logo/logo_1.jpg" 
                     alt="Logo" 
                     fill 
-                    className="object-contain rounded-xl relative z-10 shadow-lg group-hover:shadow-xl transition-all duration-500"
+                    className="object-contain rounded-xl relative shadow-lg group-hover:shadow-xl transition-all duration-500"
                   />
                 </div>
                 <div>
