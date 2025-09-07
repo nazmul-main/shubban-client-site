@@ -54,8 +54,8 @@ const StatsSection = () => {
           </p>
         </div>
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        {/* Stats grid - 3 cards centered */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {stats.map((stat, index) => (
             <div 
               key={index} 

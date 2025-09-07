@@ -3,15 +3,15 @@ import Button from '../ui/Button';
 const CTASection = () => {
   return (
     <section className="relative py-16 sm:py-20 md:py-24 overflow-hidden">
-      {/* Updated gradient background to match other sections */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"></div>
+      {/* Dark gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900"></div>
       
       {/* Brand color overlay for consistency */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-color/10 via-secondary-color/5 to-accent-color/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-color/20 via-secondary-color/10 to-accent-color/20"></div>
       
       {/* Additional gradient layers for depth */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary-color/5 via-transparent to-secondary-color/5"></div>
-      <div className="absolute inset-0 bg-gradient-to-bl from-accent-color/5 via-transparent to-primary-color/5"></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary-color/10 via-transparent to-secondary-color/10"></div>
+      <div className="absolute inset-0 bg-gradient-to-bl from-accent-color/10 via-transparent to-primary-color/10"></div>
       
       {/* Animated background elements */}
       <div className="absolute inset-0">
@@ -37,16 +37,16 @@ const CTASection = () => {
           <div className="max-w-4xl mx-auto space-y-8">
             
             {/* Section badge */}
-            <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-xl rounded-full border border-white/30 shadow-xl">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 shadow-xl">
               <div className="w-2 h-2 bg-gradient-to-r from-primary-color to-secondary-color rounded-full mr-2 animate-pulse"></div>
-              <span className="text-xs font-bold text-gray-800 bg-gradient-to-r from-primary-color to-secondary-color bg-clip-text text-transparent">
+              <span className="text-xs font-bold text-white bg-gradient-to-r from-primary-color to-secondary-color bg-clip-text text-transparent">
                 আমাদের সাথে যোগ দিন
               </span>
             </div>
 
             {/* Main heading */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-gray-900 leading-none">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white leading-none">
                 <span className="block">আমাদের সাথে</span>
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary-color via-secondary-color to-accent-color animate-gradient-x">
                   যোগ দিন
@@ -58,7 +58,7 @@ const CTASection = () => {
             </div>
 
             {/* Description */}
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
               ইসলামের সঠিক শিক্ষা প্রচার এবং সমাজ উন্নয়নে আমাদের সাথে কাজ করুন
             </p>
 
@@ -88,20 +88,20 @@ const CTASection = () => {
 
             {/* Additional info */}
             <div className="pt-8">
-              <div className="inline-flex items-center space-x-6 px-8 py-4 bg-white/20 backdrop-blur-xl rounded-full border border-white/30">
+              <div className="inline-flex items-center space-x-6 px-8 py-4 bg-white/10 backdrop-blur-xl rounded-full border border-white/20">
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-primary-color rounded-full animate-pulse"></div>
-                  <span className="text-base text-gray-700 font-medium">২৪/৭ সেবা</span>
+                  <span className="text-base text-gray-300 font-medium">২৪/৭ সেবা</span>
                 </div>
-                <div className="w-px h-6 bg-gray-300"></div>
+                <div className="w-px h-6 bg-gray-400"></div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-secondary-color rounded-full animate-pulse delay-300"></div>
-                  <span className="text-base text-gray-700 font-medium">বিনামূল্যে</span>
+                  <span className="text-base text-gray-300 font-medium">বিনামূল্যে</span>
                 </div>
-                <div className="w-px h-6 bg-gray-300"></div>
+                <div className="w-px h-6 bg-gray-400"></div>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-accent-color rounded-full animate-pulse delay-600"></div>
-                  <span className="text-base text-gray-700 font-medium">সরাসরি যোগাযোগ</span>
+                  <span className="text-base text-gray-300 font-medium">সরাসরি যোগাযোগ</span>
                 </div>
               </div>
             </div>
