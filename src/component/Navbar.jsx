@@ -9,7 +9,7 @@ import Button from "./ui/Button";
 
 import { FiMenu, FiHome, FiInfo, FiFileText, FiTarget, FiImage, FiEdit, FiHeart } from "react-icons/fi";
 import MyAccountButton from "./MyAccountButton";
-import DonationPopup from "./DonationPopup";
+import { usePopup } from "../context/PopupContext";
 
 const navItems = [
   { href: "/", label: "হোম", icon: FiHome },
@@ -45,7 +45,7 @@ const Logo = ({ size = "md", className = "" }) => {
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [donationPopupOpen, setDonationPopupOpen] = useState(false);
+  const { openDonationPopup, openUserLoginPopup } = usePopup();
   
   const colorContext = useContext(ColorContext);
   const colors = colorContext || {
@@ -87,7 +87,7 @@ export default function Navbar() {
             <Button 
               variant="primary" 
               size="sm"
-              onClick={() => setDonationPopupOpen(true)}
+              onClick={openDonationPopup}
               className="group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <FiHeart className="mr-1" />
@@ -192,7 +192,7 @@ export default function Navbar() {
               <Button 
                 variant="primary" 
                 size="sm"
-                onClick={() => setDonationPopupOpen(true)}
+                onClick={openDonationPopup}
                 className="group relative overflow-hidden bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-teal-500 hover:to-emerald-500 transition-all duration-500 transform hover:scale-105 hover:shadow-xl"
               >
                 <FiHeart className="mr-2" />
@@ -203,12 +203,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      
-      {/* Donation Popup */}
-      <DonationPopup 
-        isOpen={donationPopupOpen} 
-        onClose={() => setDonationPopupOpen(false)} 
-      />
     </header>
   );
 }

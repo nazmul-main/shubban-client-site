@@ -1,9 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ColorProvider } from "../src/context/ColorContext";
+import { PopupProvider } from "../src/context/PopupContext";
 // Removed AuthProvider import
 import RouteAwareLayout from "../src/component/RouteAwareLayout";
 import BrowserExtensionHandler from "../src/component/BrowserExtensionHandler";
+import GlobalPopups from "../src/component/GlobalPopups";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -141,11 +143,14 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}
       >
         <BrowserExtensionHandler />
-                    <ColorProvider>
-              <RouteAwareLayout>
-                {children}
-              </RouteAwareLayout>
-            </ColorProvider>
+        <ColorProvider>
+          <PopupProvider>
+            <RouteAwareLayout>
+              {children}
+            </RouteAwareLayout>
+            <GlobalPopups />
+          </PopupProvider>
+        </ColorProvider>
       </body>
     </html>
   );

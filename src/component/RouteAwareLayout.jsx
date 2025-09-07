@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import FloatingActionButtons from './FloatingActionButtons';
 import { usePathname } from 'next/navigation';
 
 export default function RouteAwareLayout({ children }) {
@@ -37,6 +38,7 @@ export default function RouteAwareLayout({ children }) {
     return (
       <main className="w-full relative flex-1">
         {children}
+        <FloatingActionButtons />
       </main>
     );
   }
