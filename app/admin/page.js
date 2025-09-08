@@ -54,7 +54,7 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
     { id: 'gallery', label: 'গ্যালারি', icon: FiImage },
     { id: 'about-us', label: 'আমাদের সম্পর্ক', icon: FiInfo },
     { id: 'activities', label: 'আমাদের কার্যক্রম', icon: FiActivity },
-    { id: 'faq', label: 'FAQ Management', icon: FiHelpCircle },
+    { id: 'faq', label: 'FAQ ম্যানেজমেন্ট', icon: FiHelpCircle },
     { id: 'users', label: 'ইউজার ম্যানেজমেন্ট', icon: FiUsers },
   ];
 
