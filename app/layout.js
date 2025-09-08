@@ -4,6 +4,7 @@ import { ColorProvider } from "../src/context/ColorContext";
 import { PopupProvider } from "../src/context/PopupContext";
 // Removed AuthProvider import
 import RouteAwareLayout from "../src/component/RouteAwareLayout";
+import RouteTransition from "../src/component/RouteTransition";
 import BrowserExtensionHandler from "../src/component/BrowserExtensionHandler";
 import GlobalPopups from "../src/component/GlobalPopups";
 
@@ -145,9 +146,11 @@ export default function RootLayout({ children }) {
         <BrowserExtensionHandler />
         <ColorProvider>
           <PopupProvider>
-            <RouteAwareLayout>
-              {children}
-            </RouteAwareLayout>
+            <RouteTransition>
+              <RouteAwareLayout>
+                {children}
+              </RouteAwareLayout>
+            </RouteTransition>
             <GlobalPopups />
           </PopupProvider>
         </ColorProvider>

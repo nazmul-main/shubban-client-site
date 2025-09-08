@@ -3,9 +3,21 @@
 const nextConfig = {
   // Suppress hydration warnings in development for browser extensions
   reactStrictMode: true,
+  // Static Site Generation optimization
+  output: 'export',
+  trailingSlash: true,
+  // Prefetch optimization
   experimental: {
-    // Suppress hydration warnings for known browser extension issues
-    suppressHydrationWarning: true,
+    optimizePackageImports: ['react-icons'],
+  },
+  images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
   // Custom webpack configuration to handle browser extensions
   webpack: (config, { dev }) => {
@@ -16,6 +28,22 @@ const nextConfig = {
         minimize: false,
       };
     }
+    
+    // Optimize for faster loading
+    config.optimization = {
+      ...config.optimization,
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
+    };
+    
     return config;
   },
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   FiX,
   FiCopy,
@@ -96,9 +97,11 @@ const DonationPopup = ({ isOpen, onClose }) => {
                 <span className="text-gray-300">ব্যাংকের নাম:</span>
                 <div className="flex items-center">
                   <div className="bg-white p-2 rounded-lg mr-3">
-                    <img
+                    <Image
                       src="/logo/islami_bank_logo.png"
                       alt="Islami Bank Logo"
+                      width={24}
+                      height={24}
                       className="w-6 h-6"
                     />
                   </div>
@@ -164,9 +167,11 @@ const DonationPopup = ({ isOpen, onClose }) => {
                   <div className="flex justify-between items-center mb-2">
                     <div className="flex items-center">
                       <div className="bg-white p-1.5 rounded-lg mr-2">
-                        <img
+                        <Image
                           src={service.logo}
                           alt={`${service.name} Logo`}
+                          width={20}
+                          height={20}
                           className="w-5 h-5"
                         />
                       </div>

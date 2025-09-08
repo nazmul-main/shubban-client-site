@@ -30,12 +30,15 @@ const Logo = ({ size = "md", className = "" }) => {
   };
   
   return (
-    <Link href="/" className={`relative ${sizeClasses[size]} ${className} group block`}>
+    <Link href="/" prefetch={true} className={`relative ${sizeClasses[size]} ${className} group block`}>
       <Image 
         src="/logo/logo_1.jpg" 
         alt="Logo" 
         fill 
         className="object-contain rounded-2xl transition-all duration-700 group-hover:scale-110 relative shadow-lg"
+        sizes="(max-width: 768px) 56px, (max-width: 1024px) 64px, 80px"
+        quality={90}
+        priority
       />
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
     </Link>
@@ -126,6 +129,7 @@ export default function Navbar() {
                       <Link 
                         href={item.href}
                         onClick={() => setOpen(false)}
+                        prefetch={true}
                         className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                           pathname === item.href 
                             ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg' 
@@ -170,6 +174,7 @@ export default function Navbar() {
                     <li key={item.href}>
                       <Link 
                         href={item.href}
+                        prefetch={true}
                         className={`flex items-center space-x-1 px-3 py-1.5 font-medium text-sm transition-all duration-300 rounded-lg group relative overflow-hidden ${
                           pathname === item.href 
                             ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg' 
