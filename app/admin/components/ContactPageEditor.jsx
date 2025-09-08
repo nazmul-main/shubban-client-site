@@ -255,7 +255,7 @@ const ContactPageEditor = () => {
               ...contactInfo,
               socialMedia: {...contactInfo.socialMedia, [platform]: e.target.value}
             })}
-            className="flex-1 px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="flex-1 px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
             placeholder={`${platform} URL`}
           />
         </div>

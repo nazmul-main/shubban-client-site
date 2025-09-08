@@ -213,7 +213,7 @@ const SectionsManagement = () => {
                 type="text"
                 value={newSection.name}
                 onChange={(e) => setNewSection({...newSection, name: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="সেকশনের নাম লিখুন"
               />
             </div>
@@ -223,7 +223,7 @@ const SectionsManagement = () => {
               <select
                 value={newSection.type}
                 onChange={(e) => setNewSection({...newSection, type: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
               >
                 {sectionTypes.map(type => (
                   <option key={type.value} value={type.value}>{type.label}</option>
@@ -237,7 +237,7 @@ const SectionsManagement = () => {
                 type="text"
                 value={newSection.title}
                 onChange={(e) => setNewSection({...newSection, title: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="শিরোনাম লিখুন"
               />
             </div>
@@ -248,7 +248,7 @@ const SectionsManagement = () => {
                 type="text"
                 value={newSection.subtitle}
                 onChange={(e) => setNewSection({...newSection, subtitle: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="উপশিরোনাম লিখুন"
               />
             </div>
@@ -259,7 +259,7 @@ const SectionsManagement = () => {
                 value={newSection.description}
                 onChange={(e) => setNewSection({...newSection, description: e.target.value})}
                 rows={3}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="বিবরণ লিখুন"
               />
             </div>
@@ -270,7 +270,7 @@ const SectionsManagement = () => {
                 type="text"
                 value={newSection.image}
                 onChange={(e) => setNewSection({...newSection, image: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="ছবির URL লিখুন"
               />
             </div>
@@ -327,7 +327,7 @@ const SectionsManagement = () => {
                   type="text"
                   value={editingSection.name}
                   onChange={(e) => setEditingSection({...editingSection, name: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
@@ -336,7 +336,7 @@ const SectionsManagement = () => {
                 <select
                   value={editingSection.type}
                   onChange={(e) => setEditingSection({...editingSection, type: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 >
                   {sectionTypes.map(type => (
                     <option key={type.value} value={type.value}>{type.label}</option>
@@ -350,7 +350,7 @@ const SectionsManagement = () => {
                   type="text"
                   value={editingSection.title}
                   onChange={(e) => setEditingSection({...editingSection, title: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
@@ -360,7 +360,7 @@ const SectionsManagement = () => {
                   type="text"
                   value={editingSection.subtitle}
                   onChange={(e) => setEditingSection({...editingSection, subtitle: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
@@ -370,7 +370,7 @@ const SectionsManagement = () => {
                   value={editingSection.description}
                   onChange={(e) => setEditingSection({...editingSection, description: e.target.value})}
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
@@ -380,7 +380,7 @@ const SectionsManagement = () => {
                   type="text"
                   value={editingSection.image}
                   onChange={(e) => setEditingSection({...editingSection, image: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               

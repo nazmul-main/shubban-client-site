@@ -15,7 +15,6 @@ import {
   FiMail, 
   FiPlus,
   FiTrash2,
-  FiSave,
   FiUpload,
   FiEye,
   FiX,
@@ -26,7 +25,6 @@ import {
   FiSearch,
   FiFilter,
   FiDownload,
-  FiRefreshCw,
   FiInfo,
   FiActivity,
   FiHelpCircle,
@@ -40,6 +38,7 @@ import GalleryManagement from './components/GalleryManagement';
 import LogoManagement from './components/LogoManagement';
 import ContactPageEditor from './components/ContactPageEditor';
 import RouteManagement from './components/RouteManagement';
+import FAQManagement from './components/FAQManagement';
 
 // Dashboard Layout Component
 const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) => {
@@ -55,7 +54,7 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
     { id: 'gallery', label: 'গ্যালারি', icon: FiImage },
     { id: 'about-us', label: 'আমাদের সম্পর্ক', icon: FiInfo },
     { id: 'activities', label: 'আমাদের কার্যক্রম', icon: FiActivity },
-    { id: 'faq', label: 'সাধারণ প্রশ্ন', icon: FiHelpCircle },
+    { id: 'faq', label: 'FAQ Management', icon: FiHelpCircle },
     { id: 'users', label: 'ইউজার ম্যানেজমেন্ট', icon: FiUsers },
   ];
 
@@ -152,15 +151,6 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
               </h2>
             </div>
             
-            <div className="flex items-center space-x-4">
-              <button className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg">
-                <FiRefreshCw className="w-5 h-5" />
-              </button>
-              <button className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors">
-                <FiSave className="w-4 h-4 mr-2 inline" />
-                সেভ করুন
-              </button>
-            </div>
           </div>
         </header>
 
@@ -399,10 +389,7 @@ export default function AdminDashboard() {
           <p className="text-gray-300">আমাদের কার্যক্রম পেজ এখানে আসবে...</p>
         </div>;
       case 'faq':
-        return <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
-          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4">সাধারণ প্রশ্ন</h3>
-          <p className="text-gray-300">সাধারণ প্রশ্ন পেজ এখানে আসবে...</p>
-        </div>;
+        return <FAQManagement />;
       case 'users':
         return <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
           <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4">ইউজার ম্যানেজমেন্ট</h3>
