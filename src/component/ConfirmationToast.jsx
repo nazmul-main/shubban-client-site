@@ -82,7 +82,7 @@ const ConfirmationToast = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center ">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-300"
@@ -91,14 +91,14 @@ const ConfirmationToast = ({
       
       {/* Toast */}
       <div 
-        className={`relative max-w-xs w-full mx-3 border rounded-lg shadow-2xl p-3 transform transition-all duration-300 ${
+        className={`relative max-w-xs w-full mx-3 border rounded-lg shadow-2xl py- sm:py-3 px-6 sm:px-3 transform transition-all duration-300 bg-gray-800 border-gray-700 ${
           isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
-        } ${styles.container}`}
+        }`}
       >
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
+          className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors"
         >
           <FiX className="w-4 h-4" />
         </button>
@@ -110,10 +110,10 @@ const ConfirmationToast = ({
           </div>
           
           <div className="flex-1">
-            <h3 className={`text-xs font-semibold mb-1 ${styles.title}`}>
+            <h3 className="text-xs font-semibold mb-1 text-white">
               {title}
             </h3>
-            <p className={`text-xs mb-2 ${styles.message}`}>
+            <p className="text-xs mb-2 text-gray-300">
               {message}
             </p>
             

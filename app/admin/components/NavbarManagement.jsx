@@ -147,22 +147,23 @@ const NavbarManagement = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">নেভিগেশন মেনু ম্যানেজমেন্ট</h2>
-          <p className="text-gray-600">ওয়েবসাইটের নেভিগেশন মেনু পরিচালনা করুন</p>
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">নেভিগেশন মেনু ম্যানেজমেন্ট</h2>
+          <p className="text-xs sm:text-sm text-gray-300">ওয়েবসাইটের নেভিগেশন মেনু পরিচালনা করুন</p>
         </div>
         <button
           onClick={() => setShowAddForm(true)}
-          className="flex items-center px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+          className="flex items-center px-2 sm:px-4 py-1.5 sm:py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors text-xs sm:text-sm"
         >
-          <FiPlus className="w-4 h-4 mr-2" />
-          নতুন মেনু আইটেম
+          <FiPlus className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+          <span className="hidden sm:inline">নতুন মেনু আইটেম</span>
+          <span className="sm:hidden">নতুন</span>
         </button>
       </div>
 
       {/* Preview */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">মেনু প্রিভিউ</h3>
-        <div className="bg-gray-50 p-4 rounded-lg">
+      <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+        <h3 className="text-lg font-semibold text-white mb-4">মেনু প্রিভিউ</h3>
+        <div className="bg-gray-700 p-4 rounded-lg">
           <nav className="flex flex-wrap gap-2">
             {menuItems
               .filter(item => item.isActive)
@@ -172,7 +173,7 @@ const NavbarManagement = () => {
                 return (
                   <div
                     key={item.id}
-                    className="flex items-center space-x-1 px-3 py-1.5 bg-white text-gray-700 rounded-lg shadow-sm border border-gray-200"
+                    className="flex items-center space-x-1 px-3 py-1.5 bg-gray-600 text-gray-200 rounded-lg shadow-lg border border-gray-500 hover:bg-gray-500 hover:border-gray-400 transition-all duration-200 cursor-pointer"
                   >
                     <IconComponent className="w-4 h-4" />
                     <span className="text-sm font-medium">{item.label}</span>
@@ -185,12 +186,12 @@ const NavbarManagement = () => {
 
       {/* Add Menu Item Form */}
       {showAddForm && (
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">নতুন মেনু আইটেম যোগ করুন</h3>
+            <h3 className="text-lg font-semibold text-white">নতুন মেনু আইটেম যোগ করুন</h3>
             <button
               onClick={() => setShowAddForm(false)}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-gray-400 hover:text-white"
             >
               <FiX className="w-5 h-5" />
             </button>
@@ -198,33 +199,33 @@ const NavbarManagement = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">লেবেল</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">লেবেল</label>
               <input
                 type="text"
                 value={newItem.label}
                 onChange={(e) => setNewItem({...newItem, label: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="মেনু আইটেমের নাম লিখুন"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">লিংক (URL)</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">লিংক (URL)</label>
               <input
                 type="text"
                 value={newItem.href}
                 onChange={(e) => setNewItem({...newItem, href: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="/page-name বা https://example.com"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">আইকন</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">আইকন</label>
               <select
                 value={newItem.icon}
                 onChange={(e) => setNewItem({...newItem, icon: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
               >
                 {availableIcons.map(icon => {
                   const IconComponent = icon.icon;
@@ -245,7 +246,7 @@ const NavbarManagement = () => {
                   onChange={(e) => setNewItem({...newItem, isActive: e.target.checked})}
                   className="mr-2"
                 />
-                <span className="text-sm font-medium text-gray-700">সক্রিয়</span>
+                <span className="text-sm font-medium text-gray-300">সক্রিয়</span>
               </label>
               
               <label className="flex items-center">
@@ -255,7 +256,7 @@ const NavbarManagement = () => {
                   onChange={(e) => setNewItem({...newItem, isExternal: e.target.checked})}
                   className="mr-2"
                 />
-                <span className="text-sm font-medium text-gray-700">বাহ্যিক লিংক</span>
+                <span className="text-sm font-medium text-gray-300">বাহ্যিক লিংক</span>
               </label>
             </div>
           </div>
@@ -263,7 +264,7 @@ const NavbarManagement = () => {
           <div className="flex justify-end space-x-3 mt-6">
             <button
               onClick={() => setShowAddForm(false)}
-              className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-4 py-2 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-700 transition-colors"
             >
               বাতিল
             </button>
@@ -281,12 +282,12 @@ const NavbarManagement = () => {
       {/* Edit Menu Item Modal */}
       {editingItem && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-xl max-w-2xl w-full mx-4">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-xl max-w-2xl w-full mx-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">মেনু আইটেম সম্পাদনা</h3>
+              <h3 className="text-lg font-semibold text-white">মেনু আইটেম সম্পাদনা</h3>
               <button
                 onClick={() => setEditingItem(null)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-300"
               >
                 <FiX className="w-5 h-5" />
               </button>
@@ -294,31 +295,31 @@ const NavbarManagement = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">লেবেল</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">লেবেল</label>
                 <input
                   type="text"
                   value={editingItem.label}
                   onChange={(e) => setEditingItem({...editingItem, label: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">লিংক (URL)</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">লিংক (URL)</label>
                 <input
                   type="text"
                   value={editingItem.href}
                   onChange={(e) => setEditingItem({...editingItem, href: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">আইকন</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">আইকন</label>
                 <select
                   value={editingItem.icon}
                   onChange={(e) => setEditingItem({...editingItem, icon: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 >
                   {availableIcons.map(icon => (
                     <option key={icon.value} value={icon.value}>
@@ -336,7 +337,7 @@ const NavbarManagement = () => {
                     onChange={(e) => setEditingItem({...editingItem, isActive: e.target.checked})}
                     className="mr-2"
                   />
-                  <span className="text-sm font-medium text-gray-700">সক্রিয়</span>
+                  <span className="text-sm font-medium text-gray-300">সক্রিয়</span>
                 </label>
                 
                 <label className="flex items-center">
@@ -346,7 +347,7 @@ const NavbarManagement = () => {
                     onChange={(e) => setEditingItem({...editingItem, isExternal: e.target.checked})}
                     className="mr-2"
                   />
-                  <span className="text-sm font-medium text-gray-700">বাহ্যিক লিংক</span>
+                  <span className="text-sm font-medium text-gray-300">বাহ্যিক লিংক</span>
                 </label>
               </div>
             </div>
@@ -354,16 +355,16 @@ const NavbarManagement = () => {
             <div className="flex justify-end space-x-3 mt-6">
               <button
                 onClick={() => setEditingItem(null)}
-                className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                className="px-3 py-1.5 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-700 transition-colors text-sm"
               >
                 বাতিল
               </button>
               <button
                 onClick={handleSave}
-                className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                className="px-3 py-1.5 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors text-sm"
               >
-                <FiSave className="w-4 h-4 mr-2 inline" />
-                সেভ করুন
+                <FiSave className="w-3 h-3 mr-1 inline" />
+                সেভ
               </button>
             </div>
           </div>
@@ -371,29 +372,29 @@ const NavbarManagement = () => {
       )}
 
       {/* Menu Items List */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900">মেনু আইটেমসমূহ</h3>
+      <div className="bg-gray-800 rounded-lg shadow-lg border border-gray-700">
+        <div className="p-6 border-b border-gray-700">
+          <h3 className="text-lg font-semibold text-white">মেনু আইটেমসমূহ</h3>
         </div>
         
         <div className="divide-y divide-gray-200">
           {menuItems.sort((a, b) => a.order - b.order).map((item) => {
             const IconComponent = getIconComponent(item.icon);
             return (
-              <div key={item.id} className="p-6 hover:bg-gray-50 transition-colors">
+              <div key={item.id} className="p-6 hover:bg-gray-700 transition-colors">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <div className="flex flex-col space-y-1">
                       <button
                         onClick={() => handleMoveUp(item.id)}
-                        className="text-gray-400 hover:text-gray-600"
+                        className="text-gray-400 hover:text-gray-300"
                         disabled={item.order === 1}
                       >
                         <FiMove className="w-4 h-4 rotate-180" />
                       </button>
                       <button
                         onClick={() => handleMoveDown(item.id)}
-                        className="text-gray-400 hover:text-gray-600"
+                        className="text-gray-400 hover:text-gray-300"
                         disabled={item.order === menuItems.length}
                       >
                         <FiMove className="w-4 h-4" />
@@ -401,10 +402,10 @@ const NavbarManagement = () => {
                     </div>
                     
                     <div className="flex items-center space-x-3">
-                      <IconComponent className="w-5 h-5 text-gray-600" />
+                      <IconComponent className="w-5 h-5 text-gray-300" />
                       <div>
-                        <h4 className="text-lg font-medium text-gray-900">{item.label}</h4>
-                        <p className="text-sm text-gray-600">{item.href}</p>
+                        <h4 className="text-lg font-medium text-white">{item.label}</h4>
+                        <p className="text-sm text-gray-300">{item.href}</p>
                       </div>
                     </div>
                     
@@ -429,8 +430,8 @@ const NavbarManagement = () => {
                       onClick={() => handleToggleActive(item.id)}
                       className={`p-2 rounded-lg transition-colors ${
                         item.isActive 
-                          ? 'text-green-600 hover:bg-green-50' 
-                          : 'text-gray-400 hover:bg-gray-50'
+                          ? 'text-green-400 hover:bg-green-500/20' 
+                          : 'text-gray-400 hover:bg-gray-700'
                       }`}
                     >
                       {item.isActive ? <FiToggleRight className="w-5 h-5" /> : <FiToggleLeft className="w-5 h-5" />}
@@ -438,14 +439,14 @@ const NavbarManagement = () => {
                     
                     <button
                       onClick={() => handleEdit(item)}
-                      className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
+                      className="p-2 text-emerald-400 hover:bg-emerald-500/20 rounded-lg transition-colors"
                     >
                       <FiEdit3 className="w-4 h-4" />
                     </button>
                     
                     <button
                       onClick={() => handleDelete(item.id)}
-                      className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      className="p-2 text-red-400 hover:bg-red-500/20 rounded-lg transition-colors"
                     >
                       <FiTrash2 className="w-4 h-4" />
                     </button>

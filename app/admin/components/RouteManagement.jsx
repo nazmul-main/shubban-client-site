@@ -319,25 +319,26 @@ const RouteManagement = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">রুট ম্যানেজমেন্ট</h2>
-          <p className="text-gray-600">ওয়েবসাইটের রুট এবং পেজ পরিচালনা করুন</p>
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">রুট ম্যানেজমেন্ট</h2>
+          <p className="text-xs sm:text-sm text-gray-300">ওয়েবসাইটের রুট এবং পেজ পরিচালনা করুন</p>
         </div>
         <button
           onClick={() => setShowAddForm(true)}
-          className="flex items-center px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+          className="flex items-center px-2 sm:px-4 py-1.5 sm:py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors text-xs sm:text-sm"
         >
-          <FiPlus className="w-4 h-4 mr-2" />
-          নতুন রুট যোগ করুন
+          <FiPlus className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+          <span className="hidden sm:inline">নতুন রুট যোগ করুন</span>
+          <span className="sm:hidden">নতুন রুট</span>
         </button>
       </div>
 
       {/* Route Guidelines */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <div className="bg-blue-900/20 border border-blue-700 rounded-lg p-6">
         <div className="flex items-start space-x-3">
-          <FiAlertCircle className="w-5 h-5 text-blue-600 mt-0.5" />
+          <FiAlertCircle className="w-5 h-5 text-blue-400 mt-0.5" />
           <div>
-            <h3 className="text-lg font-semibold text-blue-900 mb-2">রুট গাইডলাইন</h3>
-            <ul className="text-sm text-blue-800 space-y-1">
+            <h3 className="text-lg font-semibold text-blue-300 mb-2">রুট গাইডলাইন</h3>
+            <ul className="text-sm text-blue-200 space-y-1">
               <li>• রুট পাথ সর্বদা "/" দিয়ে শুরু করতে হবে</li>
               <li>• পাবলিক রুট সবাই দেখতে পারবে, প্রাইভেট রুট শুধু এডমিন</li>
               <li>• কম্পোনেন্ট নাম PascalCase এ লিখতে হবে</li>
@@ -349,7 +350,7 @@ const RouteManagement = () => {
       </div>
 
       {/* Filters */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+      <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="relative">
             <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -358,14 +359,14 @@ const RouteManagement = () => {
               placeholder="রুট খুঁজুন..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
             />
           </div>
           
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           >
             <option value="all">সব স্ট্যাটাস</option>
             <option value="active">সক্রিয়</option>
@@ -373,7 +374,7 @@ const RouteManagement = () => {
           </select>
           
           <div className="flex space-x-2">
-            <button className="flex items-center px-3 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            <button className="flex items-center px-3 py-2 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-700 transition-colors">
               <FiRefreshCw className="w-4 h-4 mr-2" />
               রিফ্রেশ
             </button>
@@ -383,12 +384,12 @@ const RouteManagement = () => {
 
       {/* Add Route Form */}
       {showAddForm && (
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">নতুন রুট যোগ করুন</h3>
+            <h3 className="text-lg font-semibold text-white">নতুন রুট যোগ করুন</h3>
             <button
               onClick={() => setShowAddForm(false)}
-              className="text-gray-500 hover:text-gray-700"
+              className="text-gray-500 hover:text-gray-300"
             >
               <FiX className="w-5 h-5" />
             </button>
@@ -396,67 +397,67 @@ const RouteManagement = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">রুট পাথ</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">রুট পাথ</label>
               <input
                 type="text"
                 value={newRoute.path}
                 onChange={(e) => setNewRoute({...newRoute, path: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="/page-name"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">রুটের নাম</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">রুটের নাম</label>
               <input
                 type="text"
                 value={newRoute.name}
                 onChange={(e) => setNewRoute({...newRoute, name: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="রুটের নাম"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">কম্পোনেন্ট নাম</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">কম্পোনেন্ট নাম</label>
               <input
                 type="text"
                 value={newRoute.component}
                 onChange={(e) => setNewRoute({...newRoute, component: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="PageComponent"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">বিবরণ</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">বিবরণ</label>
               <input
                 type="text"
                 value={newRoute.description}
                 onChange={(e) => setNewRoute({...newRoute, description: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="রুটের বিবরণ"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">পেজ শিরোনাম</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">পেজ শিরোনাম</label>
               <input
                 type="text"
                 value={newRoute.meta.title}
                 onChange={(e) => setNewRoute({...newRoute, meta: {...newRoute.meta, title: e.target.value}})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="পেজের শিরোনাম"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">মেটা বিবরণ</label>
+              <label className="block text-sm font-medium text-gray-300 mb-2">মেটা বিবরণ</label>
               <input
                 type="text"
                 value={newRoute.meta.description}
                 onChange={(e) => setNewRoute({...newRoute, meta: {...newRoute.meta, description: e.target.value}})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 placeholder="SEO বিবরণ"
               />
             </div>
@@ -469,7 +470,7 @@ const RouteManagement = () => {
                   onChange={(e) => setNewRoute({...newRoute, isActive: e.target.checked})}
                   className="mr-2"
                 />
-                <span className="text-sm font-medium text-gray-700">সক্রিয়</span>
+                <span className="text-sm font-medium text-gray-300">সক্রিয়</span>
               </label>
               
               <label className="flex items-center">
@@ -479,7 +480,7 @@ const RouteManagement = () => {
                   onChange={(e) => setNewRoute({...newRoute, isPublic: e.target.checked})}
                   className="mr-2"
                 />
-                <span className="text-sm font-medium text-gray-700">পাবলিক</span>
+                <span className="text-sm font-medium text-gray-300">পাবলিক</span>
               </label>
             </div>
           </div>
@@ -487,7 +488,7 @@ const RouteManagement = () => {
           <div className="flex justify-end space-x-3 mt-6">
             <button
               onClick={() => setShowAddForm(false)}
-              className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              className="px-4 py-2 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-700 transition-colors"
             >
               বাতিল
             </button>
@@ -505,12 +506,12 @@ const RouteManagement = () => {
       {/* Edit Route Modal */}
       {editingRoute && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">রুট সম্পাদনা</h3>
+              <h3 className="text-lg font-semibold text-white">রুট সম্পাদনা</h3>
               <button
                 onClick={() => setEditingRoute(null)}
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-gray-300"
               >
                 <FiX className="w-5 h-5" />
               </button>
@@ -518,62 +519,62 @@ const RouteManagement = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">রুট পাথ</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">রুট পাথ</label>
                 <input
                   type="text"
                   value={editingRoute.path}
                   onChange={(e) => setEditingRoute({...editingRoute, path: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">রুটের নাম</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">রুটের নাম</label>
                 <input
                   type="text"
                   value={editingRoute.name}
                   onChange={(e) => setEditingRoute({...editingRoute, name: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">কম্পোনেন্ট নাম</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">কম্পোনেন্ট নাম</label>
                 <input
                   type="text"
                   value={editingRoute.component}
                   onChange={(e) => setEditingRoute({...editingRoute, component: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">বিবরণ</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">বিবরণ</label>
                 <input
                   type="text"
                   value={editingRoute.description}
                   onChange={(e) => setEditingRoute({...editingRoute, description: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">পেজ শিরোনাম</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">পেজ শিরোনাম</label>
                 <input
                   type="text"
                   value={editingRoute.meta.title}
                   onChange={(e) => setEditingRoute({...editingRoute, meta: {...editingRoute.meta, title: e.target.value}})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">মেটা বিবরণ</label>
+                <label className="block text-sm font-medium text-gray-300 mb-2">মেটা বিবরণ</label>
                 <input
                   type="text"
                   value={editingRoute.meta.description}
                   onChange={(e) => setEditingRoute({...editingRoute, meta: {...editingRoute.meta, description: e.target.value}})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                 />
               </div>
               
@@ -585,7 +586,7 @@ const RouteManagement = () => {
                     onChange={(e) => setEditingRoute({...editingRoute, isActive: e.target.checked})}
                     className="mr-2"
                   />
-                  <span className="text-sm font-medium text-gray-700">সক্রিয়</span>
+                  <span className="text-sm font-medium text-gray-300">সক্রিয়</span>
                 </label>
                 
                 <label className="flex items-center">
@@ -595,7 +596,7 @@ const RouteManagement = () => {
                     onChange={(e) => setEditingRoute({...editingRoute, isPublic: e.target.checked})}
                     className="mr-2"
                   />
-                  <span className="text-sm font-medium text-gray-700">পাবলিক</span>
+                  <span className="text-sm font-medium text-gray-300">পাবলিক</span>
                 </label>
               </div>
             </div>
@@ -603,16 +604,16 @@ const RouteManagement = () => {
             <div className="flex justify-end space-x-3 mt-6">
               <button
                 onClick={() => setEditingRoute(null)}
-                className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                className="px-3 py-1.5 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-700 transition-colors text-sm"
               >
                 বাতিল
               </button>
               <button
                 onClick={handleSave}
-                className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                className="px-3 py-1.5 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors text-sm"
               >
-                <FiSave className="w-4 h-4 mr-2 inline" />
-                সেভ করুন
+                <FiSave className="w-3 h-3 mr-1 inline" />
+                সেভ
               </button>
             </div>
           </div>
@@ -620,18 +621,18 @@ const RouteManagement = () => {
       )}
 
       {/* Routes List */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900">রুটসমূহ ({filteredRoutes.length})</h3>
+      <div className="bg-gray-800 rounded-lg shadow-lg border border-gray-700">
+        <div className="p-6 border-b border-gray-700">
+          <h3 className="text-lg font-semibold text-white">রুটসমূহ ({filteredRoutes.length})</h3>
         </div>
         
         <div className="divide-y divide-gray-200">
           {filteredRoutes.map((route) => (
-            <div key={route.id} className="p-6 hover:bg-gray-50 transition-colors">
+            <div key={route.id} className="p-6 hover:bg-gray-700 transition-colors">
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
-                    <h4 className="text-lg font-medium text-gray-900">{route.name}</h4>
+                    <h4 className="text-lg font-medium text-white">{route.name}</h4>
                     <span className="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
                       {route.path}
                     </span>
@@ -651,7 +652,7 @@ const RouteManagement = () => {
                     </span>
                   </div>
                   
-                  <p className="text-sm text-gray-600 mb-2">{route.description}</p>
+                  <p className="text-sm text-gray-300 mb-2">{route.description}</p>
                   
                   <div className="flex items-center space-x-4 text-xs text-gray-500">
                     <div className="flex items-center">
@@ -674,8 +675,8 @@ const RouteManagement = () => {
                     onClick={() => handleToggleActive(route.id)}
                     className={`p-2 rounded-lg transition-colors ${
                       route.isActive 
-                        ? 'text-green-600 hover:bg-green-50' 
-                        : 'text-gray-400 hover:bg-gray-50'
+                        ? 'text-green-400 hover:bg-green-500/20' 
+                        : 'text-gray-400 hover:bg-gray-700'
                     }`}
                   >
                     {route.isActive ? <FiCheck className="w-4 h-4" /> : <FiX className="w-4 h-4" />}
@@ -685,8 +686,8 @@ const RouteManagement = () => {
                     onClick={() => handleTogglePublic(route.id)}
                     className={`p-2 rounded-lg transition-colors ${
                       route.isPublic 
-                        ? 'text-emerald-600 hover:bg-emerald-50' 
-                        : 'text-red-600 hover:bg-red-50'
+                        ? 'text-emerald-400 hover:bg-emerald-500/20' 
+                        : 'text-red-400 hover:bg-red-500/20'
                     }`}
                   >
                     {route.isPublic ? <FiUnlock className="w-4 h-4" /> : <FiLock className="w-4 h-4" />}
@@ -694,21 +695,21 @@ const RouteManagement = () => {
                   
                   <button
                     onClick={() => handleEdit(route)}
-                    className="p-2 text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors"
+                    className="p-2 text-emerald-400 hover:bg-emerald-500/20 rounded-lg transition-colors"
                   >
                     <FiEdit3 className="w-4 h-4" />
                   </button>
                   
                   <button
                     onClick={() => handleDuplicate(route)}
-                    className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                    className="p-2 text-blue-400 hover:bg-blue-500/20 rounded-lg transition-colors"
                   >
                     <FiCopy className="w-4 h-4" />
                   </button>
                   
                   <button
                     onClick={() => handleDelete(route.id)}
-                    className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                    className="p-2 text-red-400 hover:bg-red-500/20 rounded-lg transition-colors"
                   >
                     <FiTrash2 className="w-4 h-4" />
                   </button>

@@ -60,17 +60,17 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-900">
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-70 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar */}
-      <div className={`fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+      <div className={`fixed inset-y-0 left-0 w-64 bg-gray-800 shadow-2xl transform transition-transform duration-300 ease-in-out lg:translate-x-0 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         <div className="flex items-center justify-between h-16 px-6 bg-gradient-to-r from-emerald-500 to-teal-500">
@@ -95,8 +95,8 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
                 }}
                 className={`w-full flex items-center px-6 py-3 text-left transition-colors duration-200 ${
                   activeTab === item.id
-                    ? 'bg-emerald-50 text-emerald-700 border-r-4 border-emerald-500'
-                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                    ? 'bg-emerald-500/20 text-emerald-400 border-r-4 border-emerald-500'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
                 }`}
               >
                 <Icon className="w-5 h-5 mr-3" />
@@ -108,7 +108,7 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
 
         {/* Divider and Bottom Options */}
         <div className="mt-auto">
-          <div className="border-t border-gray-200 my-4"></div>
+          <div className="border-t border-gray-600 my-4"></div>
           <div className="px-6 space-y-2">
             <button
               onClick={() => {
@@ -117,8 +117,8 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
               }}
               className={`w-full flex items-center px-3 py-2 text-left transition-colors duration-200 rounded-lg ${
                 activeTab === 'settings'
-                  ? 'bg-emerald-50 text-emerald-700'
-                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  ? 'bg-emerald-500/20 text-emerald-400'
+                  : 'text-gray-300 hover:bg-gray-700 hover:text-white'
               }`}
             >
               <FiSettings className="w-5 h-5 mr-3" />
@@ -126,7 +126,7 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
             </button>
             <button
               onClick={handleLogout}
-              className="w-full flex items-center px-3 py-2 text-left transition-colors duration-200 rounded-lg text-red-600 hover:bg-red-50 hover:text-red-700"
+              className="w-full flex items-center px-3 py-2 text-left transition-colors duration-200 rounded-lg text-red-400 hover:bg-red-500/20 hover:text-red-300"
             >
               <FiLogOut className="w-5 h-5 mr-3" />
               <span className="font-medium">লগআউট</span>
@@ -138,22 +138,22 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
       {/* Main Content */}
       <div className="lg:ml-64">
         {/* Top Bar */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-gray-800 shadow-lg border-b border-gray-700">
           <div className="flex items-center justify-between h-16 px-6">
             <div className="flex items-center">
               <button
                 onClick={() => setSidebarOpen(true)}
-                className="lg:hidden text-gray-500 hover:text-gray-700 mr-4"
+                className="lg:hidden text-gray-400 hover:text-white mr-4"
               >
                 <FiMenu className="w-6 h-6" />
               </button>
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
                 {menuItems.find(item => item.id === activeTab)?.label || 'ড্যাশবোর্ড'}
               </h2>
             </div>
             
             <div className="flex items-center space-x-4">
-              <button className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg">
+              <button className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg">
                 <FiRefreshCw className="w-5 h-5" />
               </button>
               <button className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors">
@@ -165,7 +165,7 @@ const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) =>
         </header>
 
         {/* Content Area */}
-        <main className="p-6">
+        <main className="p-6 bg-gray-900 min-h-screen">
           {children}
         </main>
       </div>
@@ -188,14 +188,14 @@ const OverviewTab = () => {
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+            <div key={index} className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">{stat.label}</p>
-                  <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
+                  <p className="text-sm font-medium text-gray-400">{stat.label}</p>
+                  <p className="text-3xl font-bold text-white">{stat.value}</p>
                 </div>
-                <div className={`p-3 rounded-full bg-${stat.color}-100`}>
-                  <Icon className={`w-6 h-6 text-${stat.color}-600`} />
+                <div className={`p-3 rounded-full bg-${stat.color}-500/20`}>
+                  <Icon className={`w-6 h-6 text-${stat.color}-400`} />
                 </div>
               </div>
             </div>
@@ -204,8 +204,8 @@ const OverviewTab = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">সাম্প্রতিক কার্যক্রম</h3>
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4">সাম্প্রতিক কার্যক্রম</h3>
           <div className="space-y-3">
             {[
               { action: 'নতুন ব্লগ পোস্ট যোগ করা হয়েছে', time: '২ ঘন্টা আগে' },
@@ -213,28 +213,31 @@ const OverviewTab = () => {
               { action: 'হোমপেজ সেকশন আপডেট করা হয়েছে', time: '২ দিন আগে' },
               { action: 'নেভিগেশন মেনু পরিবর্তন করা হয়েছে', time: '৩ দিন আগে' },
             ].map((item, index) => (
-              <div key={index} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0">
-                <p className="text-sm text-gray-700">{item.action}</p>
-                <span className="text-xs text-gray-500">{item.time}</span>
+              <div key={index} className="flex items-center justify-between py-2 border-b border-gray-600 last:border-b-0">
+                <p className="text-sm text-gray-300">{item.action}</p>
+                <span className="text-xs text-gray-400">{item.time}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">দ্রুত অ্যাকশন</h3>
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4">দ্রুত অ্যাকশন</h3>
           <div className="space-y-3">
-            <button className="w-full flex items-center justify-center px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors">
-              <FiPlus className="w-4 h-4 mr-2" />
-              নতুন ব্লগ পোস্ট
+            <button className="w-full flex items-center justify-center px-2 sm:px-4 py-1.5 sm:py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors text-xs sm:text-sm">
+              <FiPlus className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">নতুন ব্লগ পোস্ট</span>
+              <span className="sm:hidden">নতুন ব্লগ</span>
             </button>
-            <button className="w-full flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
-              <FiUpload className="w-4 h-4 mr-2" />
-              গ্যালারিতে ছবি আপলোড
+            <button className="w-full flex items-center justify-center px-2 sm:px-4 py-1.5 sm:py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-xs sm:text-sm">
+              <FiUpload className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">গ্যালারিতে ছবি আপলোড</span>
+              <span className="sm:hidden">ছবি আপলোড</span>
             </button>
-            <button className="w-full flex items-center justify-center px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors">
-              <FiEdit3 className="w-4 h-4 mr-2" />
-              হোমপেজ সম্পাদনা
+            <button className="w-full flex items-center justify-center px-2 sm:px-4 py-1.5 sm:py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors text-xs sm:text-sm">
+              <FiEdit3 className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+              <span className="hidden sm:inline">হোমপেজ সম্পাদনা</span>
+              <span className="sm:hidden">হোমপেজ</span>
             </button>
           </div>
         </div>
@@ -356,10 +359,10 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">লোড হচ্ছে...</p>
+          <p className="text-gray-300">লোড হচ্ছে...</p>
         </div>
       </div>
     );
@@ -386,29 +389,29 @@ export default function AdminDashboard() {
       case 'gallery':
         return <GalleryManagement />;
       case 'about-us':
-        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">আমাদের সম্পর্ক</h3>
-          <p className="text-gray-600">আমাদের সম্পর্ক পেজ এখানে আসবে...</p>
+        return <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4">আমাদের সম্পর্ক</h3>
+          <p className="text-gray-300">আমাদের সম্পর্ক পেজ এখানে আসবে...</p>
         </div>;
       case 'activities':
-        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">আমাদের কার্যক্রম</h3>
-          <p className="text-gray-600">আমাদের কার্যক্রম পেজ এখানে আসবে...</p>
+        return <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4">আমাদের কার্যক্রম</h3>
+          <p className="text-gray-300">আমাদের কার্যক্রম পেজ এখানে আসবে...</p>
         </div>;
       case 'faq':
-        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">সাধারণ প্রশ্ন</h3>
-          <p className="text-gray-600">সাধারণ প্রশ্ন পেজ এখানে আসবে...</p>
+        return <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4">সাধারণ প্রশ্ন</h3>
+          <p className="text-gray-300">সাধারণ প্রশ্ন পেজ এখানে আসবে...</p>
         </div>;
       case 'users':
-        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">ইউজার ম্যানেজমেন্ট</h3>
-          <p className="text-gray-600">ইউজার ম্যানেজমেন্ট পেজ এখানে আসবে...</p>
+        return <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4">ইউজার ম্যানেজমেন্ট</h3>
+          <p className="text-gray-300">ইউজার ম্যানেজমেন্ট পেজ এখানে আসবে...</p>
         </div>;
       case 'settings':
-        return <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">সেটিংস</h3>
-          <p className="text-gray-600">সেটিংস পেজ এখানে আসবে...</p>
+        return <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-white mb-4">সেটিংস</h3>
+          <p className="text-gray-300">সেটিংস পেজ এখানে আসবে...</p>
         </div>;
       default:
         return <OverviewTab />;

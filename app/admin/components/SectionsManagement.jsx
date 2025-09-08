@@ -400,16 +400,16 @@ const SectionsManagement = () => {
             <div className="flex justify-end space-x-3 mt-6">
               <button
                 onClick={() => setEditingSection(null)}
-                className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                className="px-3 py-1.5 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm"
               >
                 বাতিল
               </button>
               <button
                 onClick={handleSave}
-                className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                className="px-3 py-1.5 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors text-sm"
               >
-                <FiSave className="w-4 h-4 mr-2 inline" />
-                সেভ করুন
+                <FiSave className="w-3 h-3 mr-1 inline" />
+                সেভ
               </button>
             </div>
           </div>

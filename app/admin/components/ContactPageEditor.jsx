@@ -146,32 +146,32 @@ const ContactPageEditor = () => {
   const renderBasicInfo = () => (
     <div className="space-y-6">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">সংগঠনের নাম</label>
+        <label className="block text-sm font-medium text-gray-300 mb-2">সংগঠনের নাম</label>
         <input
           type="text"
           value={contactInfo.organizationName}
           onChange={(e) => setContactInfo({...contactInfo, organizationName: e.target.value})}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">ট্যাগলাইন</label>
+        <label className="block text-sm font-medium text-gray-300 mb-2">ট্যাগলাইন</label>
         <input
           type="text"
           value={contactInfo.tagline}
           onChange={(e) => setContactInfo({...contactInfo, tagline: e.target.value})}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
         />
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">বিবরণ</label>
+        <label className="block text-sm font-medium text-gray-300 mb-2">বিবরণ</label>
         <textarea
           value={contactInfo.description}
           onChange={(e) => setContactInfo({...contactInfo, description: e.target.value})}
           rows={4}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
         />
       </div>
     </div>
@@ -181,53 +181,53 @@ const ContactPageEditor = () => {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">ইমেইল</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">ইমেইল</label>
           <input
             type="email"
             value={contactInfo.email}
             onChange={(e) => setContactInfo({...contactInfo, email: e.target.value})}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">ফোন নম্বর</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">ফোন নম্বর</label>
           <input
             type="tel"
             value={contactInfo.phone}
             onChange={(e) => setContactInfo({...contactInfo, phone: e.target.value})}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">বিকল্প ফোন নম্বর</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">বিকল্প ফোন নম্বর</label>
           <input
             type="tel"
             value={contactInfo.alternatePhone}
             onChange={(e) => setContactInfo({...contactInfo, alternatePhone: e.target.value})}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">শহর</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">শহর</label>
           <input
             type="text"
             value={contactInfo.address}
             onChange={(e) => setContactInfo({...contactInfo, address: e.target.value})}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
       </div>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">সম্পূর্ণ ঠিকানা</label>
+        <label className="block text-sm font-medium text-gray-300 mb-2">সম্পূর্ণ ঠিকানা</label>
         <textarea
           value={contactInfo.fullAddress}
           onChange={(e) => setContactInfo({...contactInfo, fullAddress: e.target.value})}
           rows={3}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
         />
       </div>
     </div>
@@ -245,7 +245,7 @@ const ContactPageEditor = () => {
             {platform === 'twitter' && <FiTwitter className="w-5 h-5 text-blue-400" />}
             {platform === 'linkedin' && <FiLinkedin className="w-5 h-5 text-blue-700" />}
           </div>
-          <label className="text-sm font-medium text-gray-700 capitalize w-20">
+          <label className="text-sm font-medium text-gray-300 capitalize w-20">
             {platform}
           </label>
           <input
@@ -255,7 +255,7 @@ const ContactPageEditor = () => {
               ...contactInfo,
               socialMedia: {...contactInfo.socialMedia, [platform]: e.target.value}
             })}
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="flex-1 px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
             placeholder={`${platform} URL`}
           />
         </div>
@@ -275,12 +275,12 @@ const ContactPageEditor = () => {
           })}
           className="mr-2"
         />
-        <label className="text-sm font-medium text-gray-700">যোগাযোগ ফর্ম সক্রিয় করুন</label>
+        <label className="text-sm font-medium text-gray-300">যোগাযোগ ফর্ম সক্রিয় করুন</label>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">ফর্ম শিরোনাম (বাংলা)</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">ফর্ম শিরোনাম (বাংলা)</label>
           <input
             type="text"
             value={contactInfo.contactForm.formTitle}
@@ -288,12 +288,12 @@ const ContactPageEditor = () => {
               ...contactInfo,
               contactForm: {...contactInfo.contactForm, formTitle: e.target.value}
             })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">ফর্ম শিরোনাম (ইংরেজি)</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">ফর্ম শিরোনাম (ইংরেজি)</label>
           <input
             type="text"
             value={contactInfo.contactForm.formTitleEn}
@@ -301,14 +301,14 @@ const ContactPageEditor = () => {
               ...contactInfo,
               contactForm: {...contactInfo.contactForm, formTitleEn: e.target.value}
             })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
       </div>
       
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h4 className="text-lg font-semibold text-gray-900">ফর্ম ফিল্ডসমূহ</h4>
+          <h4 className="text-lg font-semibold text-white">ফর্ম ফিল্ডসমূহ</h4>
           <div className="flex items-center space-x-2">
             <span className="text-sm text-gray-500">মোট ফিল্ড: {contactInfo.contactForm.fields.length}</span>
             <div className="h-2 w-2 bg-emerald-500 rounded-full"></div>
@@ -316,14 +316,14 @@ const ContactPageEditor = () => {
         </div>
         <div className="space-y-4">
           {contactInfo.contactForm.fields.map((field, index) => (
-            <div key={field.id} className="bg-gradient-to-r from-gray-50 to-gray-100 p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <div key={field.id} className="bg-gradient-to-r from-gray-50 to-gray-100 p-5 rounded-xl border border-gray-700 shadow-lg hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
                     <span className="text-emerald-600 font-semibold text-sm">{index + 1}</span>
                   </div>
                   <div>
-                    <h5 className="font-semibold text-gray-900">{field.label}</h5>
+                    <h5 className="font-semibold text-white">{field.label}</h5>
                     <p className="text-sm text-gray-500">{field.labelEn}</p>
                   </div>
                 </div>
@@ -331,7 +331,7 @@ const ContactPageEditor = () => {
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                     field.required 
                       ? 'bg-red-100 text-red-700' 
-                      : 'bg-gray-100 text-gray-600'
+                      : 'bg-gray-100 text-gray-300'
                   }`}>
                     {field.required ? 'প্রয়োজনীয়' : 'ঐচ্ছিক'}
                   </span>
@@ -347,7 +347,7 @@ const ContactPageEditor = () => {
                           contactForm: {...contactInfo.contactForm, fields: newFields}
                         });
                       }}
-                      className="mr-2 w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+                      className="mr-2 w-4 h-4 text-emerald-600 border-gray-600 rounded focus:ring-emerald-500"
                     />
                     প্রয়োজনীয়
                   </label>
@@ -356,7 +356,7 @@ const ContactPageEditor = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700 flex items-center">
+                  <label className="block text-sm font-medium text-gray-300 flex items-center">
                     <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
                     লেবেল (বাংলা)
                   </label>
@@ -371,13 +371,13 @@ const ContactPageEditor = () => {
                         contactForm: {...contactInfo.contactForm, fields: newFields}
                       });
                     }}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    className="w-full px-3 py-2 text-sm border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="বাংলা লেবেল লিখুন"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700 flex items-center">
+                  <label className="block text-sm font-medium text-gray-300 flex items-center">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
                     লেবেল (ইংরেজি)
                   </label>
@@ -392,13 +392,13 @@ const ContactPageEditor = () => {
                         contactForm: {...contactInfo.contactForm, fields: newFields}
                       });
                     }}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    className="w-full px-3 py-2 text-sm border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="English label"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700 flex items-center">
+                  <label className="block text-sm font-medium text-gray-300 flex items-center">
                     <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
                     প্লেসহোল্ডার (বাংলা)
                   </label>
@@ -413,13 +413,13 @@ const ContactPageEditor = () => {
                         contactForm: {...contactInfo.contactForm, fields: newFields}
                       });
                     }}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    className="w-full px-3 py-2 text-sm border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="প্লেসহোল্ডার লিখুন"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700 flex items-center">
+                  <label className="block text-sm font-medium text-gray-300 flex items-center">
                     <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
                     ফিল্ড টাইপ
                   </label>
@@ -433,7 +433,7 @@ const ContactPageEditor = () => {
                         contactForm: {...contactInfo.contactForm, fields: newFields}
                       });
                     }}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    className="w-full px-3 py-2 text-sm border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   >
                     <option value="text">টেক্সট</option>
                     <option value="email">ইমেইল</option>
@@ -448,7 +448,7 @@ const ContactPageEditor = () => {
       </div>
 
       <div className="bg-gradient-to-r from-teal-50 to-emerald-50 p-6 rounded-xl border border-teal-200">
-        <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+        <h4 className="text-lg font-semibold text-white mb-4 flex items-center">
           <span className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center mr-3">
             <FiSend className="w-4 h-4 text-teal-600" />
           </span>
@@ -456,7 +456,7 @@ const ContactPageEditor = () => {
         </h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+            <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center">
               <span className="w-2 h-2 bg-teal-500 rounded-full mr-2"></span>
               সাবমিট বাটন টেক্সট (বাংলা)
             </label>
@@ -470,13 +470,13 @@ const ContactPageEditor = () => {
                   submitButton: {...contactInfo.contactForm.submitButton, text: e.target.value}
                 }
               })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors"
+              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors"
               placeholder="বাংলা বাটন টেক্সট"
             />
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center">
+            <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center">
               <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
               সাবমিট বাটন টেক্সট (ইংরেজি)
             </label>
@@ -490,7 +490,7 @@ const ContactPageEditor = () => {
                   submitButton: {...contactInfo.contactForm.submitButton, textEn: e.target.value}
                 }
               })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+              className="w-full px-3 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
               placeholder="English button text"
             />
           </div>
@@ -547,12 +547,12 @@ const ContactPageEditor = () => {
           })}
           className="mr-2"
         />
-        <label className="text-sm font-medium text-gray-700">মানচিত্র সক্রিয় করুন</label>
+        <label className="text-sm font-medium text-gray-300">মানচিত্র সক্রিয় করুন</label>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">অক্ষাংশ (Latitude)</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">অক্ষাংশ (Latitude)</label>
           <input
             type="number"
             step="0.000001"
@@ -561,12 +561,12 @@ const ContactPageEditor = () => {
               ...contactInfo,
               map: {...contactInfo.map, latitude: parseFloat(e.target.value)}
             })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">দ্রাঘিমাংশ (Longitude)</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">দ্রাঘিমাংশ (Longitude)</label>
           <input
             type="number"
             step="0.000001"
@@ -575,12 +575,12 @@ const ContactPageEditor = () => {
               ...contactInfo,
               map: {...contactInfo.map, longitude: parseFloat(e.target.value)}
             })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">জুম লেভেল</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">জুম লেভেল</label>
           <input
             type="number"
             min="1"
@@ -590,12 +590,12 @@ const ContactPageEditor = () => {
               ...contactInfo,
               map: {...contactInfo.map, zoom: parseInt(e.target.value)}
             })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">মার্কার শিরোনাম</label>
+          <label className="block text-sm font-medium text-gray-300 mb-2">মার্কার শিরোনাম</label>
           <input
             type="text"
             value={contactInfo.map.markerTitle}
@@ -603,7 +603,7 @@ const ContactPageEditor = () => {
               ...contactInfo,
               map: {...contactInfo.map, markerTitle: e.target.value}
             })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
           />
         </div>
       </div>
@@ -640,8 +640,8 @@ const ContactPageEditor = () => {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">যোগাযোগ পেজ এডিটর</h2>
-          <p className="text-gray-600">যোগাযোগ পেজের সমস্ত তথ্য সম্পাদনা করুন</p>
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">যোগাযোগ পেজ এডিটর</h2>
+          <p className="text-xs sm:text-sm text-gray-300">যোগাযোগ পেজের সমস্ত তথ্য সম্পাদনা করুন</p>
         </div>
         
         <div className="flex space-x-3">
@@ -649,24 +649,24 @@ const ContactPageEditor = () => {
             <>
               <button
                 onClick={handleReset}
-                className="flex items-center px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                className="flex items-center px-3 py-1.5 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-700 transition-colors text-sm"
               >
-                <FiX className="w-4 h-4 mr-2" />
+                <FiX className="w-3 h-3 mr-1" />
                 বাতিল
               </button>
               <button
                 onClick={handleSave}
-                className="flex items-center px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                className="flex items-center px-3 py-1.5 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors text-sm"
               >
-                <FiSave className="w-4 h-4 mr-2" />
-                সেভ করুন
+                <FiSave className="w-3 h-3 mr-1" />
+                সেভ
               </button>
             </>
           ) : (
             <>
               <button
                 onClick={() => setShowPreview(!showPreview)}
-                className="flex items-center px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                className="flex items-center px-4 py-2 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-700 transition-colors"
               >
                 <FiEye className="w-4 h-4 mr-2" />
                 {showPreview ? 'প্রিভিউ লুকান' : 'প্রিভিউ দেখুন'}
@@ -688,26 +688,26 @@ const ContactPageEditor = () => {
 
       {/* Preview */}
       {showPreview && !isEditing && (
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+      <div className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">প্রিভিউ</h3>
+            <h3 className="text-lg font-semibold text-white">প্রিভিউ</h3>
             <button
               onClick={() => setShowPreview(false)}
-              className="text-gray-500 hover:text-gray-700 transition-colors"
+              className="text-gray-500 hover:text-gray-300 transition-colors"
             >
               <FiX className="w-5 h-5" />
             </button>
           </div>
-        <div className="bg-gray-50 p-4 rounded-lg">
+        <div className="bg-gray-700 p-4 rounded-lg">
           <div className="text-center mb-6">
-            <h1 className="text-2xl font-bold text-gray-900">{contactInfo.organizationName}</h1>
+            <h1 className="text-2xl font-bold text-white">{contactInfo.organizationName}</h1>
             <p className="text-lg text-emerald-600">{contactInfo.tagline}</p>
-            <p className="text-gray-600 mt-2">{contactInfo.description}</p>
+            <p className="text-gray-300 mt-2">{contactInfo.description}</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">যোগাযোগের তথ্য</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">যোগাযোগের তথ্য</h3>
               <div className="space-y-2">
                 <div className="flex items-center">
                   <FiMail className="w-4 h-4 text-emerald-600 mr-2" />
@@ -725,26 +725,26 @@ const ContactPageEditor = () => {
             </div>
             
             <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">যোগাযোগ ফর্ম</h3>
-                <div className="bg-white p-4 rounded-lg border border-gray-200">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4">{contactInfo.contactForm.formTitle}</h4>
+                <h3 className="text-lg font-semibold text-white mb-3">যোগাযোগ ফর্ম</h3>
+                <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                  <h4 className="text-lg font-semibold text-white mb-4">{contactInfo.contactForm.formTitle}</h4>
                   <div className="space-y-3">
                     {contactInfo.contactForm.fields.map((field) => (
                       <div key={field.id}>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                        <label className="block text-sm font-medium text-gray-300 mb-1">
                           {field.label} {field.required && <span className="text-red-500">*</span>}
                         </label>
                         {field.type === 'textarea' ? (
                           <textarea
                             placeholder={field.placeholder}
                             rows={3}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                           />
                         ) : (
                           <input
                             type={field.type}
                             placeholder={field.placeholder}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                            className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                           />
                         )}
                       </div>
@@ -761,8 +761,8 @@ const ContactPageEditor = () => {
       )}
 
       {/* Sections */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
+      <div className="bg-gray-800 rounded-lg shadow-lg border border-gray-700">
+        <div className="p-6 border-b border-gray-700">
           <div className="flex flex-wrap gap-2">
             {sections.map((section) => {
               const Icon = section.icon;
@@ -773,7 +773,7 @@ const ContactPageEditor = () => {
                   className={`flex items-center px-4 py-2 rounded-lg transition-colors ${
                     activeSection === section.id
                       ? 'bg-emerald-500 text-white'
-                      : 'text-gray-600 hover:bg-gray-100'
+                      : 'text-gray-300 hover:bg-gray-100'
                   }`}
                 >
                   <Icon className="w-4 h-4 mr-2" />
