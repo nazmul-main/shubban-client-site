@@ -1,6 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useToast } from '../../src/context/ToastContext';
+import ConfirmationToast from '../../src/component/ConfirmationToast';
 import { 
   FiHome, 
   FiSettings, 
@@ -39,7 +42,7 @@ import ContactPageEditor from './components/ContactPageEditor';
 import RouteManagement from './components/RouteManagement';
 
 // Dashboard Layout Component
-const DashboardLayout = ({ children, activeTab, setActiveTab }) => {
+const DashboardLayout = ({ children, activeTab, setActiveTab, handleLogout }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const menuItems = [
@@ -122,12 +125,7 @@ const DashboardLayout = ({ children, activeTab, setActiveTab }) => {
               <span className="font-medium">সেটিংস</span>
             </button>
             <button
-              onClick={() => {
-                if (confirm('আপনি কি লগআউট করতে চান?')) {
-                  // Handle logout logic here
-                  window.location.href = '/';
-                }
-              }}
+              onClick={handleLogout}
               className="w-full flex items-center px-3 py-2 text-left transition-colors duration-200 rounded-lg text-red-600 hover:bg-red-50 hover:text-red-700"
             >
               <FiLogOut className="w-5 h-5 mr-3" />
@@ -248,6 +246,128 @@ const OverviewTab = () => {
 // Main Dashboard Component
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('overview');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  const router = useRouter();
+  const { warning } = useToast();
+
+  // Check authentication on component mount
+  useEffect(() => {
+    const checkAuth = () => {
+      const token = localStorage.getItem('adminToken');
+      const user = localStorage.getItem('adminUser');
+      
+      if (!token || !user) {
+        router.push('/admin_signin');
+        return;
+      }
+
+      try {
+        const userData = JSON.parse(user);
+        if (userData.role !== 'admin') {
+          localStorage.removeItem('adminToken');
+          localStorage.removeItem('adminUser');
+          router.push('/admin_signin');
+          return;
+        }
+        
+        setIsAuthenticated(true);
+      } catch (error) {
+        localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminUser');
+        router.push('/admin_signin');
+        return;
+      }
+      
+      setLoading(false);
+    };
+
+    checkAuth();
+  }, [router]);
+
+  // Auto logout after 2 hours
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    const token = localStorage.getItem('adminToken');
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const expiryTime = payload.exp * 1000;
+        const currentTime = Date.now();
+        const timeLeft = expiryTime - currentTime;
+
+        if (timeLeft <= 0) {
+          // Token expired
+          localStorage.removeItem('adminToken');
+          localStorage.removeItem('adminUser');
+          router.push('/admin_signin');
+          return;
+        }
+
+        // Set timeout for auto logout
+        const timeout = setTimeout(() => {
+          localStorage.removeItem('adminToken');
+          localStorage.removeItem('adminUser');
+          router.push('/admin_signin');
+        }, timeLeft);
+
+        return () => clearTimeout(timeout);
+      } catch (error) {
+        localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminUser');
+        router.push('/admin_signin');
+      }
+    }
+  }, [isAuthenticated, router]);
+
+  // Handle logout confirmation
+  const handleLogoutClick = () => {
+    setShowLogoutConfirm(true);
+  };
+
+  // Handle actual logout
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('adminToken');
+      if (token) {
+        // Call signout API to remove device
+        await fetch('/api/auth/admin-signout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            deviceId: JSON.parse(atob(token.split('.')[1])).deviceId
+          })
+        });
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('adminUser');
+      // Redirect to home page instead of admin signin
+      router.push('/');
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">লোড হচ্ছে...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -296,8 +416,23 @@ export default function AdminDashboard() {
   };
 
   return (
-    <DashboardLayout activeTab={activeTab} setActiveTab={setActiveTab}>
-      {renderTabContent()}
-    </DashboardLayout>
+    <>
+      <DashboardLayout activeTab={activeTab} setActiveTab={setActiveTab} handleLogout={handleLogoutClick}>
+        {renderTabContent()}
+      </DashboardLayout>
+      
+      {/* Logout Confirmation Toast */}
+      <ConfirmationToast
+        isOpen={showLogoutConfirm}
+        onClose={() => setShowLogoutConfirm(false)}
+        onConfirm={handleLogout}
+        title="লগ আউট নিশ্চিত করুন"
+        message="আপনি কি লগআউট করতে চান? এই কাজের পর আপনাকে আবার লগইন করতে হবে।"
+        confirmText="লগ আউট"
+        cancelText="বাতিল করুন"
+        type="warning"
+        icon={FiLogOut}
+      />
+    </>
   );
 }

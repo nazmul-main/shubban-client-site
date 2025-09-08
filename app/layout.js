@@ -2,7 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ColorProvider } from "../src/context/ColorContext";
 import { PopupProvider } from "../src/context/PopupContext";
-// Removed AuthProvider import
+import { ToastProvider } from "../src/context/ToastContext";
+import { AuthProvider } from "../src/context/AuthContext";
 import RouteAwareLayout from "../src/component/RouteAwareLayout";
 import RouteTransition from "../src/component/RouteTransition";
 import BrowserExtensionHandler from "../src/component/BrowserExtensionHandler";
@@ -145,14 +146,18 @@ export default function RootLayout({ children }) {
       >
         <BrowserExtensionHandler />
         <ColorProvider>
-          <PopupProvider>
-            <RouteTransition>
-              <RouteAwareLayout>
-                {children}
-              </RouteAwareLayout>
-            </RouteTransition>
-            <GlobalPopups />
-          </PopupProvider>
+          <AuthProvider>
+            <PopupProvider>
+              <ToastProvider>
+                <RouteTransition>
+                  <RouteAwareLayout>
+                    {children}
+                  </RouteAwareLayout>
+                </RouteTransition>
+                <GlobalPopups />
+              </ToastProvider>
+            </PopupProvider>
+          </AuthProvider>
         </ColorProvider>
       </body>
     </html>
